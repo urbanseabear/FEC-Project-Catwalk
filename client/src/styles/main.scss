@@ -1,14 +1,3 @@
-$dobos-blue: #1c0ca7;
-
-.sassButton {
-    font-size: 20px;
-    border-radius: 100px;
-    background-color: rgb(95, 95, 173) ;
-    &:hover {
-        background-color: $dobos-blue;
-        font-style: italic;
-    }
-}
 
 .qa-header {
     font-family: Arial, Helvetica, sans-serif;
@@ -16,3 +5,7 @@ $dobos-blue: #1c0ca7;
     color: black;
     float: left;
 }
+.sassTest {
+  background-color: rgb(34, 255, 0);
+}
+

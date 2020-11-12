@@ -19,7 +19,7 @@ const App = ({ names }) => {
       {group}
       <QAmodule />
       <p>You clicked {count} times</p>
-      <button className="sassButton" onClick={() => { setCount(count + 1); }}>
+      <button className="sassTest" onClick={() => { setCount(count + 1); }}>
         Click me
       </button>
       <button className="ui primary button" onClick={() => { setCount(0); }}>

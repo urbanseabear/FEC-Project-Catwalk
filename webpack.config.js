@@ -24,7 +24,7 @@ module.exports = {
           'sass-loader'
         ]
       }
-    ]
+    ],
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
