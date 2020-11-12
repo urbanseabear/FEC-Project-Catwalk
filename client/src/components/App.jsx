@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/main.scss';
 
 const App = ({ names }) => {
   const group = names.map((name, i) => {
@@ -16,7 +17,7 @@ const App = ({ names }) => {
       <h1>Team Dobos Torte</h1>
       {group}
       <p>You clicked {count} times</p>
-      <button className="ui primary button" onClick={() => { setCount(count + 1); }}>
+      <button className="sassTest" onClick={() => { setCount(count + 1); }}>
         Click me
       </button>
       <button className="ui primary button" onClick={() => { setCount(0); }}>
