@@ -1,30 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/main.scss';
+import Overview from './overview/overview.jsx';
 import QAmodule from './Q&A/QAmodule';
 
-const App = ({ names }) => {
-  const group = names.map((name, i) => {
-    return (
-      <h2 key={i} style={{ margin: '10px', color: 'blue' }}>
-        {name}
-      </h2>
-    );
-  });
-
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <div style={{ textAlign: 'center', color: 'red' }}>
-      <h1>Team Dobos Torte</h1>
-      {group}
+    <div>
+      <Overview />
       <QAmodule />
-      <p>You clicked {count} times</p>
-      <button className="sassTest" onClick={() => { setCount(count + 1); }}>
-        Click me
-      </button>
-      <button className="ui primary button" onClick={() => { setCount(0); }}>
-        Reset
-      </button>
     </div>
   );
 };
