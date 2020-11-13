@@ -1,4 +1,5 @@
 import React from 'react';
+import QAsearch from './QAsearch';
 import '../../styles/main.scss';
 
 class QAmodule extends React.Component {
@@ -12,7 +13,11 @@ class QAmodule extends React.Component {
 
     render() {
         return (
-            <div className='qa-header'>QUESTIONS & ANSWERS</div>
+            <div className='qa-container' style={{display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gridTemplateColumns: 'repeat(4, 1fr)'}}>
+                <div className='qa-header' style={{gridColumnEnd: '1'}} >QUESTIONS & ANSWERS</div>
+                <QAsearch />
+                
+            </div>
         )
 }
 }
