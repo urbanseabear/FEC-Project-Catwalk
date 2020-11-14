@@ -1,0 +1,70 @@
+.overviewContainer {
+  max-width: 1000px;
+  // max-height: 650px;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: 15% 5% 20% 20% 20% 20%;
+  grid-gap: 5px;
+
+  .headerContainer {
+    grid-row: 1;
+    grid-column: 1/3;
+    background-color: aqua;
+  }
+  .siteAnnouncementContainer {
+    grid-row: 2;
+    grid-column: 1/3;
+    background-color: aquamarine;
+  }
+  .imageGalleryContainer {
+    max-height: 352px;
+    grid-row: 3/6;
+    grid-column: 1;
+    background-color: blue;
+    display: grid;
+    grid-template-columns: 15% 5% 75% 5%;
+    //grid-gap: 5px;
+
+    .differentViewContainer {
+      grid-column: 1;
+      background-color: darkgreen;
+    }
+    .leftArrowContainer {
+      grid-column: 2;
+      background-color: darkkhaki;
+    }
+    .mainImageContainer {
+      grid-column: 3;
+      background-color: darkred;
+    }
+    .rightArrowContainer {
+      grid-column: 4;
+      background-color: darkseagreen;
+    }
+  }
+  .productDetailsContainer {
+    grid-row: 6;
+    grid-column: 1;
+    background-color: blueviolet;
+  }
+  .ratingCategoryProductNamePriceContainer {
+    grid-row: 3;
+    grid-column: 2;
+    background-color: brown;
+  }
+  .styleContainer {
+    grid-row: 4;
+    grid-column: 2;
+    background-color: cadetblue;
+  }
+  .sizeQuantityAddContainer {
+    grid-row: 5;
+    grid-column: 2;
+    background-color: coral;
+  }
+  .otherStuffContainer {
+    grid-row: 6;
+    grid-column: 2;
+    background-color: darkcyan;
+  }
+}
