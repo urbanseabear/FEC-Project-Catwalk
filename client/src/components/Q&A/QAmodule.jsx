@@ -3,7 +3,7 @@ import QAsearch from './QAsearch';
 import '../../styles/main.scss';
 import qaData from './qa-sample-data';
 import QAlist from './QAlist';
-
+import Helpful from '../shared/Helpful';
 
 class QAmodule extends React.Component {
     constructor(props) {
@@ -19,7 +19,11 @@ class QAmodule extends React.Component {
                 <div className='qa-header' style={{gridColumnEnd: 'span 4', fontSize: '20px', backgroundColor: 'red', height: '30px'}} >QUESTIONS & ANSWERS</div>
                 <QAsearch />
                 <QAlist answers={this.state.answers} questions={this.state.questions.results}/>
-            
+                <div style={{gridColumnStart: '4', backgroundColor: 'green'}}>
+                <Helpful reportOrAdd={'Add Answer'}/>
+                
+                <Helpful reportOrAdd={'Add Answer'}/>
+                </div>
                 
             </div>
         )
