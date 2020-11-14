@@ -3,9 +3,9 @@ import Helpful from '../shared/Helpful';
 
 const QAentry = (props) => {
     return (
-        <div>
+        <div style={{gridRowStart: props.start, gridColumnStart: 'span 4', backgroundColor: "pink"}}>
           <span>Q: {props.question.question_body}      </span>
-          <Helpful style={{float: 'right'}} sideText={'report'}/>
+          <Helpful sideText={'report'}/>
           <div>
             A: 
           </div>  

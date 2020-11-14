@@ -6,11 +6,11 @@ const Helpful = (props) => {
       reportOrAdd = 'Report';
     }
     return (
-        <span>
+        <span style={{marginLeft: '100px'}}>
             Helpful?
             <span style={{textDecoration: 'underline'}}>Yes</span>
             <span>(0) | </span>
-    <span>{reportOrAdd}</span>
+    <span style={{textDecoration: 'underline'}}>{reportOrAdd}</span>
         </span>
     )
 }
