@@ -54,7 +54,9 @@ class QAmodule extends React.Component {
               borderWidth: '2px',
               borderColor: 'black',
               background: 'none',
-              padding: '15px 5px 15px 5px',
+              fontWeight: 'bold',
+              fontSize: '20px',
+              padding: '20px 10px 20px 10px',
               cursor: 'pointer',
             }}>
             MORE ANSWERED QUESTIONS
@@ -63,9 +65,11 @@ class QAmodule extends React.Component {
             style={{
               marginLeft: '20px',
               borderWidth: '2px',
+              fontWeight: 'bold',
+              fontSize: '20px',
               borderColor: 'black',
               background: 'none',
-              padding: '15px 5px 15px 5px',
+              padding: '20px 10px 20px 10px',
               cursor: 'pointer',
             }}>
             ADD A QUESTION +
