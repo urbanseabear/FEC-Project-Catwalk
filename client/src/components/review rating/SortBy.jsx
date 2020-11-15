@@ -1,30 +1,21 @@
-import React, { Component } from 'react';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import React from 'react';
 
-export default class SortBy extends Component {
-  constructor(props) {
-    super(props);
-  }
+const SortBy = () => {
+  return (
+    <div style={{ display: 'flex', marginTop: '14px' }}>
+      <h2>248 reviews, sorted by</h2>
+      <select
+        style={{
+          background: 'none',
+          border: 'none',
+          outline: 'none',
+        }}>
+        <option>relevance</option>
+        <option>helpful</option>
+        <option>newest</option>
+      </select>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <InputLabel style={{ fontSize: '30px' }} id='label'>
-          Sort By
-        </InputLabel>
-        <Select
-          style={{ width: '60%' }}
-          labelId='label'
-          id='select'
-          value='Relevance'>
-          <MenuItem value='10'>Style</MenuItem>
-          <MenuItem value='20'>Fit</MenuItem>
-          <MenuItem value='10'>Size</MenuItem>
-          <MenuItem value='20'>Price</MenuItem>
-        </Select>
-      </div>
-    );
-  }
-}
+export default SortBy;

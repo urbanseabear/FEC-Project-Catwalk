@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
-import '../../styles/reviewAndRating/reviewRating.scss';
+import React from 'react';
 import ReviewSummary from './ReviewSummary.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import Grid from '@material-ui/core/Grid';
 
-export default class ReviewRatings extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Grid style={{ margin: '20px' }} container spacing={2}>
-        <Grid item xs={6}>
-          <ReviewSummary />
-        </Grid>
-        <Grid item xs={6}>
-          <ReviewBody />
-        </Grid>
+const ReviewRatings = () => {
+  return (
+    <Grid style={{ marginTop: '10px' }} container spacing={8}>
+      <Grid item xs={3}>
+        <p style={{ marginTop: '-15px' }}>RATINGS & REVIEWS</p>
+        <ReviewSummary />
       </Grid>
-    );
-  }
-}
+      <Grid item xs={9}>
+        <ReviewBody />
+      </Grid>
+    </Grid>
+  );
+};
+
+export default ReviewRatings;
