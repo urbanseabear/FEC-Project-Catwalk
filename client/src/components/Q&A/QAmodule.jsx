@@ -21,10 +21,13 @@ class QAmodule extends React.Component {
                 <QAlist answers={this.state.answers} questions={this.state.questions.results}/>
                 <div style={{gridColumnStart: '4', backgroundColor: 'green'}}>
                 <Helpful reportOrAdd={'Add Answer'}/>
-                
+                <div style={{marginTop: '50px', marginBottom: '50px'}}></div>
                 <Helpful reportOrAdd={'Add Answer'}/>
                 </div>
-                
+                <div style={{gridRowStart: '4', gridColumnEnd: 'span 4', backgroundColor: 'gray'}}>
+                    <button style={{borderWidth: '2px', borderColor: 'black', background: 'none', padding: '15px 5px 15px 5px', cursor: 'pointer'}}>MORE ANSWERED QUESTIONS</button>
+                    <button style={{marginLeft: '20px', borderWidth: '2px', borderColor: 'black', background: 'none', padding: '15px 5px 15px 5px', cursor: 'pointer'}}>ADD A QUESTION +</button>
+                </div>
             </div>
         )
 }
