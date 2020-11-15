@@ -2,7 +2,7 @@ import React from 'react';
 
 const SortBy = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', marginTop: '14px' }}>
       <h2>248 reviews, sorted by</h2>
       <select
         style={{
