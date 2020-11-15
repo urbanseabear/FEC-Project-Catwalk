@@ -40,9 +40,9 @@ class QAmodule extends React.Component {
           questions={this.state.questions.results}
         />
         <div style={{ gridColumnStart: '4', marginTop: '10px'}}>
-          <Helpful reportOrAdd={'Add Answer'} />
-          <div style={{ marginTop: '50px', marginBottom: '50px' }}></div>
-          <Helpful reportOrAdd={'Add Answer'} />
+          <Helpful helped={this.state.questions.results[0].question_helpfulness} reportOrAdd={'Add Answer'} />
+          <div style={{ marginTop: '60px', marginBottom: '50px' }}></div>
+          <Helpful helped={this.state.questions.results[1].question_helpfulness} reportOrAdd={'Add Answer'} />
         </div>
         <div
           style={{
