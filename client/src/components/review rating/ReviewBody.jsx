@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReviewList from './ReviewList.jsx';
 import ReviewButtons from './ReviewButtons.jsx';
+import SortBy from './SortBy.jsx';
 
-export default class ReviewBody extends Component {
-  constructor(props) {
-    super(props);
-  }
+const ReviewBody = () => {
+  return (
+    <div>
+      <SortBy />
+      <ReviewList />
+      <ReviewButtons />
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <ReviewList />
-        <ReviewButtons />
-      </div>
-    );
-  }
-}
+export default ReviewBody;

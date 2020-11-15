@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 
-export default class StarRating extends Component {
-  constructor(props) {
-    super(props);
-  }
+const StarRating = (props) => {
+  const rating = props.rating || null;
+  return (
+    <div>
+      <h1 style={{ fontSize: '60px' }}>
+        {rating} <Rating name='size-large' defaultValue={0} size='large' />
+      </h1>
+    </div>
+  );
+};
 
-  render() {
-    const rating = this.props.rating || null;
-    return (
-      <div>
-        <h1 style={{ fontSize: '60px' }}>
-          {rating} <Rating name='size-small' defaultValue={0} size='large' />
-        </h1>
-      </div>
-    );
-  }
-}
+export default StarRating;

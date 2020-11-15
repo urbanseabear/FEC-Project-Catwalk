@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AverageRating from './AverageRating.jsx';
-import Grid from '@material-ui/core/Grid';
+import RatingBar from './RatingBar.jsx';
+import Factor from './Factors.jsx';
 
-export default class ReviewSummary extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <Grid container spacing={2}>
-          <Grid item>
-            <h1>RATINGS & REVIEWS</h1>
-            <AverageRating />
-          </Grid>
-        </Grid>
+const ReviewSummary = () => {
+  return (
+    <div>
+      <AverageRating />
+      <RatingBar starNum={5} />
+      <RatingBar starNum={4} />
+      <RatingBar starNum={3} />
+      <RatingBar starNum={2} />
+      <RatingBar starNum={1} />
+      <div style={{ paddingTop: '30px' }}>
+        <Factor />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default ReviewSummary;
