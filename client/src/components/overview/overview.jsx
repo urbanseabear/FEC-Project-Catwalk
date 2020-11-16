@@ -1,9 +1,19 @@
 import React from 'react';
 import './styles.scss';
+import getProducts from './overviewAPI.mjs';
 
 class Overview extends React.Component {
   constructor() {
     super();
+    this.state = {
+      productInfo: []
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      productInfo: getProducts()
+    });
   }
   render() {
     return (
@@ -32,7 +42,7 @@ class Overview extends React.Component {
           PRODUCT DETAILS CONTAINER
         </div>
         <div className='ratingCategoryProductNamePriceContainer'>
-          rating<br />category<br/>Product Name<br/>Price
+          Rating<br />Category<br/>Product Name<br/>Price
         </div>
         <div className='styleContainer'>
           Styles
