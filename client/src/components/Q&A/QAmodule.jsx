@@ -10,7 +10,13 @@ class QAmodule extends React.Component {
     super(props);
     this.state = {
       questions: qaData.questions,
+      search: ''
     };
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  handleSearch(e) {
+      this.setState({search: e.target.value});
   }
 
   render() {
@@ -37,7 +43,7 @@ class QAmodule extends React.Component {
           }}>
           QUESTIONS & ANSWERS
         </div>
-        <QAsearch />
+        <QAsearch search={this.handleSearch}/>
         <QAlist
           answers={this.state.answers}
           questions={this.state.questions.results}
