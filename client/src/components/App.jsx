@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import '../styles/main.scss';
+import Overview from './overview/overview.jsx';
+import QAmodule from './Q&A/QAmodule';
+import ReviewRatings from './review rating/ReviewRatings.jsx';
+import Grid from '@material-ui/core/Grid';
 
-const App = ({ names }) => {
-  const group = names.map((name, i) => {
-    return (
-      <h2 key={i} style={{ margin: '10px', color: 'blue' }}>
-        {name}
-      </h2>
-    );
-  });
-
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <div style={{ textAlign: 'center', color: 'red' }}>
-      <h1>Team Dobos Torte</h1>
-      {group}
-      <p>You clicked {count} times</p>
-      <button className="sassTest" onClick={() => { setCount(count + 1); }}>
-        Click me
-      </button>
-      <button className="ui primary button" onClick={() => { setCount(0); }}>
-        Reset
-      </button>
+    <div>
+      <Grid container spacing={8}>
+        <Grid item xs={12}>
+          <Overview />
+        </Grid>
+        <Grid style={{ margin: '0% 10%' }} item xs={12}>
+          <QAmodule />
+        </Grid>
+        <Grid style={{ margin: '0% 10%' }} item xs={12}>
+          <ReviewRatings />
+        </Grid>
+      </Grid>
     </div>
   );
 };
