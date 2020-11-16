@@ -11,8 +11,8 @@ const QAentry = (props) => {
     }
     console.log(aArray);
     return (
-        <div >
-          <span>Q: {props.question.question_body}      </span>
+        <div style={{marginTop: '10px'}}>
+          <span style={{fontWeight: 'bold', fontSize: '22px'}}>Q: {props.question.question_body}      </span>
           <div>
               {aArray.map((aKey, i) => {
                 if (i > 1) {

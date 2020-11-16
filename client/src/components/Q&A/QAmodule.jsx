@@ -20,17 +20,17 @@ class QAmodule extends React.Component {
         style={{
           display: 'grid',
           gridTemplateRows: '.5fr 1fr 3fr 1 fr',
-          gridTemplateColumns: '3fr .5fr .5fr 1fr',
+          gridTemplateColumns: '3fr .5fr .25fr 1.25fr',
           // took out the margin here so i can apply it to the App.js Grid
           gap: '10px',
+          fontFamily: 'Arial, Helvetica, sans-serif'
         }}>
         <div
           className='qa-header'
           style={{
             gridColumnEnd: 'span 4',
-            fontSize: '20px',
-            backgroundColor: 'red',
-            height: '30px',
+            fontSize: '16px',
+            height: '30px'
           }}>
           QUESTIONS & ANSWERS
         </div>
@@ -39,23 +39,24 @@ class QAmodule extends React.Component {
           answers={this.state.answers}
           questions={this.state.questions.results}
         />
-        <div style={{ gridColumnStart: '4', backgroundColor: 'green' }}>
-          <Helpful reportOrAdd={'Add Answer'} />
-          <div style={{ marginTop: '50px', marginBottom: '50px' }}></div>
-          <Helpful reportOrAdd={'Add Answer'} />
+        <div style={{ gridColumnStart: '4', marginTop: '10px'}}>
+          <Helpful helped={this.state.questions.results[0].question_helpfulness} reportOrAdd={'Add Answer'} />
+          <div style={{ marginTop: '60px', marginBottom: '50px' }}></div>
+          <Helpful helped={this.state.questions.results[1].question_helpfulness} reportOrAdd={'Add Answer'} />
         </div>
         <div
           style={{
             gridRowStart: '4',
-            gridColumnEnd: 'span 4',
-            backgroundColor: 'gray',
+            gridColumnEnd: 'span 4'
           }}>
           <button
             style={{
               borderWidth: '2px',
               borderColor: 'black',
               background: 'none',
-              padding: '15px 5px 15px 5px',
+              fontWeight: 'bold',
+              fontSize: '20px',
+              padding: '20px 10px 20px 10px',
               cursor: 'pointer',
             }}>
             MORE ANSWERED QUESTIONS
@@ -64,9 +65,11 @@ class QAmodule extends React.Component {
             style={{
               marginLeft: '20px',
               borderWidth: '2px',
+              fontWeight: 'bold',
+              fontSize: '20px',
               borderColor: 'black',
               background: 'none',
-              padding: '15px 5px 15px 5px',
+              padding: '20px 10px 20px 10px',
               cursor: 'pointer',
             }}>
             ADD A QUESTION +
