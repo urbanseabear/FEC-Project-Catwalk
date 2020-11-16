@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import QAanswer from './QAanswer';
 import QAentry from './QAentry';
+import AddModal from '../shared/AddModal';
 
 const QAloadmore = (props) => {
 
@@ -48,19 +49,7 @@ const QAloadmore = (props) => {
           }}>
           MORE ANSWERED QUESTIONS
         </button>
-        <button
-          style={{
-            marginLeft: '20px',
-            borderWidth: '2px',
-            fontWeight: 'bold',
-            fontSize: '20px',
-            borderColor: 'black',
-            background: 'none',
-            padding: '20px 10px 20px 10px',
-            cursor: 'pointer',
-          }}>
-          ADD A QUESTION +
-        </button>
+        <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
       </div>
       )
     } else if (allQuestions === true) {
@@ -86,38 +75,14 @@ const QAloadmore = (props) => {
           }}>
           LESS ANSWERED QUESTIONS
         </button>
-        <button
-          style={{
-            marginLeft: '20px',
-            borderWidth: '2px',
-            fontWeight: 'bold',
-            fontSize: '20px',
-            borderColor: 'black',
-            background: 'none',
-            padding: '20px 10px 20px 10px',
-            cursor: 'pointer',
-          }}>
-          ADD A QUESTION +
-        </button>
+        <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
          </div>
             </div>
         ) 
     } else {
         return (
             <div>
-            <button
-            style={{
-              marginLeft: '20px',
-              borderWidth: '2px',
-              fontWeight: 'bold',
-              fontSize: '20px',
-              borderColor: 'black',
-              background: 'none',
-              padding: '20px 10px 20px 10px',
-              cursor: 'pointer',
-            }}>
-            ADD A QUESTION +
-            </button>
+                <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
             </div>
         )
     }

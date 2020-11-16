@@ -48,7 +48,7 @@ class QAmodule extends React.Component {
           answers={this.state.answers}
           questions={this.state.questions.results}
         />
-        <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
+        
       </div>
     );
   }

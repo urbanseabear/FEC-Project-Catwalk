@@ -19,7 +19,7 @@ const Helpful = (props) => {
           Yes
         </button>
         <span>({props.helped ? props.helped : 0}) | </span>
-        <AddModal name={props.reportOrAdd} title={'Submit Your Answer'} prodName={'Yeezy UltraMax 5000'}/>  
+        <AddModal name={props.reportOrAdd} bType={'1'} title={'Submit Your Answer'} prodName={'Yeezy UltraMax 5000'}/>  
       </span>
     );
   } else {

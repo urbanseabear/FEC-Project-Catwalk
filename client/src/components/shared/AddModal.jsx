@@ -5,15 +5,6 @@ import Modal from '@material-ui/core/Modal';
 
 const AddModal = (props) => {
   const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const body = (
     <div
       style={{
@@ -64,25 +55,44 @@ const AddModal = (props) => {
     </div>
   );
 
+  var bStyle;
+  var buttonText = '';
+  if (props.bType === '1') {
+      bStyle = {
+        textDecoration: "underline",
+        border: "none",
+        cursor: "pointer",
+        background: "none",
+      }
+      buttonText = 'Add Answer';
+  } else {
+      bStyle = {
+            marginLeft: '20px',
+            borderWidth: '2px',
+            fontWeight: 'bold',
+            fontSize: '20px',
+            borderColor: 'black',
+            background: 'none',
+            padding: '20px 10px 20px 10px',
+            cursor: 'pointer',
+          }
+          buttonText = 'ADD A QUESTION +'; 
+      }
+  
   return (
-    <div>
-      <button style={{
-            textDecoration: "underline",
-            border: "none",
-            cursor: "pointer",
-            background: "none",
-          }} onClick={handleOpen}>
-        {props.name}
+    <span>
+      <button style={bStyle} onClick={() => setOpen(!open)}>
+        {buttonText}
       </button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(!open)}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
         {body}
       </Modal>
-    </div>
+    </span>
   );
 };
 export default AddModal;
