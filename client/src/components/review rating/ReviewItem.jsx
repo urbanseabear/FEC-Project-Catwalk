@@ -20,13 +20,13 @@ const ReviewItem = () => {
       <div
         style={{
           border: 'solid',
-          borderColor: 'grey',
-          height: '70px',
-          margin: '40px 0px',
-          background: 'grey',
+          borderColor: '#EEEEEE',
+          height: '80px',
+          margin: '30px 0px',
+          background: '#EEEEEE',
         }}>
         <div style={{ margin: '10px' }}>
-          <span> Response:</span>
+          <span>Response:</span>
         </div>
         <div style={{ margin: '10px' }}>
           <span>
