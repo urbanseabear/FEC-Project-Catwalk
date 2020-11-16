@@ -17,6 +17,9 @@ const QAsearch = (props) => {
         type="text"
         placeholder="Have a question? Search for answers..."
       ></input>
+      <span style={{WebkitTransform: "rotate(45deg)", 
+               MozTransform: "rotate(45deg)", fontSize: '40px'}}>
+    &#9906;</span>
     </div>
   );
 };
