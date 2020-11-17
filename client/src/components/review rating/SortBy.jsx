@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SortBy = () => {
+const SortBy = ({ totalCount }) => {
   return (
     <div style={{ display: 'flex', marginTop: '18px' }}>
-      <h2>248 reviews, sorted by</h2>
+      <h2>{totalCount} reviews, sorted by</h2>
       <select
         style={{
           background: 'none',

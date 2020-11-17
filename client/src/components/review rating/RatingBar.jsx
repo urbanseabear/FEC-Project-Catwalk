@@ -1,33 +1,14 @@
 import React from 'react';
+import '../../styles/review rating/RatingBar.scss';
 
-const RatingBar = ({ starNum }) => {
+const RatingBar = ({ starNum, count }) => {
+  let percentage = (count * 100) / 10;
+
   return (
-    <div style={{ display: 'flex', margin: '0px 0px 15px' }}>
-      <p
-        style={{
-          paddingRight: '10px',
-          marginTop: '-4px',
-        }}>
-        {starNum}__stars
-      </p>
-      <div
-        style={{
-          position: 'relative',
-          height: '10px',
-          width: '100%',
-          borderRadius: '1px',
-          border: '1px solid#EEEEEE',
-          background: '#EEEEEE',
-          borderStyle: 'none',
-        }}>
-        <div
-          style={{
-            width: '20%',
-            background: '#222',
-            height: '100%',
-            borderRadius: 'inherit',
-            transition: 'width .2s ease-in',
-          }}></div>
+    <div className='rating-bar-wrapper'>
+      <p className='rating-bar-star-number'>{starNum}__stars</p>
+      <div className='empty-bar'>
+        <div className='filler-bar' style={{ width: `${percentage}%` }}></div>
       </div>
     </div>
   );
