@@ -11,7 +11,7 @@ const QAentry = (props) => {
     }
     return (
         <div style={{marginTop: '10px'}}>
-          <span style={{fontWeight: 'bold', fontSize: '22px'}}>Q: {props.question.question_body}      </span><Helpful helped={props.question.question_helpfulness} reportOrAdd={'Add Answer'}/>
+          <span style={{fontWeight: 'bold', fontSize: '22px'}}>Q: {props.question.question_body}      </span><Helpful helped={props.question.question_helpfulness} question={props.question.question_body} reportOrAdd={'Add Answer'}/>
           <div>
               {aArray.map((aKey, i) => {
                 if (i > 1 && aArray.length > i) {

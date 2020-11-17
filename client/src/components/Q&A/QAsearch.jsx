@@ -16,11 +16,8 @@ const QAsearch = (props) => {
         }}
         className="qa-search-bar"
         type="text"
-        placeholder="Have a question? Search for answers..."
+        placeholder="Have a question? Search for answers...&#9906;"
       ></input>
-      <span style={{WebkitTransform: "rotate(45deg)", 
-               MozTransform: "rotate(45deg)", fontSize: '40px'}}>
-    &#9906;</span>
     </div>
   );
 };
