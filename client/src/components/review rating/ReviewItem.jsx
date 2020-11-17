@@ -1,52 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
 import StarRating from './StarRating.jsx';
+import '../../styles/review rating/ReviewItem.scss';
+const moment = require('moment');
 
-const ReviewItem = () => {
-  return (
-    <div style={{ paddingTop: '14px' }}>
-      <span style={{ float: 'right', marginTop: '24px' }}>
-        User | November 21, 2020
-      </span>
-      <StarRating />
-      <h1>Review title with word-break truncation to prevent wrapping</h1>
-      <p style={{ paddingTop: '10px', paddingBottom: '10px' }}>
-        This is some sample review body text. This is some sample review body
-        text. This is some sample review body text. This is some sample review
-        body text.
-      </p>
-      <div>
-        <span>√ I recommend this product</span>
-      </div>
-      <div
-        style={{
-          border: 'solid',
-          borderColor: '#EEEEEE',
-          height: '80px',
-          margin: '30px 0px',
-          background: '#EEEEEE',
-        }}>
-        <div style={{ margin: '10px' }}>
-          <span>Response:</span>
-        </div>
-        <div style={{ margin: '10px' }}>
-          <span>
-            Marizpan danish jelly beans gummi beats apple pie cheesecake topping
-            biscuit sesame snaps.
-          </span>
-        </div>
-      </div>
-      <div>
-        <span>Helpful? Yes (0) | Report</span>
-      </div>
-      <div
-        style={{
-          paddingTop: '30px',
-          borderBottom: 'solid',
-          borderStyle: 'thin',
-          borderBottomColor: 'lightGrey',
-        }}></div>
-    </div>
-  );
-};
+export default class ReviewItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      body: props.data.body,
+      date: props.data.date,
+      helpful: props.data.helpfulness,
+      photos: props.data.photo,
+      rating: props.data.rating,
+      recommend: props.data.recommend,
+      response: props.data.response,
+      reviewId: props.data.review_id,
+      reviewerName: props.data.reviewer_name,
+      summary: props.data.summary,
+    };
+  }
 
-export default ReviewItem;
+  render() {
+    let recommended = this.state.recommend !== 0;
+    let response = this.state.response === 'null';
+
+    return (
+      <div className='item-wrapper'>
+        <span style={{ float: 'right', marginTop: '24px' }}>
+          {this.state.reviewerName} |
+          {moment(this.state.date).format('MMMM Do YYYY')}
+        </span>
+        <StarRating starNum={this.state.rating} />
+        <h1>{this.state.summary}</h1>
+        <p className='item-body'>{this.state.body}</p>
+        <div>{recommended ? <span>√ I recommend this product</span> : ''}</div>
+        {response || this.state.response === '' ? (
+          ''
+        ) : (
+          <div className='item-response'>
+            <div style={{ margin: '10px' }}>
+              <span>Response:</span>
+            </div>
+            <div style={{ margin: '10px' }}>
+              <span>{this.state.response}</span>
+            </div>
+          </div>
+        )}
+        <div>
+          <span>Helpful? Yes ({this.state.helpful}) | Report</span>
+        </div>
+        <div className='item-response-border'></div>
+      </div>
+    );
+  }
+}
