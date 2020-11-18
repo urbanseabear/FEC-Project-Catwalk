@@ -4,6 +4,7 @@ import '../../styles/main.scss';
 import qaData from './qa-sample-data';
 import QAlist from './QAlist';
 import AddModal from '../shared/AddModal';
+import axios from 'axios';
 
 class QAmodule extends React.Component {
   constructor(props) {
@@ -19,6 +20,17 @@ class QAmodule extends React.Component {
       this.setState({search: e.target.value});
   }
 
+  componentDidMount() {
+      console.log(this.props.prodID);
+      axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: 2, count: 50}})
+      .then((result) => {
+          console.log(result);
+          this.setState({questions: result.data});
+      })
+      .catch((err) => {
+          console.log(err);
+      })
+  }
   render() {
     {if (this.state.questions === null) {
         var showQAlist = false;
@@ -48,7 +60,7 @@ class QAmodule extends React.Component {
           answers={this.state.answers}
           questions={this.state.questions.results}
         />
-        
+        <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
       </div>
     );
   }

@@ -24,7 +24,7 @@ export default class App extends Component {
             <Overview />
           </Grid>
           <Grid style={{ margin: '0% 10%' }} item xs={12}>
-            <QAmodule />
+            <QAmodule prodID={this.state.productId} />
           </Grid>
           <Grid style={{ margin: '0% 10%' }} item xs={12}>
             <ReviewRatings

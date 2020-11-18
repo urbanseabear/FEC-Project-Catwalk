@@ -10,11 +10,11 @@ const QAentry = (props) => {
         aArray.push(props.question.answers[answerKeys[i]]);
     }
     return (
-        <div style={{marginTop: '10px'}}>
-          <span style={{fontWeight: 'bold', fontSize: '22px'}}>Q: {props.question.question_body}      </span><Helpful helped={props.question.question_helpfulness} question={props.question.question_body} reportOrAdd={'Add Answer'}/>
+        <div style={{marginTop: '10px', }}>
+          <span style={{fontWeight: 'bold', fontSize: '22px', display: "flex", justifyContent: "space-between"}}>Q: {props.question.question_body}     <Helpful helped={props.question.question_helpfulness} question={props.question.question_body} reportOrAdd={'Add Answer'}/></span>
           <div>
-              {aArray.map((aKey, i) => {
-                if (i > 1 && aArray.length > i) {
+              {aArray.slice(0, 3).map((aKey, i) => {
+                if (i === 2) {
                     return <QAloadmore answers={aArray} key={i}/>
                 }
                 return <QAanswer key={i} answer={aKey}/> 

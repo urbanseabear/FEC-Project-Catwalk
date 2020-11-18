@@ -34,12 +34,16 @@ const AddModal = (props) => {
   body = (
     <div
       style={{
-        backgroundColor: "whitesmoke",
+        backgroundColor: "white",
         height: "400px",
-        width: "600px",
+        width: "50%",
         position: "fixed",
+        border: 'solid',
+        borderWidth: '4px',
+        borderColor: 'black',
+        outline: 'none',
         top: "10%",
-        left: "10%",
+        left: "25%",
       }}
     >
       <h2 id="modal-title">{props.title}</h2>
@@ -107,7 +111,7 @@ const AddModal = (props) => {
       buttonText = 'SUBMIT';
   } else {
       bStyle = {
-            marginLeft: '20px',
+            marginTop: '20px',
             borderWidth: '2px',
             fontWeight: 'bold',
             fontSize: '20px',
