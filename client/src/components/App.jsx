@@ -9,7 +9,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 16,
+      productId: 13,
       sortBy: '',
       page: 1,
       count: 7,
