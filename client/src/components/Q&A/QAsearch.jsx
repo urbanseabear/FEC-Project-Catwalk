@@ -13,6 +13,7 @@ const QAsearch = (props) => {
           paddingTop: "15px",
           fontWeight: "bold",
           fontSize: "20px",
+          borderWidth: '3px'
         }}
         className="qa-search-bar"
         type="text"
