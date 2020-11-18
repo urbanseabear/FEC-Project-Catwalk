@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import '../styles/main.scss';
 import Overview from './overview/overview.jsx';
 import QAmodule from './Q&A/QAmodule';
-import ReviewRatings from './review rating/ReviewRatings.jsx';
+import ReviewRatings from './R&R/ReviewRatings';
 import Grid from '@material-ui/core/Grid';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 16,
+      productId: 13,
       sortBy: '',
       page: 1,
       count: 7,

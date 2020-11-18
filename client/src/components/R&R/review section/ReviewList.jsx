@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewItem from './ReviewItem.jsx';
+import ReviewItem from './ReviewItem';
 
 const ReviewList = ({ data }) => {
   const item = data.map((item) => {
