@@ -1,6 +1,6 @@
 .empty-bar {
   position: relative;
-  height: 10px;
+  height: 15px;
   width: 100%;
   border-radius: 1px;
   border: 1px solid#EEEEEE;
@@ -22,5 +22,6 @@
 
 .rating-bar-wrapper {
   display: flex;
+  margin-top: 8px;
   margin: 0 0 15;
 }
