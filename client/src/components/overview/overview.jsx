@@ -2,7 +2,6 @@ import React from 'react';
 import './styles.scss';
 import axios from 'axios';
 import ImageGalleryContainer from './imageGalleryContainer/imageGalleryContainer.jsx';
-import { getProducts, getProductWithId, getProductStyles } from './overviewAPI.mjs';
 import ProductDetailsContainer from './productDetails/productDetailsContainer';
 import RateCategoryNamePriceContainer from './rateCategoryNamePrice/rateCategoryNamePrice';
 import StylesContainer from './stylesContainer/styles';
@@ -20,8 +19,6 @@ class Overview extends React.Component {
   componentDidMount() {
     axios.get(`http://3.21.164.220/products/${5}/styles`)
       .then(({ data }) => {
-        // console.log(data.results);
-        // console.log(data.results[0]);
         this.setState({
           productStyles: data.results,
           currentProduct: data.results[0]
@@ -58,9 +55,7 @@ class Overview extends React.Component {
             name={this.state.productInfo.name}
           />
           <StylesContainer styles={this.state.productStyles} />
-          <div className='sizeQuantityAddContainer'>
-            Size Quantity<br />Add To Cart
-          </div>
+          <SizeQuantityAddContainer />
           <div className='otherStuffContainer'>
             Other Stuff
           </div>

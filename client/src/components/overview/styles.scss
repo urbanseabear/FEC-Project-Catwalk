@@ -47,6 +47,7 @@
     grid-column: 1;
     display: grid;
     grid-template-columns: 1fr 40px 4fr 40px;
+    margin: 50px 0px;
     //grid-gap: 5px;
 
     .viewsContainer {
@@ -54,7 +55,7 @@
       overflow: hidden;
       display: grid;
       grid-template-rows: 20px 1fr 20px;
-      margin: 100px 0px 100px 0px;
+      margin: 50px 0px 50px 0px;
 
       .arrow {
         display: flex;
