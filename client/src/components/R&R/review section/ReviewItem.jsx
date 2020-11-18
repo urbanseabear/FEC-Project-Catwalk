@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import StarRating from '../rating section/StarRating';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CheckIcon from '@material-ui/icons/Check';
 import './ReviewItem.scss';
 const moment = require('moment');
 
@@ -23,19 +25,32 @@ export default class ReviewItem extends Component {
 
   render() {
     let recommended = this.state.recommend !== 0;
-    let response = this.state.response === 'null';
+    let response = this.state.response;
 
     return (
       <div className='item-wrapper'>
         <span style={{ float: 'right', marginTop: '24px' }}>
-          {this.state.reviewerName} |
+          <CheckCircleIcon style={{ fontSize: '13px', paddingRight: '4px' }} />
+          {this.state.reviewerName} |{' '}
           {moment(this.state.date).format('MMMM Do YYYY')}
         </span>
+
         <StarRating starNum={this.state.rating} />
-        <h1>{this.state.summary}</h1>
+        <h1 style={{ fontSize: '23px' }}>{this.state.summary}</h1>
         <p className='item-body'>{this.state.body}</p>
-        <div>{recommended ? <span>√ I recommend this product</span> : ''}</div>
-        {response || this.state.response === '' ? (
+
+        <div style={{ marginBottom: '10px' }}>
+          {recommended ? (
+            <div>
+              <CheckIcon style={{ fontSize: '15px', paddingRight: '5px' }} />
+              <span>I recommend this product</span>
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
+
+        {response === 'null' || response === null ? (
           ''
         ) : (
           <div className='item-response'>
@@ -47,7 +62,8 @@ export default class ReviewItem extends Component {
             </div>
           </div>
         )}
-        <div>
+
+        <div style={{ marginTop: '10px' }}>
           <span>Helpful? Yes ({this.state.helpful}) | Report</span>
         </div>
         <div className='item-response-border'></div>
