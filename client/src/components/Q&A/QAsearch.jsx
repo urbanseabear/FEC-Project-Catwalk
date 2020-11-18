@@ -16,7 +16,7 @@ const QAsearch = (props) => {
         }}
         className="qa-search-bar"
         type="text"
-        placeholder="Have a question? Search for answers...&#9906;"
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS...&#9906;"
       ></input>
     </div>
   );

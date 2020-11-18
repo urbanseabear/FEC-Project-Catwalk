@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import QAanswer from './QAanswer';
 import QAentry from './QAentry';
-import AddModal from '../shared/AddModal';
+
 
 const QAloadmore = (props) => {
 

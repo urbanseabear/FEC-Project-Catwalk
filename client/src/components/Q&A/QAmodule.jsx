@@ -22,7 +22,7 @@ class QAmodule extends React.Component {
 
   componentDidMount() {
       console.log(this.props.prodID);
-      axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: 2, count: 50}})
+      axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: 16, count: 50}})
       .then((result) => {
           console.log(result);
           this.setState({questions: result.data});

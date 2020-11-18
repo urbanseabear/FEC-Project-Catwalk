@@ -18,8 +18,8 @@ const AddModal = (props) => {
         left: "20%",
       }}
     >
-      <h2 id="simple-modal-title">{props.title}</h2>
-      <h3 id="simple-modal-description">About the {props.prodName}</h3>
+      <h2 id="modal-title">{props.title}</h2>
+      <h3 id="modal-description">About the {props.prodName}</h3>
       <div>Thank you for your submission! or Please fix your submission if input values are missing or invalid</div>
       </div>
     );
