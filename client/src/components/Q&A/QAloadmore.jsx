@@ -7,7 +7,7 @@ const QAloadmore = (props) => {
 
     const [allAnswers, setAllAnswers] = useState(false);
     const [allQuestions, setAllQuestions] = useState(false);
-    const [open, setOpen] = useState(false);
+    
 
     if (props.answers !== undefined && allAnswers === false) {
      return (
@@ -18,10 +18,8 @@ const QAloadmore = (props) => {
     } else if (allAnswers === true) {
         return (
             <div>
-            {props.answers.map((aKey, i) => {
-                if (i > 1) {
+            {props.answers.slice(2).map((aKey, i) => {
                     return <QAanswer key={i} answer={aKey}/>
-                }
             })}
             <div>
              <button onClick={() => setAllAnswers(!allAnswers)} style={{marginLeft: '10px', marginTop: '20px', marginBottom: '10px', border: 'none', background: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px'}}>COLLAPSE ANSWERS</button>
@@ -42,23 +40,21 @@ const QAloadmore = (props) => {
             borderColor: 'black',
             background: 'none',
             fontWeight: 'bold',
-            marginTop: '10px',
+            marginTop: '20px',
             fontSize: '20px',
             padding: '20px 10px 20px 10px',
             cursor: 'pointer',
           }}>
           MORE ANSWERED QUESTIONS
         </button>
-        <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
+        
       </div>
       )
     } else if (allQuestions === true) {
         return (
             <div>
-            {props.questions.map((oneQuestion, i) => {
-                if (i > 1) {
+            {props.questions.slice(4).map((oneQuestion, i) => {
                     return <QAentry question={oneQuestion} key={oneQuestion.question_id}/>
-                }
             })}
             <div>
             <button
@@ -68,21 +64,20 @@ const QAloadmore = (props) => {
             borderColor: 'black',
             background: 'none',
             fontWeight: 'bold',
-            marginTop: '10px',
+            marginTop: '20px',
             fontSize: '20px',
             padding: '20px 10px 20px 10px',
             cursor: 'pointer',
           }}>
           LESS ANSWERED QUESTIONS
         </button>
-        <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
+        
          </div>
             </div>
         ) 
     } else {
         return (
             <div>
-                <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
             </div>
         )
     }

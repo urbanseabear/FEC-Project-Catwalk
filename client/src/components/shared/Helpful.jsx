@@ -1,12 +1,37 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import AddModal from "./AddModal";
 
 const Helpful = (props) => {
   // onClick={props.helpfulClick}
   //onClick={props.reportClick}
+  const [isReported, setReported] = useState(false);
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+      return () => {
+          isMounted.current = false;
+      }
+    
+  }, [])
+
+  const report = useCallback(() => {
+      if (isReported) {return;}
+      setReported(true);
+      axios.put(`http://3.21.164.220/qa/questions/`, {params: {question_id: props.q_id}})
+      .then(() => {
+        if (isMounted.current) {
+            setReported(false);
+        }
+      })
+      .catch((err) => {
+          console.log(err);
+      })
+  }, [isReported])
+
   if (props.reportOrAdd !== "Report") {
     return (
-      <span style={{display: "flex", justifyContent: "flex-end" }}>
+      <span>
         Helpful?
         <button
           style={{
@@ -24,7 +49,7 @@ const Helpful = (props) => {
     );
   } else {
     return (
-      <span>
+      <span >
         Helpful?
         <button
           style={{
@@ -38,6 +63,8 @@ const Helpful = (props) => {
         </button>
         <span>({props.helped ? props.helped : 0}) | </span>
         <button
+          disabled={isReported}
+          onClick={report}
           style={{
             textDecoration: "underline",
             border: "none",
@@ -45,7 +72,7 @@ const Helpful = (props) => {
             background: "none",
           }}
         >
-          {props.reportOrAdd}
+          {isReported ? 'REPORTED' : props.reportOrAdd}
         </button>
       </span>
     );
