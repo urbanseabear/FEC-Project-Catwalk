@@ -1,11 +1,11 @@
 import React from 'react';
 import StarRating from './StarRating.jsx';
 
-const AverageRating = () => {
+const AverageRating = ({ average, recommended }) => {
   return (
     <div>
-      <StarRating rating={3.5} />
-      <p>100% of reviews recommend this product</p>
+      <StarRating rating={average} starNum={average} />
+      <p>{recommended}% of reviews recommend this product</p>
     </div>
   );
 };

@@ -5,6 +5,7 @@ const QAsearch = (props) => {
   return (
     <div style={{ gridRowStart: "2", gridColumnStart: "span 4" }}>
       <input
+        onChange={(e) => props.search(e)} 
         style={{
           width: "95%",
           paddingLeft: "10px",
@@ -15,7 +16,7 @@ const QAsearch = (props) => {
         }}
         className="qa-search-bar"
         type="text"
-        placeholder="Have a question? Search for answers..."
+        placeholder="Have a question? Search for answers...&#9906;"
       ></input>
     </div>
   );

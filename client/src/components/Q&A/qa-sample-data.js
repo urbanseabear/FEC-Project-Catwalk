@@ -65,7 +65,25 @@ var qaData = {
               }
           }
         },
-        // ...
+        {
+            "question_id": 39,
+            "question_body": "This is the third question?",
+            "question_date": "2018-08-18T00:00:00.000Z",
+            "asker_name": "meowmeow",
+            "question_helpfulness": 20,
+            "reported": 0,
+            "answers": {
+              72: {
+                "id": 72,
+                "body": "yes! This is the third question.",
+                "date": "2018-08-19T00:00:00.000Z",
+                "answerer_name": "Seller",
+                "helpfulness": 4,
+                "photos": []
+                // ...
+              }
+            }
+          }
     ]
 },
 "answers": {
