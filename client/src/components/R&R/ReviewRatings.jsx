@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReviewSummary from './ReviewSummary.jsx';
-import ReviewBody from './ReviewBody.jsx';
+import ReviewSummary from './summary section/ReviewSummary';
+import ReviewBody from './review section/ReviewBody';
 import Grid from '@material-ui/core/Grid';
 const axios = require('axios');
 
@@ -9,11 +9,13 @@ export default class ReviewRatings extends Component {
     super(props);
     this.state = {
       productId: props.productId,
-      sortBy: props.sortBy,
+      sort: '',
       page: props.page,
       count: props.count,
       data: [],
     };
+
+    this.sortBy = this.sortBy.bind(this);
   }
 
   componentDidMount() {
@@ -26,12 +28,18 @@ export default class ReviewRatings extends Component {
         params: {
           page: this.state.page,
           count: this.state.count,
-          sort: this.state.sortBy,
+          sort: this.state.sort,
           product_id: this.state.productId,
         },
       })
       .then((res) => this.setState({ data: res.data.results }))
       .catch((err) => console.log(err));
+  }
+
+  sortBy(type) {
+    this.setState({ sort: type }, () => {
+      this.update();
+    });
   }
 
   render() {
@@ -42,7 +50,7 @@ export default class ReviewRatings extends Component {
           <ReviewSummary data={this.state.data} />
         </Grid>
         <Grid item xs={9}>
-          <ReviewBody data={this.state.data} />
+          <ReviewBody data={this.state.data} sortBy={this.sortBy} />
         </Grid>
       </Grid>
     );

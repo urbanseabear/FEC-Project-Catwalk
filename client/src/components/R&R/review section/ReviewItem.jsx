@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import StarRating from './StarRating.jsx';
-import '../../styles/review rating/ReviewItem.scss';
+import StarRating from '../rating section/StarRating';
+import './ReviewItem.scss';
 const moment = require('moment');
 
 export default class ReviewItem extends Component {
@@ -17,6 +17,7 @@ export default class ReviewItem extends Component {
       reviewId: props.data.review_id,
       reviewerName: props.data.reviewer_name,
       summary: props.data.summary,
+      currentList: [],
     };
   }
 

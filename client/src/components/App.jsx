@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/main.scss';
 import Overview from './overview/overview.jsx';
 import QAmodule from './Q&A/QAmodule';
-import ReviewRatings from './review rating/ReviewRatings.jsx';
+import ReviewRatings from './R&R/ReviewRatings';
 import Grid from '@material-ui/core/Grid';
 
 export default class App extends Component {

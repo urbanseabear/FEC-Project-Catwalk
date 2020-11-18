@@ -1,7 +1,7 @@
 import React from 'react';
-import AverageRating from './AverageRating.jsx';
-import RatingBar from './RatingBar.jsx';
-import { ratingBar, recommended } from './helper.js';
+import AverageRating from '../rating section/AverageRating';
+import RatingBar from '../rating section/AverageRating';
+import { ratingBar, recommended } from '../utils/helper';
 
 const ReviewSummary = ({ data }) => {
   let ratingCount = 0;

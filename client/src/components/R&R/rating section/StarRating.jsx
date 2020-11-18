@@ -12,7 +12,7 @@ const StarRating = (props) => {
         <Rating
           name='half-rating-1'
           defaultValue={0}
-          value={star}
+          value={parseInt(star)}
           precision={0.25}
           readOnly
           size='large'
