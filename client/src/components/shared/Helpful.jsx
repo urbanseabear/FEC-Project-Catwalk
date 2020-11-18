@@ -65,7 +65,7 @@ const Helpful = (props) => {
         });
     }
   }, [isHelpful]);
-  
+
   if (props.reportOrAdd !== "Report") {
     return (
       <span style={{ fontWeight: "normal", fontSize: "16px" }}>
@@ -87,8 +87,9 @@ const Helpful = (props) => {
           name={props.reportOrAdd}
           bType={"1"}
           title={"Submit Your Answer"}
-          prodName={"Yeezy UltraMax 5000"}
-          question={props.question}
+          prodName={props.product}
+          qid={props.question.question_id}
+          question={props.question.question_body}
         />
       </span>
     );

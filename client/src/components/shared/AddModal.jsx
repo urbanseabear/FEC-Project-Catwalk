@@ -19,7 +19,7 @@ const AddModal = (props) => {
       }}
     >
       <h2 id="modal-title">{props.title}</h2>
-      <h3 id="modal-description">About the {props.prodName}</h3>
+      <h3 id="modal-description">In relation to the {props.prodName}</h3>
       <div>Thank you for your submission! or Please fix your submission if input values are missing or invalid</div>
       </div>
     );
@@ -49,7 +49,7 @@ const AddModal = (props) => {
       <h2 id="modal-title">{props.title}</h2>
       <h3 id="modal-description">{answerDesc}</h3>
       <textarea
-        style={{ fontSize: "20px", width: '500px', height: '100px' }}
+        style={{ marginLeft: '4%', fontSize: "20px", width: '90%', height: '100px' }}
         defaultValue={props.name}
       ></textarea>
       <div>-----------------------</div>
@@ -82,7 +82,7 @@ const AddModal = (props) => {
       ></input>
       <div>For authentication reasons only, you will not be emailed</div>
       <span >
-      <AddModal title={"Submit Question"} type={'verify'} />
+      <AddModal title={"Thanks!"} type={'verify'} pid={props.pid} prodName={props.prodName}/>
       </span>
     </div>
   );
@@ -120,7 +120,7 @@ const AddModal = (props) => {
             padding: '20px 10px 20px 10px',
             cursor: 'pointer',
           }
-          buttonText = 'ADD A QUESTION +'; 
+          buttonText = `ADD A ${props.name.toUpperCase()} +`; 
       }
   
   return (

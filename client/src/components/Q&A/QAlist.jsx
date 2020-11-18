@@ -12,7 +12,7 @@ const QAlist = (props) => {
                     console.log('meow');
                     return <QAloadmore key={i} questions={props.questions}/>
                 }
-                return <QAentry  question={oneQuestion} key={oneQuestion.question_id} />
+                return <QAentry  product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
             })}
         </div>
     )
@@ -29,7 +29,7 @@ const QAlist = (props) => {
                     console.log('meow');
                     return <QAloadmore key={i} questions={props.questions}/>
                 }
-                return <QAentry  question={oneQuestion} key={oneQuestion.question_id} />
+                return <QAentry  product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
             })}
         </div>
         )
