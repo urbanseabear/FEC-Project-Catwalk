@@ -13,16 +13,18 @@ export default class ReviewRatings extends Component {
       page: props.page,
       count: props.count,
       data: [],
+      metaData: [],
     };
 
     this.sortBy = this.sortBy.bind(this);
   }
 
   componentDidMount() {
-    this.update();
+    this.updateData();
+    this.updateMetaData();
   }
 
-  update() {
+  updateData() {
     axios
       .get('http://3.21.164.220/reviews/', {
         params: {
@@ -36,18 +38,32 @@ export default class ReviewRatings extends Component {
       .catch((err) => console.log(err));
   }
 
+  updateMetaData() {
+    axios
+      .get('http://3.21.164.220/reviews/meta', {
+        params: {
+          product_id: this.state.productId,
+        },
+      })
+      .then((res) => this.setState({ metaData: res.data.characteristics }))
+      .catch((err) => console.log(err));
+  }
+
   sortBy(type) {
     this.setState({ sort: type }, () => {
-      this.update();
+      this.updateData();
     });
   }
 
   render() {
     return (
-      <Grid style={{ marginTop: '10px' }} container spacing={8}>
+      <Grid style={{ marginTop: '10px' }} container spacing={6}>
         <Grid item xs={3}>
           <p style={{ marginTop: '-15px' }}>RATINGS & REVIEWS</p>
-          <ReviewSummary data={this.state.data} />
+          <ReviewSummary
+            data={this.state.data}
+            metaData={this.state.metaData}
+          />
         </Grid>
         <Grid item xs={9}>
           <ReviewBody data={this.state.data} sortBy={this.sortBy} />
