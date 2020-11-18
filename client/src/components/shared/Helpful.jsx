@@ -88,6 +88,7 @@ const Helpful = (props) => {
           bType={"1"}
           title={"Submit Your Answer"}
           prodName={props.product}
+          pid={props.pid}
           qid={props.question.question_id}
           question={props.question.question_body}
         />

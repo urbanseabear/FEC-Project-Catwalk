@@ -1,28 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '@material-ui/core/Modal';
+import axios from 'axios';
 
 
 
 const AddModal = (props) => {
   const [open, setOpen] = useState(false);
+  const [post, setPost] = useState('');
+  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
+
     var body;
   if (props.type === 'verify') {
-    body = (
-        <div
-      style={{
-        backgroundColor: "whitesmoke",
-        height: "400px",
-        width: "600px",
-        position: "fixed",
-        top: "20%",
-        left: "20%",
-      }}
-    >
-      <h2 id="modal-title">{props.title}</h2>
-      <h3 id="modal-description">In relation to the {props.prodName}</h3>
-      <div>Thank you for your submission! or Please fix your submission if input values are missing or invalid</div>
-      </div>
-    );
+      if (props.bod && props.user && props.email) {
+          axios.post(`http://3.21.164.220/qa/questions/`, {body: props.bod, name: props.user, email: props.email, product_id: props.pid})
+          .then(() => {
+              console.log('post success meow');
+          })
+          .catch((err) => {
+              console.log(err);
+          })
+        body = (
+            <div
+          style={{
+            backgroundColor: "whitesmoke",
+            height: "400px",
+            width: "600px",
+            position: "fixed",
+            top: "20%",
+            left: "20%",
+          }}
+        >
+          <h2 id="modal-title">{props.title}</h2>
+          <h3 id="modal-description">In relation to the {props.prodName}</h3>
+          
+          <div>Thank you for your submission!</div>
+          <div></div>
+          </div>
+        );
+      } else {
+        body = (
+            <div
+          style={{
+            backgroundColor: "whitesmoke",
+            height: "400px",
+            width: "600px",
+            position: "fixed",
+            top: "20%",
+            left: "20%",
+          }}
+        >
+          <h2 id="modal-title">OOPS!</h2>
+          <h3 id="modal-description">In relation to the {props.prodName}</h3>
+          <div>Please fix your submission. Required input values are missing or invalid</div>
+          <div></div>
+          </div>
+        ); 
+      }
   } else {
       var answerDesc = '';
   if (props.question !== undefined) {
@@ -51,6 +85,7 @@ const AddModal = (props) => {
       <textarea
         style={{ marginLeft: '4%', fontSize: "20px", width: '90%', height: '100px' }}
         defaultValue={props.name}
+        onChange={(e) => setPost(e.target.value)}
       ></textarea>
       <div>-----------------------</div>
       <label
@@ -60,6 +95,7 @@ const AddModal = (props) => {
         Nickname*:{" "}
       </label>
       <input
+        onChange={(e) => setUser(e.target.value)}
         id={"nickname"}
         style={{
           fontSize: "20px",
@@ -72,6 +108,7 @@ const AddModal = (props) => {
         E-mail*:{" "}
       </label>
       <input
+        onChange={(e) => setEmail(e.target.value)}
         id={"email"}
         style={{
           fontSize: "20px",
@@ -82,7 +119,7 @@ const AddModal = (props) => {
       ></input>
       <div>For authentication reasons only, you will not be emailed</div>
       <span >
-      <AddModal title={"Thanks!"} type={'verify'} pid={props.pid} prodName={props.prodName}/>
+      <AddModal title={"Thanks!"} type={'verify'} bod={post} user={user} email={email} pid={props.pid} qid={props.qid} prodName={props.prodName}/>
       </span>
     </div>
   );
