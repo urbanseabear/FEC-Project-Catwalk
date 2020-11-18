@@ -1,9 +1,10 @@
 import React from 'react';
 import AverageRating from '../rating section/AverageRating';
-import RatingBar from '../rating section/AverageRating';
+import RatingBar from '../rating section/RatingBar';
 import { ratingBar, recommended } from '../utils/helper';
+import CharRatingList from './CharRatingList';
 
-const ReviewSummary = ({ data }) => {
+const ReviewSummary = ({ data, metaData }) => {
   let ratingCount = 0;
   let recommendCount = 0;
 
@@ -32,7 +33,7 @@ const ReviewSummary = ({ data }) => {
       <RatingBar starNum={3} count={count[3]} />
       <RatingBar starNum={2} count={count[2]} />
       <RatingBar starNum={1} count={count[1]} />
-      <div style={{ paddingTop: '30px' }}></div>
+      <CharRatingList metaData={metaData} />
     </div>
   );
 };
