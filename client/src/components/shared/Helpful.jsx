@@ -3,37 +3,76 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import AddModal from "./AddModal";
 
 const Helpful = (props) => {
-  // onClick={props.helpfulClick}
-  //onClick={props.reportClick}
   const [isReported, setReported] = useState(false);
+  const [isHelpful, setHelpful] = useState(false);
   const isMounted = useRef(true);
 
   useEffect(() => {
-      return () => {
-          isMounted.current = false;
-      }
-    
-  }, [])
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   const report = useCallback(() => {
-      if (isReported) {return;}
-      setReported(true);
-      axios.put(`http://3.21.164.220/qa/questions/`, {params: {question_id: props.q_id}})
+    if (isReported) {
+      return;
+    }
+    setReported(true);
+    axios
+      .put(`http://3.21.164.220/qa/answers/`, {
+        params: { answer_id: props.a_id },
+      })
       .then(() => {
         if (isMounted.current) {
-            setReported(false);
+          setReported(false);
         }
       })
       .catch((err) => {
-          console.log(err);
-      })
-  }, [isReported])
+        console.log(err);
+      });
+  }, [isReported]);
 
+  const helpful = useCallback(() => {
+    if (isHelpful) return;
+    setHelpful(true);
+    if (props.reportOrAdd === "Report") {
+      //mark answer helpful
+      axios
+        .put(`http://3.21.164.220/qa/answers/`, {
+          params: { answer_id: props.a_id },
+        })
+        .then(() => {
+          if (isMounted.current) {
+            setHelpful(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      //mark question helpful
+      axios
+        .put(`http://3.21.164.220/qa/questions/`, {
+          params: { question_id: props.q_id },
+        })
+        .then(() => {
+          if (isMounted.current) {
+            setHelpful(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isHelpful]);
+  
   if (props.reportOrAdd !== "Report") {
     return (
-      <span>
+      <span style={{ fontWeight: "normal", fontSize: "16px" }}>
         Helpful?
         <button
+          disabled={isHelpful}
+          onClick={helpful}
           style={{
             textDecoration: "underline",
             border: "none",
@@ -43,15 +82,23 @@ const Helpful = (props) => {
         >
           Yes
         </button>
-        <span>({props.helped ? props.helped : 0}) | </span>
-        <AddModal name={props.reportOrAdd} bType={'1'} title={'Submit Your Answer'} prodName={'Yeezy UltraMax 5000'} question={props.question}/>  
+        <span>({isHelpful ? props.helped + 1: props.helped}) | </span>
+        <AddModal
+          name={props.reportOrAdd}
+          bType={"1"}
+          title={"Submit Your Answer"}
+          prodName={"Yeezy UltraMax 5000"}
+          question={props.question}
+        />
       </span>
     );
   } else {
     return (
-      <span >
+      <span>
         Helpful?
         <button
+          disabled={isHelpful}
+          onClick={helpful}
           style={{
             textDecoration: "underline",
             border: "none",
@@ -61,7 +108,7 @@ const Helpful = (props) => {
         >
           Yes
         </button>
-        <span>({props.helped ? props.helped : 0}) | </span>
+        <span>({isHelpful ? props.helped + 1: props.helped}) | </span>
         <button
           disabled={isReported}
           onClick={report}
@@ -72,7 +119,7 @@ const Helpful = (props) => {
             background: "none",
           }}
         >
-          {isReported ? 'REPORTED' : props.reportOrAdd}
+          {isReported ? "REPORTED" : props.reportOrAdd}
         </button>
       </span>
     );
