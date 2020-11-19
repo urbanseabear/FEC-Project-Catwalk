@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/review rating/RatingBar.scss';
+import './RatingBar.scss';
 
 const RatingBar = ({ starNum, count }) => {
   let percentage = (count * 100) / 10;

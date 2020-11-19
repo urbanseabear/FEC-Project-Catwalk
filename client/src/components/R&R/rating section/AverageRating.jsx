@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRating from './StarRating.jsx';
+import StarRating from './StarRating';
 
 const AverageRating = ({ average, recommended }) => {
   return (

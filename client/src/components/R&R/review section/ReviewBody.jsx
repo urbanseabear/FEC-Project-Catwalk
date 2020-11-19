@@ -1,9 +1,9 @@
 import React from 'react';
-import ReviewList from './ReviewList.jsx';
-import ReviewButtons from './ReviewButtons.jsx';
-import SortBy from './SortBy.jsx';
+import ReviewList from './ReviewList';
+import ReviewButtons from './ReviewButtons';
+import SortBy from './SortBy';
 
-const ReviewBody = ({ data }) => {
+const ReviewBody = ({ data, sortBy }) => {
   let totalReviewCount = 0;
 
   data.map(() => {
@@ -12,7 +12,7 @@ const ReviewBody = ({ data }) => {
 
   return (
     <div>
-      <SortBy totalCount={totalReviewCount} />
+      <SortBy totalCount={totalReviewCount} sortBy={sortBy} />
       <ReviewList data={data} />
       <ReviewButtons />
     </div>
