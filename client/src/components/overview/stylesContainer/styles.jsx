@@ -9,7 +9,7 @@ const StylesContainer = ({ styles }) => {
         <p style={{gridRow: '1', fontWeight: 'bold'}}>{'STYLE > '}{styles[0]['name'].toUpperCase()}</p>
         <div style={{gridRow: '2', display: 'flex', flexDirection: 'row', margin: '20px 20px' }}>
           {styles.map(({ name }) => {
-            name = name.toLowerCase().trim().split(' & ');
+            name = name.toLowerCase().split(' & ');
             return (
               <div style={{
                 width: '60px', 
