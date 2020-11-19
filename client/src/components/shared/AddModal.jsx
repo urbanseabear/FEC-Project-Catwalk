@@ -12,7 +12,7 @@ const AddModal = (props) => {
 
     var body;
   if (props.type === 'verify') {
-      if (props.bod && props.user && props.email) {
+      if (props.bod && props.user && props.email && open) {
           axios.post(`http://3.21.164.220/qa/questions/`, {body: props.bod, name: props.user, email: props.email, product_id: props.pid})
           .then(() => {
               console.log('post success meow');
@@ -139,10 +139,10 @@ const AddModal = (props) => {
       bStyle = {
         marginTop: '20px',
         marginLeft: '20px',
-        borderWidth: '2px',
         fontWeight: 'bold',
+        cursor: 'pointer',
         fontSize: '20px',
-        borderColor: 'black',
+        border: 'none',
         background: 'none',
       }
       buttonText = 'SUBMIT';
