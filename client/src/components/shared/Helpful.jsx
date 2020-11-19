@@ -19,9 +19,8 @@ const Helpful = (props) => {
     }
     setReported(true);
     axios
-      .put(`http://3.21.164.220/qa/answers/`, {
-        params: { answer_id: props.a_id },
-      })
+      .put(`http://3.21.164.220/qa/answers/${props.a_id}/reportt`)
+      //remove t to make work
       .then(() => {
         if (isMounted.current) {
           setReported(false);
