@@ -2,10 +2,10 @@
   // If you want it to grow,
   // Try max-width: auto;
   max-width: 1500px;
-  max-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: 60% 40%;
-  grid-template-rows: 10% 5% 25% 20% 20% 20%;
+  grid-template-rows: 12% 5% 30% 15% 20% 18%;
   grid-gap: 5px;
 
   .headerContainer {
@@ -47,14 +47,12 @@
     grid-column: 1;
     display: grid;
     grid-template-columns: 1fr 40px 4fr 40px;
-    //grid-gap: 5px;
+    margin: 50px 0px;
 
     .viewsContainer {
       grid-column: 1;
       overflow: hidden;
       display: grid;
-      grid-template-rows: 20px 1fr 20px;
-      margin: 100px 0px 100px 0px;
 
       .arrow {
         display: flex;
@@ -62,10 +60,10 @@
       }
 
       .viewsContainerPhotos {
-        grid-row: 2;
         overflow: hidden;
         display: flex;
         align-items: center;
+        justify-content: center;
         flex-direction: column;
       }
     }
@@ -91,7 +89,7 @@
   .productDetailsContainer {
     grid-row: 6;
     grid-column: 1;
-    background-color: blueviolet;
+    padding-left: 125px;
   }
   .ratingCategoryProductNamePriceContainer {
     grid-row: 3;
@@ -104,11 +102,49 @@
   .sizeQuantityAddContainer {
     grid-row: 5;
     grid-column: 2;
-    background-color: coral;
+    border-top: 1px solid darkgray;
+
+    .dropDown {
+      display: inline-block;
+    }
+    .dropDownContent {
+      margin-top: -3px;
+      display: none;
+      position: absolute;
+      width: 194px;
+      box-shadow: 0px 3px 5px black;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background-color: white;
+      z-index: 1;
+      max-height: 200px;
+      overflow-y: scroll;
+
+      a {
+        padding: 12px 16px;
+        display: block;
+      }
+      a:hover {
+        background-color: lightgrey;
+      }
+    }
+    .dropDown:hover .dropDownContent {
+      display: block;
+    }
+
+    #dropButton {
+      border: none;
+      border-radius: 5px;
+      margin: 20px 20px 0px 0px;
+      padding: 15px;
+      font-size: 16px;
+      background-color: white;
+      box-shadow: 0px 0px 4px black;
+    }
   }
-  .otherStuffContainer {
+  .featuresContainer {
     grid-row: 6;
     grid-column: 2;
-    background-color: darkcyan;
+    border-left: 1px solid darkgray;
   }
 }

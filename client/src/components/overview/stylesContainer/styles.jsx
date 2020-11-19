@@ -1,14 +1,15 @@
 import React from 'react';
 
 const StylesContainer = ({ styles }) => {
+  console.log(styles);
   if (styles.length > 0) {
     return (
-      <div className='styleContainer' style={{display: 'grid', gridTemplateRows: '30px 1fr'}}>
+      <div className='styleContainer' style={{display: 'grid', gridTemplateRows: '30px 1fr', borderTop: '1px solid darkgrey'}}>
         {/* HARD CODED THIS... FIX LATER */}
         <p style={{gridRow: '1', fontWeight: 'bold'}}>{'STYLE > '}{styles[0]['name'].toUpperCase()}</p>
         <div style={{gridRow: '2', display: 'flex', flexDirection: 'row', margin: '20px 20px' }}>
           {styles.map(({ name }) => {
-            name = name.toLowerCase().trim().split(' & ');
+            name = name.toLowerCase().split(' & ');
             return (
               <div style={{
                 width: '60px', 
