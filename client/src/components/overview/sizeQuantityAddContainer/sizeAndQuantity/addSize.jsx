@@ -1,20 +1,24 @@
 import React from 'react';
 
-const AddSize = ({ sizeAndQuantity }) => {
+const AddSize = ({ selectedSize, allSizes, onSizeSelect }) => {
   return (
     <div className='dropDown'>
       <button 
-        id='dropButton' 
+        id='dropButton'
+        style={{width: '195px'}}
+        // ON CLICK MAKE STYLE OF DROPDOWNCONTENT BE DISPLAY: BLOCK
+        onClick={{}}
       >
-          SELECT SIZE 
+        { selectedSize ? `SIZE: ${selectedSize}` : 'SELECT SIZE' } 
         <img 
           src='./images/chevron-down.png' 
-          style={{height: '12px', margin: '0px 0px 0px 50px'}}/>
+          style={{height: '12px'}}/>
       </button>
       <div className='dropDownContent'>
-        {Object.values(sizeAndQuantity).map(sizeQuantity => {
+        {Object.keys(allSizes).map(sizeId => {
           return (
-            <a>SIZE: { sizeQuantity['size'] }</a>
+            // ADD TO ONCLICK THAT DROPDOWNCONTENT STYLE GOES TO HIDDEN
+            <a key={ sizeId } onClick={ onSizeSelect.bind(this, sizeId) }>SIZE: { allSizes[sizeId] }</a>
           );
         })}
       </div>
