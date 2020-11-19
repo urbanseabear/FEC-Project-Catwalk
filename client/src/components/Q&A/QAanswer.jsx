@@ -16,7 +16,7 @@ const QAanswer = (props) => {
             </div>
             <span style={{marginLeft: '40px', color: 'GrayText'}}>by {props.answer.answerer_name}, {moment(props.answer.date).format('MMMM D, YYYY')}  |</span>
             <span style={{color: 'GrayText', marginLeft: '5px'}}>
-            <Helpful q_id={props.q_id} helped={props.answer.helpfulness} reportOrAdd='Report'/>
+            <Helpful q_id={props.q_id} a_id={props.answer.id} helped={props.answer.helpfulness} reportOrAdd='Report'/>
             </span>
         </span>
     )

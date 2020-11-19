@@ -12,10 +12,11 @@ const AddModal = (props) => {
 
     var body;
   if (props.type === 'verify') {
-      if (props.bod && props.user && props.email) {
+      if (props.bod && props.user && props.email && open && props.pid) {
           axios.post(`http://3.21.164.220/qa/questions/`, {body: props.bod, name: props.user, email: props.email, product_id: props.pid})
           .then(() => {
-              console.log('post success meow');
+              console.log('post q success meow');
+              
           })
           .catch((err) => {
               console.log(err);
@@ -38,7 +39,33 @@ const AddModal = (props) => {
           <div></div>
           </div>
         );
-      } else {
+      } else if (props.bod && props.user && props.email && open && props.qid) {
+        axios.post(`http://3.21.164.220/qa/questions/${props.qid}/answers`, {body: props.bod, name: props.user, email: props.email, photos: '[]'})
+        .then(() => {
+            console.log('post a success meow');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+      body = (
+          <div
+        style={{
+          backgroundColor: "whitesmoke",
+          height: "400px",
+          width: "600px",
+          position: "fixed",
+          top: "20%",
+          left: "20%",
+        }}
+      >
+        <h2 id="modal-title">{props.title}</h2>
+        <h3 id="modal-description">In relation to the {props.prodName}</h3>
+        
+        <div>Thank you for your submission!</div>
+        <div></div>
+        </div>
+      );
+    } else {
         body = (
             <div
           style={{
@@ -139,10 +166,10 @@ const AddModal = (props) => {
       bStyle = {
         marginTop: '20px',
         marginLeft: '20px',
-        borderWidth: '2px',
         fontWeight: 'bold',
+        cursor: 'pointer',
         fontSize: '20px',
-        borderColor: 'black',
+        border: 'none',
         background: 'none',
       }
       buttonText = 'SUBMIT';
