@@ -4,17 +4,19 @@ import Rating from '@material-ui/lab/Rating';
 const StarRating = (props) => {
   const rating = props.rating || null;
   const star = props.starNum;
+  const readOnly = props.readOnly;
+  const precision = props.precision || 1;
 
   return (
     <div>
       <h1 style={{ fontSize: '60px', marginTop: '-10px' }}>
         {rating}
         <Rating
-          name='half-rating-1'
+          name='half-rating-read'
           defaultValue={0}
-          value={parseInt(star)}
-          precision={0.25}
-          readOnly
+          value={parseFloat(star)}
+          precision={precision}
+          readOnly={readOnly}
           size='large'
           max={5}
         />
