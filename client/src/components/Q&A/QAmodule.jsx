@@ -11,6 +11,7 @@ class QAmodule extends React.Component {
     super(props);
     this.state = {
       questions: qaData.questions,
+      product: '',
       search: ''
     };
     this.handleSearch = this.handleSearch.bind(this);
@@ -21,11 +22,19 @@ class QAmodule extends React.Component {
   }
 
   componentDidMount() {
-      console.log(this.props.prodID);
-      axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: 2, count: 50}})
+      var pid = this.props.prodID;
+      axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: 16, count: 50}})
       .then((result) => {
           console.log(result);
           this.setState({questions: result.data});
+      })
+      .then(()=> {
+          console.log(pid);
+          axios.get(`http://3.21.164.220/products/${pid}`)
+          .then((result) =>{
+              console.log(result);
+              this.setState({product: result.data.name});
+          })
       })
       .catch((err) => {
           console.log(err);
@@ -58,9 +67,11 @@ class QAmodule extends React.Component {
         <QAsearch search={this.handleSearch}/>
         <QAlist
           answers={this.state.answers}
+          product={this.state.product}
           questions={this.state.questions.results}
+          search={this.state.search.length > 3 ? this.state.search : null}
         />
-        <AddModal name={'question'} title={'Ask A Question'} prodName={'Yeezy UltraMax 5000'}/>
+        <AddModal name={'question'} pid={this.props.prodID} title={'Ask A Question'} prodName={this.state.product}/>
       </div>
     );
   }

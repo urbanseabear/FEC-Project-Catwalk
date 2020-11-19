@@ -13,10 +13,11 @@ const QAsearch = (props) => {
           paddingTop: "15px",
           fontWeight: "bold",
           fontSize: "20px",
+          borderWidth: '3px'
         }}
         className="qa-search-bar"
         type="text"
-        placeholder="Have a question? Search for answers...&#9906;"
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS...&#9906;"
       ></input>
     </div>
   );
