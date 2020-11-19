@@ -3,17 +3,47 @@ import QAsearch from './QAsearch';
 import '../../styles/main.scss';
 import qaData from './qa-sample-data';
 import QAlist from './QAlist';
-import Helpful from '../shared/Helpful';
+import AddModal from '../shared/AddModal';
+import axios from 'axios';
 
 class QAmodule extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       questions: qaData.questions,
+      product: '',
+      search: ''
     };
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
+  handleSearch(e) {
+      this.setState({search: e.target.value});
+  }
+
+  componentDidMount() {
+      var pid = this.props.prodID;
+      axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: 16, count: 50}})
+      .then((result) => {
+          console.log(result);
+          this.setState({questions: result.data});
+      })
+      .then(()=> {
+          console.log(pid);
+          axios.get(`http://3.21.164.220/products/${pid}`)
+          .then((result) =>{
+              console.log(result);
+              this.setState({product: result.data.name});
+          })
+      })
+      .catch((err) => {
+          console.log(err);
+      })
+  }
   render() {
+    {if (this.state.questions === null) {
+        var showQAlist = false;
+    }}
     return (
       <div
         className='qa-container'
@@ -34,47 +64,14 @@ class QAmodule extends React.Component {
           }}>
           QUESTIONS & ANSWERS
         </div>
-        <QAsearch />
+        <QAsearch search={this.handleSearch}/>
         <QAlist
           answers={this.state.answers}
+          product={this.state.product}
           questions={this.state.questions.results}
+          search={this.state.search.length > 3 ? this.state.search : null}
         />
-        <div style={{ gridColumnStart: '4', marginTop: '10px'}}>
-          <Helpful helped={this.state.questions.results[0].question_helpfulness} reportOrAdd={'Add Answer'} />
-          <div style={{ marginTop: '60px', marginBottom: '50px' }}></div>
-          <Helpful helped={this.state.questions.results[1].question_helpfulness} reportOrAdd={'Add Answer'} />
-        </div>
-        <div
-          style={{
-            gridRowStart: '4',
-            gridColumnEnd: 'span 4'
-          }}>
-          <button
-            style={{
-              borderWidth: '2px',
-              borderColor: 'black',
-              background: 'none',
-              fontWeight: 'bold',
-              fontSize: '20px',
-              padding: '20px 10px 20px 10px',
-              cursor: 'pointer',
-            }}>
-            MORE ANSWERED QUESTIONS
-          </button>
-          <button
-            style={{
-              marginLeft: '20px',
-              borderWidth: '2px',
-              fontWeight: 'bold',
-              fontSize: '20px',
-              borderColor: 'black',
-              background: 'none',
-              padding: '20px 10px 20px 10px',
-              cursor: 'pointer',
-            }}>
-            ADD A QUESTION +
-          </button>
-        </div>
+        <AddModal name={'question'} pid={this.props.prodID} title={'Ask A Question'} prodName={this.state.product}/>
       </div>
     );
   }
