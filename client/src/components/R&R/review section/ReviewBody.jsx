@@ -3,7 +3,7 @@ import ReviewList from './ReviewList';
 import ReviewButtons from './ReviewButtons';
 import SortBy from './SortBy';
 
-const ReviewBody = ({ data, sortBy }) => {
+const ReviewBody = ({ data, sortBy, metaData }) => {
   let totalReviewCount = 0;
 
   data.map(() => {
@@ -14,7 +14,7 @@ const ReviewBody = ({ data, sortBy }) => {
     <div>
       <SortBy totalCount={totalReviewCount} sortBy={sortBy} />
       <ReviewList data={data} />
-      <ReviewButtons />
+      <ReviewButtons metaData={metaData} />
     </div>
   );
 };

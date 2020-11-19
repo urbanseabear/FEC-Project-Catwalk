@@ -66,7 +66,11 @@ export default class ReviewRatings extends Component {
           />
         </Grid>
         <Grid item xs={9}>
-          <ReviewBody data={this.state.data} sortBy={this.sortBy} />
+          <ReviewBody
+            data={this.state.data}
+            sortBy={this.sortBy}
+            metaData={this.state.metaData}
+          />
         </Grid>
       </Grid>
     );

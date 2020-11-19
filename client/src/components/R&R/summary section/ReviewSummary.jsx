@@ -27,12 +27,14 @@ const ReviewSummary = ({ data, metaData }) => {
 
   return (
     <div>
-      <AverageRating average={average} recommended={recommend} />
+      <AverageRating average={average} />
+      <p>Rating Breakdown</p>
       <RatingBar starNum={5} count={count[5]} />
       <RatingBar starNum={4} count={count[4]} />
       <RatingBar starNum={3} count={count[3]} />
       <RatingBar starNum={2} count={count[2]} />
       <RatingBar starNum={1} count={count[1]} />
+      <p>{recommend}% of reviews recommend this product</p>
       <CharRatingList metaData={metaData} />
     </div>
   );
