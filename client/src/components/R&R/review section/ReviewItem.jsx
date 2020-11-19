@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StarRating from '../rating section/StarRating';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CheckIcon from '@material-ui/icons/Check';
+import { maxCharLength } from '../utils/helper.js';
 import './ReviewItem.scss';
 const moment = require('moment');
 
@@ -35,8 +36,14 @@ export default class ReviewItem extends Component {
           {moment(this.state.date).format('MMMM Do YYYY')}
         </span>
 
-        <StarRating starNum={this.state.rating} />
-        <h1 style={{ fontSize: '23px' }}>{this.state.summary}</h1>
+        <StarRating
+          starNum={this.state.rating}
+          readOnly={true}
+          precision={0.25}
+        />
+        <h1 style={{ fontSize: '23px' }}>
+          {maxCharLength(this.state.summary, 60)}
+        </h1>
         <p className='item-body'>{this.state.body}</p>
 
         <div style={{ marginBottom: '10px' }}>
@@ -50,12 +57,12 @@ export default class ReviewItem extends Component {
           )}
         </div>
 
-        {response === 'null' || response === null ? (
+        {response === 'null' || response === null || response === '' ? (
           ''
         ) : (
           <div className='item-response'>
             <div style={{ margin: '10px' }}>
-              <span>Response:</span>
+              <span>Response from seller:</span>
             </div>
             <div style={{ margin: '10px' }}>
               <span>{this.state.response}</span>
@@ -66,7 +73,7 @@ export default class ReviewItem extends Component {
         <div style={{ marginTop: '10px' }}>
           <span>Helpful? Yes ({this.state.helpful}) | Report</span>
         </div>
-        <div className='item-response-border'></div>
+        <div className='item-border'></div>
       </div>
     );
   }
