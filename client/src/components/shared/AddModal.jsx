@@ -20,6 +20,7 @@ const AddModal = (props) => {
       if (props.bod && props.user && props.email && isValid && open && props.pid) {
           axios.post(`http://3.21.164.220/qa/questions/`, {body: props.bod, name: props.user, email: props.email, product_id: props.pid})
           .then(() => {
+              props.submit();
               console.log('post q success meow');
               
           })
@@ -47,6 +48,7 @@ const AddModal = (props) => {
       } else if (props.bod && props.user && isValid && props.email && open && props.qid) {
         axios.post(`http://3.21.164.220/qa/questions/${props.qid}/answers`, {body: props.bod, name: props.user, email: props.email, photos: '[]'})
         .then(() => {
+            props.submit();
             console.log('post a success meow');
         })
         .catch((err) => {

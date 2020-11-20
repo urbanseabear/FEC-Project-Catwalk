@@ -12,13 +12,31 @@ class QAmodule extends React.Component {
     this.state = {
       questions: qaData.questions,
       product: '',
+      qaSent: 0,
       search: ''
     };
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSubmission = this.handleSubmission.bind(this);
   }
 
   handleSearch(e) {
       this.setState({search: e.target.value});
+  }
+
+  handleSubmission() {
+    this.setState({qaSent: this.state.qaSent + 1});
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+      if (prevState.qaSent !== this.state.qaSent) {
+        axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: this.props.prodID, count: 50}})
+        .then((result) => {
+          this.setState({questions: result.data});
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+      }
   }
 
   componentDidMount() {
@@ -63,12 +81,13 @@ class QAmodule extends React.Component {
         </div>
         <QAsearch search={this.handleSearch}/>
         <QAlist
+          submit={this.handleSubmission}
           answers={this.state.answers}
           product={this.state.product}
           questions={this.state.questions.results}
           search={this.state.search.length > 3 ? this.state.search : null}
         />
-        <AddModal name={'question'} pid={this.props.prodID} title={'Ask A Question'} prodName={this.state.product}/>
+        <AddModal name={'question'} submit={this.handleSubmission} pid={this.props.prodID} title={'Ask A Question'} prodName={this.state.product}/>
       </div>
     );
   }
