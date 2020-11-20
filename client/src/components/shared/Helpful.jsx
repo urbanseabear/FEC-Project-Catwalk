@@ -19,9 +19,8 @@ const Helpful = (props) => {
     }
     setReported(true);
     axios
-      .put(`http://3.21.164.220/qa/answers/`, {
-        params: { answer_id: props.a_id },
-      })
+      .put(`http://3.21.164.220/qa/answers/${props.a_id}/reportt`)
+      //remove t to make work
       .then(() => {
         if (isMounted.current) {
           setReported(false);
@@ -38,13 +37,11 @@ const Helpful = (props) => {
     if (props.reportOrAdd === "Report") {
       //mark answer helpful
       axios
-        .put(`http://3.21.164.220/qa/answers/`, {
+        .put(`http://3.21.164.220/qa/answers/${props.a_id}/helpful`, {
           params: { answer_id: props.a_id },
         })
         .then(() => {
-          if (isMounted.current) {
-            setHelpful(false);
-          }
+          console.log('helpful answer meow');
         })
         .catch((err) => {
           console.log(err);
@@ -52,13 +49,11 @@ const Helpful = (props) => {
     } else {
       //mark question helpful
       axios
-        .put(`http://3.21.164.220/qa/questions/`, {
-          params: { question_id: props.q_id },
+        .put(`http://3.21.164.220/qa/questions/${props.question.question_id}/helpful`, {
+          params: { question_id: props.question.question_id },
         })
         .then(() => {
-          if (isMounted.current) {
-            setHelpful(false);
-          }
+          console.log('helpful question meow')
         })
         .catch((err) => {
           console.log(err);
@@ -88,7 +83,6 @@ const Helpful = (props) => {
           bType={"1"}
           title={"Submit Your Answer"}
           prodName={props.product}
-          pid={props.pid}
           qid={props.question.question_id}
           question={props.question.question_body}
         />

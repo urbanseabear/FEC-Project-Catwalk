@@ -9,7 +9,6 @@ const QAlist = (props) => {
         <div id='qa-list' style={{gridColumnStart: 'span 4', maxHeight: '50vh', overflowY: 'scroll'}}>
             {props.questions.slice(0, 5).map((oneQuestion, i) => {
                 if (i === 4) {
-                    console.log('meow');
                     return <QAloadmore key={i} questions={props.questions}/>
                 }
                 return <QAentry  product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
@@ -26,7 +25,6 @@ const QAlist = (props) => {
             <div id='qa-list' style={{gridColumnStart: 'span 4', maxHeight: '50vh', overflowY: 'scroll'}}>
             {searchedQs.slice(0, 5).map((oneQuestion, i) => {
                 if (i === 4) {
-                    console.log('meow');
                     return <QAloadmore key={i} questions={props.questions}/>
                 }
                 return <QAentry  product={props.product} question={oneQuestion} key={oneQuestion.question_id} />

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '@material-ui/core/Modal';
 import axios from 'axios';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 
-
+    
 const AddModal = (props) => {
   const [open, setOpen] = useState(false);
   const [post, setPost] = useState('');
@@ -12,10 +14,14 @@ const AddModal = (props) => {
 
     var body;
   if (props.type === 'verify') {
-      if (props.bod && props.user && props.email) {
+     
+      let eCheck = /.\.com|\.net/;
+      let isValid = eCheck.test(props.email);
+      if (props.bod && props.user && props.email && isValid && open && props.pid) {
           axios.post(`http://3.21.164.220/qa/questions/`, {body: props.bod, name: props.user, email: props.email, product_id: props.pid})
           .then(() => {
-              console.log('post success meow');
+              console.log('post q success meow');
+              
           })
           .catch((err) => {
               console.log(err);
@@ -38,12 +44,39 @@ const AddModal = (props) => {
           <div></div>
           </div>
         );
-      } else {
+      } else if (props.bod && props.user && isValid && props.email && open && props.qid) {
+        axios.post(`http://3.21.164.220/qa/questions/${props.qid}/answers`, {body: props.bod, name: props.user, email: props.email, photos: '[]'})
+        .then(() => {
+            console.log('post a success meow');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+      body = (
+          <div
+        style={{
+          backgroundColor: "whitesmoke",
+          height: "400px",
+          width: "600px",
+          position: "fixed",
+          top: "20%",
+          left: "20%",
+        }}
+      >
+        <h2 id="modal-title">{props.title}</h2>
+        <h3 id="modal-description">In relation to the {props.prodName}</h3>
+        
+        <div>Thank you for your submission!</div>
+        <div></div>
+        </div>
+      );
+    } else {
+
         body = (
             <div
           style={{
             backgroundColor: "whitesmoke",
-            height: "400px",
+            height: "300px",
             width: "600px",
             position: "fixed",
             top: "20%",
@@ -52,7 +85,7 @@ const AddModal = (props) => {
         >
           <h2 id="modal-title">OOPS!</h2>
           <h3 id="modal-description">In relation to the {props.prodName}</h3>
-          <div>Please fix your submission. Required input values are missing or invalid</div>
+          <div style={{color: 'red'}}>Please fix your submission. Required input values are missing or invalid</div>
           <div></div>
           </div>
         ); 
@@ -69,27 +102,23 @@ const AddModal = (props) => {
     <div
       style={{
         backgroundColor: "white",
-        height: "400px",
         width: "50%",
         position: "fixed",
-        border: 'solid',
-        borderWidth: '4px',
-        borderColor: 'black',
         outline: 'none',
         top: "10%",
         left: "25%",
       }}
     >
-      <h2 id="modal-title">{props.title}</h2>
-      <h3 id="modal-description">{answerDesc}</h3>
+      <h2 style={{marginLeft: '2%'}} id="modal-title">{props.title}</h2>
+      <h3 style={{marginLeft: '2%'}} id="modal-description">{answerDesc}</h3>
       <textarea
         style={{ marginLeft: '4%', fontSize: "20px", width: '90%', height: '100px' }}
         defaultValue={props.name}
         onChange={(e) => setPost(e.target.value)}
       ></textarea>
-      <div>-----------------------</div>
+      <div style={{margin: '2% 10% 2% 10%', borderBottom: 'dashed', borderColor: 'gray', borderWidth: '2px'}}></div>
       <label
-        style={{ fontSize: "20px", fontWeight: "bold" }}
+        style={{marginLeft: '4%', fontSize: "20px", fontWeight: "bold" }}
         htmlFor={"nickname"}
       >
         Nickname*:{" "}
@@ -98,26 +127,36 @@ const AddModal = (props) => {
         onChange={(e) => setUser(e.target.value)}
         id={"nickname"}
         style={{
+          border: 'none',
+          borderBottom: '4px',
+          borderColor: 'black',
+          marginBottom: '5px',
           fontSize: "20px",
+          outline: 'none'
         }}
         type="text"
         placeholder="Example: jackson11!"
       ></input>
-      <div>For privacy reasons, do not use your full name or email address</div>
-      <label style={{ fontSize: "20px", fontWeight: "bold" }} htmlFor={"email"}>
+      <div style={{marginLeft: '2%', marginBottom: '2%'}}>For privacy reasons, do not use your full name or email address</div>
+      <label style={{marginLeft: '4%', fontSize: "20px", fontWeight: "bold" }} htmlFor={"email"}>
         E-mail*:{" "}
       </label>
       <input
         onChange={(e) => setEmail(e.target.value)}
         id={"email"}
         style={{
+          border: 'hidden',
+          width: '60%',
+          marginBottom: '5px',
           fontSize: "20px",
+          outline: 'none'
         }}
         type="email"
         maxLength="60"
-        placeholder="Why did you like the product or not?"
+        pattern=".+.com|.+.net|.+.co.uk|.+.fr|.+.gov|.+.edu"
+        placeholder="Example: meow@gmail.com"
       ></input>
-      <div>For authentication reasons only, you will not be emailed</div>
+      <div style={{marginLeft: '2%'}}>For authentication reasons only, you will not be emailed</div>
       <span >
       <AddModal title={"Thanks!"} type={'verify'} bod={post} user={user} email={email} pid={props.pid} qid={props.qid} prodName={props.prodName}/>
       </span>
@@ -139,11 +178,13 @@ const AddModal = (props) => {
       bStyle = {
         marginTop: '20px',
         marginLeft: '20px',
-        borderWidth: '2px',
         fontWeight: 'bold',
+        cursor: 'pointer',
         fontSize: '20px',
-        borderColor: 'black',
+        border: 'none',
+        outline: 'none',
         background: 'none',
+        paddingBottom: '20px'
       }
       buttonText = 'SUBMIT';
   } else {
@@ -170,8 +211,15 @@ const AddModal = (props) => {
         onClose={() => setOpen(!open)}
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+            timeout: 500,
+        }}
       >
+          <Fade in={open}>
         {body}
+        </Fade>
       </Modal>
     </span>
   );
