@@ -15,7 +15,9 @@ const CharRating = ({ labelTitle, leftLabel, middleLabel, rightLabel }) => {
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <div className='outer-bar'>
-            <div className='inner-bar'></div>
+            <div className='inner-bar'>
+              <span style={{ fontSize: '20px' }}>&#x25BC;</span>
+            </div>
             <div className='label-left'>
               <span>{optionalLeftLabel}</span>
             </div>
