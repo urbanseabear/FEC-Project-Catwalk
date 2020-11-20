@@ -11,34 +11,34 @@ export default function CustomizedRadios({
   return (
     <div>
       <h3 style={{ textDecorationLine: 'underline' }}>{type}:</h3>
-      <form style={{ display: 'flex', fontSize: '10px' }}>
+      <form style={{ display: 'flex', fontSize: '15px' }}>
         <div className='radio'>
           <label>
-            <input type='radio' value='option1' checked={true} />
+            <input type='radio' value='option1' name='char' />
             {one}
           </label>
         </div>
         <div className='radio'>
           <label>
-            <input type='radio' value='option2' />
+            <input type='radio' value='option2' name='char' />
             {two}
           </label>
         </div>
         <div className='radio'>
           <label>
-            <input type='radio' value='option3' />
+            <input type='radio' value='option3' name='char' />
             {three}
           </label>
         </div>
         <div className='radio'>
           <label>
-            <input type='radio' value='option3' />
+            <input type='radio' value='option4' name='char' />
             {four}
           </label>
         </div>
         <div className='radio'>
           <label>
-            <input type='radio' value='option3' />
+            <input type='radio' value='option5' name='char' />
             {five}
           </label>
         </div>

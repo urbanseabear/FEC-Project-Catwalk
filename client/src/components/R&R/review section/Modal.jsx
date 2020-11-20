@@ -4,10 +4,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Grid from '@material-ui/core/Grid';
 import ModalStarRating from './ModalStarRating';
 import ModalRadioList from './ModalRadioList';
+import RecommendRadioBtn from './RecommendRadioBtn';
+import ReviewTextArea from './ReviewTextArea';
+import Axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -21,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     outline: 'none',
-    width: '1000px',
-    height: '600px',
+    width: '1200px',
+    height: '650px',
   },
 }));
 
@@ -60,57 +62,30 @@ export default function AnimatedModal({ metaData }) {
         }}>
         <Fade in={open}>
           <div className={classes.paper}>
-            <Grid container spacing={1}>
-              <Grid item xs={7}>
-                <h2>Write Your Review</h2>
-                <span>About the 'product name'</span>
-                <div style={{ marginTop: '20px' }}>
-                  <TextareaAutosize
-                    minLength='1'
-                    maxLength='60'
-                    placeholder='“Example: Best purchase ever!”'
-                    style={{
-                      width: '500px',
-                      height: '40px',
-                      outline: 'none',
-                      fontFamily: 'inherit',
-                      fontSize: '15px',
-                    }}
-                  />
-                  <TextareaAutosize
-                    minLength='50'
-                    maxLength='1000'
-                    placeholder='“Why did you like the product or not?”'
-                    style={{
-                      width: '500px',
-                      height: '300px',
-                      outline: 'none',
-                      fontFamily: 'inherit',
-                      fontSize: '15px',
-                    }}
-                  />
-                </div>
-                <h3>Would you recommend this product?</h3>
-                <form>
-                  <div className='radio'>
-                    <label>
-                      <input type='radio' value='option1' checked={true} />
-                      Yes
-                    </label>
-                  </div>
-                  <div className='radio'>
-                    <label>
-                      <input type='radio' value='option1' checked={true} />
-                      No
-                    </label>
-                  </div>
-                </form>
+            <Grid container spacing={0}>
+              <Grid item xs={6}>
+                <ReviewTextArea />
               </Grid>
-              <Grid item xs={5}>
-                <h2>Overall Rating *</h2>
-                <ModalStarRating />
+              <Grid item xs={6}>
+                <div style={{ float: 'right' }}>
+                  <h2>Overall Rating *</h2>
+                  <ModalStarRating />
+                </div>
                 <h2>Characteristics *</h2>
                 <ModalRadioList metaData={metaData} />
+                <div style={{ marginTop: '130px' }}>
+                  <RecommendRadioBtn />
+                  <Button
+                    style={{
+                      fontSize: '20px',
+                      marginTop: '-45px',
+                      float: 'right',
+                    }}
+                    variant='contained'
+                    onClick={() => handleClose()}>
+                    Submit
+                  </Button>
+                </div>
               </Grid>
             </Grid>
           </div>
