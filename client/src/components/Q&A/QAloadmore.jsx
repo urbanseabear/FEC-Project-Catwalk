@@ -66,6 +66,7 @@ const QAloadmore = (props) => {
             background: "none",
             fontWeight: "bold",
             marginTop: "20px",
+            marginBottom: "10px",
             fontSize: "20px",
             padding: "20px 10px 20px 10px",
             cursor: "pointer",

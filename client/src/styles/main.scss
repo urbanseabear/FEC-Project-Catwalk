@@ -10,3 +10,8 @@ body {
 #qa-list::-webkit-scrollbar {
   display: none;
 }
+
+input:invalid {
+  border: solid;
+  color: red;
+}
