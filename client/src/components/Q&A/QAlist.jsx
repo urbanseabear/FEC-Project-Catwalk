@@ -11,7 +11,7 @@ const QAlist = (props) => {
                 if (i === 4) {
                     return <QAloadmore key={i} questions={props.questions}/>
                 }
-                return <QAentry  product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
+                return <QAentry submit={props.submit} product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
             })}
         </div>
     )
@@ -27,7 +27,7 @@ const QAlist = (props) => {
                 if (i === 4) {
                     return <QAloadmore key={i} questions={props.questions}/>
                 }
-                return <QAentry  product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
+                return <QAentry submit={props.submit} product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
             })}
         </div>
         )
