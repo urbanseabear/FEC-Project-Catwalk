@@ -2,10 +2,10 @@
   // If you want it to grow,
   // Try max-width: auto;
   max-width: 1500px;
-  height: 100vh;
+  height: 1000px;
   display: grid;
   grid-template-columns: 60% 40%;
-  grid-template-rows: 12% 5% 30% 15% 20% 18%;
+  grid-template-rows: 12% 5% 23% 22% 20% 18%;
   grid-gap: 5px;
 
   .headerContainer {
@@ -42,7 +42,6 @@
     border-bottom: 2px solid darkgray;
   }
   .imageGalleryContainer {
-    //max-height: 600px;
     grid-row: 3/6;
     grid-column: 1;
     display: grid;
@@ -50,16 +49,17 @@
     margin: 50px 0px;
 
     .viewsContainer {
+      max-height: 100%;
       grid-column: 1;
       overflow: hidden;
       display: grid;
-
       .arrow {
+        max-height: 100%;
         display: flex;
         justify-content: center;
       }
-
       .viewsContainerPhotos {
+        max-height: 100%;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -68,17 +68,18 @@
       }
     }
     .leftArrowContainer {
+      max-height: 100%;
       grid-column: 2;
       display: flex;
       justify-content: flex-end;
       align-items: center;
     }
     .mainImageContainer {
+      max-height: 100%;
       grid-column: 3;
       display: flex;
       justify-content: center;
       align-items: center;
-      max-height: 100%;
     }
     .rightArrowContainer {
       grid-column: 4;
@@ -98,6 +99,7 @@
   .styleContainer {
     grid-row: 4;
     grid-column: 2;
+
   }
   .sizeQuantityAddContainer {
     grid-row: 5;
@@ -111,7 +113,7 @@
       margin-top: -3px;
       display: none;
       position: absolute;
-      width: 194px;
+      width: 195px;
       box-shadow: 0px 3px 5px black;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
@@ -140,6 +142,9 @@
       font-size: 16px;
       background-color: white;
       box-shadow: 0px 0px 4px black;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
     }
   }
   .featuresContainer {
