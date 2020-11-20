@@ -6,8 +6,6 @@ const AddSize = ({ selectedSize, allSizes, onSizeSelect }) => {
       <button 
         id='dropButton'
         style={{width: '195px'}}
-        // ON CLICK MAKE STYLE OF DROPDOWNCONTENT BE DISPLAY: BLOCK
-        onClick={{}}
       >
         { selectedSize ? `SIZE: ${selectedSize}` : 'SELECT SIZE' } 
         <img 
@@ -17,7 +15,6 @@ const AddSize = ({ selectedSize, allSizes, onSizeSelect }) => {
       <div className='dropDownContent'>
         {Object.keys(allSizes).map(sizeId => {
           return (
-            // ADD TO ONCLICK THAT DROPDOWNCONTENT STYLE GOES TO HIDDEN
             <a key={ sizeId } onClick={ onSizeSelect.bind(this, sizeId) }>SIZE: { allSizes[sizeId] }</a>
           );
         })}

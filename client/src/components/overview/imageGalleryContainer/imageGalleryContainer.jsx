@@ -3,7 +3,8 @@ import ViewsContainer from './viewsContainer';
 import MainImage from './mainImage';
 
 const ImageGalleryContainer = ({ photos }) => {
-  if (photos !== undefined) {
+  console.log(photos);
+  if (photos) {
     return (
       <div className='imageGalleryContainer'>
         <ViewsContainer thumbnailPhotos={photos.reduce((arr, current) => {
@@ -24,5 +25,16 @@ const ImageGalleryContainer = ({ photos }) => {
     );
   }
 };
+
+// class ImageGalleryContainer extends React.Component {
+//   constructor() {
+//     super();
+//   }
+//   render() {
+//     return(
+//       null
+//     );
+//   }
+// }
 
 export default ImageGalleryContainer;

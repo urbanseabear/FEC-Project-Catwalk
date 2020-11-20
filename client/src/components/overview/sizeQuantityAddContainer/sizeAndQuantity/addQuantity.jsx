@@ -26,6 +26,7 @@ const AddQuantity = ({ selectedQuantity, totalQuantity, onQuantitySelect }) => {
       </div>
     </div>
   );
+
 };
 
 export default AddQuantity;

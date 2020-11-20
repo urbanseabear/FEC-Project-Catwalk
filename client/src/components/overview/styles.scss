@@ -2,10 +2,10 @@
   // If you want it to grow,
   // Try max-width: auto;
   max-width: 1500px;
-  height: 100vh;
+  height: 1000px;
   display: grid;
   grid-template-columns: 60% 40%;
-  grid-template-rows: 12% 5% 30% 15% 20% 18%;
+  grid-template-rows: 12% 5% 23% 22% 20% 18%;
   grid-gap: 5px;
 
   .headerContainer {
@@ -99,6 +99,7 @@
   .styleContainer {
     grid-row: 4;
     grid-column: 2;
+
   }
   .sizeQuantityAddContainer {
     grid-row: 5;
