@@ -47,6 +47,7 @@ const AddModal = (props) => {
       } else if (props.bod && props.user && isValid && props.email && open && props.qid) {
         axios.post(`http://3.21.164.220/qa/questions/${props.qid}/answers`, {body: props.bod, name: props.user, email: props.email, photos: '[]'})
         .then(() => {
+            //props.submit();
             console.log('post a success meow');
         })
         .catch((err) => {
