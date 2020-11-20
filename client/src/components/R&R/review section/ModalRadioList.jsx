@@ -10,7 +10,7 @@ const ModalList = ({ metaData }) => {
     let charObj = Modal(el);
 
     return (
-      <div key={el}>
+      <div key={el} style={{ marginTop: '30px' }}>
         <RadioBtn
           type={titleLabel}
           one={charObj.one}
