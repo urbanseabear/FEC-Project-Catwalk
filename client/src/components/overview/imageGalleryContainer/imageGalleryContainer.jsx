@@ -2,39 +2,49 @@ import React from 'react';
 import ViewsContainer from './viewsContainer';
 import MainImage from './mainImage';
 
-const ImageGalleryContainer = ({ photos }) => {
-  // console.log(photos);
-  if (photos) {
-    return (
-      <div className='imageGalleryContainer'>
-        <ViewsContainer thumbnailPhotos={photos.reduce((arr, current) => {
-          return [...arr, current['thumbnail_url']];
-        }, [])}/>
-        <div className='leftArrowContainer'>
-          <img src='./images/chevron-left.png' style={{maxWidth: '20px'}}/>
-        </div>
-        <MainImage photo={photos[0]['url']} />
-        <div className='rightArrowContainer'>
-          <img src='./images/chevron-right.png' style={{maxWidth: '20px'}}/>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      null
-    );
-  }
-};
 
-// class ImageGalleryContainer extends React.Component {
-//   constructor() {
-//     super();
-//   }
-//   render() {
-//     return(
-//       null
-//     );
-//   }
-// }
+class ImageGalleryContainer extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedPhotoIndex: 0
+    };
+  }
+
+  onThumbnailClick(index) {
+    if (index >= 0 && index < this.props.photos.length) {
+      this.setState({
+        selectedPhotoIndex: index
+      });
+    }
+  }
+
+  render() {
+    if (this.props.photos) {
+      return (
+        <div className='imageGalleryContainer'>
+          <ViewsContainer 
+            thumbnailPhotos={this.props.photos.reduce((arr, current) => {
+              return [...arr, current['thumbnail_url']];
+            }, [])}
+            selectedPhotoIndex={this.state.selectedPhotoIndex}
+            onThumbnailClick={this.onThumbnailClick.bind(this)}
+          />
+          <div className='leftArrowContainer' onClick={this.onThumbnailClick.bind(this, this.state.selectedPhotoIndex - 1)}>
+            <img src='./images/chevron-left.png' style={{maxWidth: '20px'}}/>
+          </div>
+          <MainImage photo={this.props.photos[this.state.selectedPhotoIndex]['url']} />
+          <div className='rightArrowContainer' onClick={this.onThumbnailClick.bind(this, this.state.selectedPhotoIndex + 1)}>
+            <img src='./images/chevron-right.png' style={{maxWidth: '20px'}}/>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        null
+      );
+    }
+  }
+}
 
 export default ImageGalleryContainer;
