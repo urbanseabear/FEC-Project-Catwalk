@@ -3,7 +3,7 @@ import ViewsContainer from './viewsContainer';
 import MainImage from './mainImage';
 
 const ImageGalleryContainer = ({ photos }) => {
-  console.log(photos);
+  // console.log(photos);
   if (photos) {
     return (
       <div className='imageGalleryContainer'>

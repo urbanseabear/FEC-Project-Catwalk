@@ -9,7 +9,7 @@ const ViewsContainer = ({ thumbnailPhotos }) => {
       <div className='viewsContainerPhotos' >
         {thumbnailPhotos.map((photo, index) => {
           if (index <= 5) {
-            return <img src={ photo } style={{ maxWidth: '80px', maxHeight: '80px', margin: '5px 0px 5px 0px', boxShadow: '0px 0px 5px black'}}/>;
+            return <img key={index} src={ photo } style={{ maxWidth: '80px', maxHeight: '80px', margin: '5px 0px 5px 0px', boxShadow: '0px 0px 5px black'}}/>;
           }
         })}
       </div>
