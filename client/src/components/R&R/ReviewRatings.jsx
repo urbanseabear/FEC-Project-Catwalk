@@ -8,7 +8,6 @@ export default class ReviewRatings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: props.productId,
       sort: '',
       page: props.page,
       count: props.count,
@@ -24,6 +23,13 @@ export default class ReviewRatings extends Component {
     this.updateMetaData();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.productId !== this.props.productId) {
+      this.updateData();
+      this.updateMetaData();
+    }
+  }
+
   updateData() {
     axios
       .get('http://3.21.164.220/reviews/', {
@@ -31,7 +37,7 @@ export default class ReviewRatings extends Component {
           page: this.state.page,
           count: this.state.count,
           sort: this.state.sort,
-          product_id: this.state.productId,
+          product_id: this.props.productId,
         },
       })
       .then((res) => this.setState({ data: res.data.results }))
@@ -42,7 +48,7 @@ export default class ReviewRatings extends Component {
     axios
       .get('http://3.21.164.220/reviews/meta', {
         params: {
-          product_id: this.state.productId,
+          product_id: this.props.productId,
         },
       })
       .then((res) => this.setState({ metaData: res.data.characteristics }))

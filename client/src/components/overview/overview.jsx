@@ -7,6 +7,7 @@ import RateCategoryNamePriceContainer from './rateCategoryNamePrice/rateCategory
 import StylesContainer from './stylesContainer/styles';
 import SizeQuantityAddContainer from './sizeQuantityAddContainer/sizeQuantityAdd';
 import FeaturesContainer from './featuresContainer/featuresContainer';
+import SearchBar from './seachBar/searchBar';
 
 class Overview extends React.Component {
   constructor() {
@@ -16,27 +17,51 @@ class Overview extends React.Component {
       selectedQuantity: null,
       selectedStyle: null,
       productInfo: {},
-      productStyles: []
+      productStyles: [],
+      // photosArray: null,
     };
   }
 
   componentDidMount() {
-    axios.get(`http://3.21.164.220/products/${1}/styles`)
+    axios.get(`http://3.21.164.220/products/${this.props.productId}/styles`)
       .then(({ data }) => {
         this.setState({
           productStyles: data.results,
-          selectedStyle: data.results.find(obj => obj['default?'] === 1)
+          selectedStyle: data.results.find(obj => obj['default?'] === 1),
+          //photosArray: data.results.find(obj => obj['default?'] === 1)['photos']
         });
       })
       .catch(err => console.log(err));
 
-    axios.get(`http://3.21.164.220/products/${1}`)
+    axios.get(`http://3.21.164.220/products/${this.props.productId}`)
       .then(({ data }) => {
         this.setState({
           productInfo: data
         });
       })
       .catch(err => console.log(err));
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.productId !== prevProps.productId) {
+      axios.get(`http://3.21.164.220/products/${this.props.productId}/styles`)
+        .then(({ data }) => {
+          this.setState({
+            productStyles: data.results,
+            selectedStyle: data.results.find(obj => obj['default?'] === 1),
+            //photosArray: data.results.find(obj => obj['default?'] === 1)['photos']
+          });
+        })
+        .catch(err => console.log(err));
+
+      axios.get(`http://3.21.164.220/products/${this.props.productId}`)
+        .then(({ data }) => {
+          this.setState({
+            productInfo: data
+          });
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   changeSelectedStyle(selectedStyle) {
@@ -58,19 +83,23 @@ class Overview extends React.Component {
       selectedQuantity: quantity
     });
   }
-  
+
   render() {
+    console.log(this.props.productId);
     return (
       <div className='masterContainer' style={{display: 'flex', justifyContent: 'center'}}>
         <div className='overviewContainer'>
           <div className='headerContainer'>
             <h1>Company Logo</h1>
-            <input type='text' id='searchBar' placeholder='Search...' style={{backgroundImage: 'url(./images/search.png)' }} />
+            <SearchBar 
+              onSearch={this.props.onSearch} 
+            />
           </div>
           <div className='siteAnnouncementContainer' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               SITE ANNOUNCEMENT CONTAINER
           </div>
           <ImageGalleryContainer photos={this.state.selectedStyle ? this.state.selectedStyle['photos'] : null}/>
+          {/* <ImageGalleryContainer photos={this.state.photosArray} /> */}
           <ProductDetailsContainer 
             slogan={this.state.productInfo.slogan}
             description={this.state.productInfo.description} 
