@@ -6,7 +6,7 @@ const QAphotos = (props) => {
 
     const [bigPic, showBigPic] = useState(false);
     const body = (
-        <div style={{position: 'fixed', top: '30%', left: '30%'}}>
+        <div style={{position: 'fixed', top: '10%', left: '10%', maxWidth: '800px', maxHeight: '600px'}}>
         <img  src={props.photo} onClick={() => showBigPic(!bigPic)} alt={'photo'}></img>
         </div>
     )
