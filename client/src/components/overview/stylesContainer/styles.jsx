@@ -1,5 +1,12 @@
 import React from 'react';
 
+const isCssColor = (color) => {
+  let s = new Option().style;
+  color = color.replaceAll(' ', '');
+  s.color = color;
+  return s.color === color;
+};
+
 const StylesContainer = ({ selectedStyle, allStyles, changeSelectedStyle }) => {
   if (selectedStyle) {
     return (
@@ -7,21 +14,41 @@ const StylesContainer = ({ selectedStyle, allStyles, changeSelectedStyle }) => {
         <p style={{gridRow: '1', fontWeight: 'bold'}}>{'STYLE > '}{ selectedStyle['name'].toUpperCase() }</p>
         <div style={{gridRow: '2', display: 'flex', flexDirection: 'row', margin: '20px 20px', flexWrap: 'wrap', maxWidth: '250px'}}>
           {allStyles.map(({ name, style_id }) => {
-            var copyName = name.slice().toLowerCase().replaceAll(' ', '').split('&');
-            return (
-              <div 
-                key={style_id}
-                onClick={changeSelectedStyle.bind(this, style_id)}
-                style={{
-                  width: '50px', 
-                  height: '50px',
-                  background: `linear-gradient(-45deg, ${copyName[0]}, ${copyName[0]} 49%, white 49%, white 51%, ${copyName[1]} 51%)`,
-                  borderRadius: '50%',
-                  margin: '5px',
-                  boxShadow: '0px 0px 5px black'
-                }}
-              ></div>
-            );
+            let copyNames = name.toLowerCase().split(' & ');
+            copyNames = copyNames.map(color => {
+              return isCssColor(color) ? color.replaceAll(' ', '') : color.split(' ')[1];
+            });
+            if (copyNames.length === 1) {
+              return (
+                <div 
+                  key={style_id}
+                  onClick={changeSelectedStyle.bind(this, style_id)}
+                  style={{
+                    width: '50px', 
+                    height: '50px',
+                    background: `${copyNames[0]}`,
+                    borderRadius: '50%',
+                    margin: '5px',
+                    boxShadow: '0px 0px 5px black'
+                  }}
+                ></div>
+              );
+            } else if (copyNames.length === 2) {
+              return (
+                <div 
+                  key={style_id}
+                  onClick={changeSelectedStyle.bind(this, style_id)}
+                  style={{
+                    width: '50px', 
+                    height: '50px',
+                    background: `linear-gradient(-45deg, ${copyNames[0]}, ${copyNames[0]} 49%, white 49%, white 51%, ${copyNames[1]} 51%)`,
+                    borderRadius: '50%',
+                    margin: '5px',
+                    boxShadow: '0px 0px 5px black'
+                  }}
+                ></div>
+              );
+            }
           })}
         </div>
       </div>
