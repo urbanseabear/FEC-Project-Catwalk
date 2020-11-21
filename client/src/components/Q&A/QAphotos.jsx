@@ -11,7 +11,7 @@ const QAphotos = (props) => {
         </div>
     )
     return (
-        <span>
+        <span style={{marginRight: '1%'}}>
         <img src={props.photo} onClick={() => showBigPic(!bigPic)} alt={'photo'} width={75} height={75} style={{boxShadow: '5px 5px 5px gray', verticalAlign: 'middle', margin: '20px 0px'}}></img><Modal open={bigPic} onClose={() => showBigPic(!bigPic)} aria-labelledby="photo"
         aria-describedby="answer photo">{body}</Modal>
         </span>

@@ -29,17 +29,14 @@ class QAmodule extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
       if (prevState.qaSent !== this.state.qaSent || prevProps.prodID !== this.props.prodID) {
-        axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: this.props.prodID, count: 50}})
-        .then((result) => {
-          this.setState({questions: result.data});
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        this.getData();
       }
   }
-
   componentDidMount() {
+      this.getData();
+  }
+
+  getData() {
       var pid = this.props.prodID;
       axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: pid, count: 50}})
       .then((result) => {
@@ -55,10 +52,8 @@ class QAmodule extends React.Component {
           console.log(err);
       })
   }
+
   render() {
-    {if (this.state.questions === null) {
-        var showQAlist = false;
-    }}
     return (
       <div
         className='qa-container'
@@ -85,7 +80,7 @@ class QAmodule extends React.Component {
           answers={this.state.answers}
           product={this.state.product}
           questions={this.state.questions.results}
-          search={this.state.search.length > 3 ? this.state.search : null}
+          search={this.state.search.length > 2 ? this.state.search : null}
         />
         <AddModal name={'question'} submit={this.handleSubmission} pid={this.props.prodID} title={'Ask A Question'} prodName={this.state.product}/>
       </div>
