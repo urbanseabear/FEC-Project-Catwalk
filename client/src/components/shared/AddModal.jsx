@@ -12,8 +12,16 @@ const AddModal = (props) => {
   const [post, setPost] = useState('');
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
-  const [url, setUrl] = useState([null, null, null, null, null]);
+  const [url, setUrl] = useState('');
+  const [picArr, setPicArr] = useState([]);
+  
 
+  const addUrl = (e) => {
+      e.preventDefault();
+      setPicArr([...picArr, url]);
+      setUrl('');
+  };
+  
     var body;
   if (props.type === 'verify') {
      
@@ -47,8 +55,7 @@ const AddModal = (props) => {
           </div>
         );
       } else if (props.bod && props.user && isValid && props.email && open && props.qid) {
-        console.log(props.picFile);
-        axios.post(`http://3.21.164.220/qa/questions/${props.qid}/answers`, {body: props.bod, name: props.user, email: props.email, photos: '[]'})
+        axios.post(`http://3.21.164.220/qa/questions/${props.qid}/answers`, {body: props.bod, name: props.user, email: props.email, photos: props.pics})
         .then(() => {
            
             //props.submit();
@@ -169,8 +176,9 @@ const AddModal = (props) => {
         placeholder="Example: meow@gmail.com"
       ></input>
       <div style={{marginLeft: '2%'}}>For authentication reasons only, you will not be emailed</div>
-      <label style={{marginLeft: '2%', marginTop: '2%', visibility: showPicEntry}}>Enter Pics:</label>
-      <input 
+      <label htmlFor='picUrl' style={{marginLeft: '2%', marginTop: '2%', visibility: showPicEntry}}>Enter Pics:</label>
+      <input
+        onChange={(e) => setUrl(e.target.value)} 
         type='text'
         id='picUrl'
         style={{
@@ -181,9 +189,15 @@ const AddModal = (props) => {
           outline: 'none'
         }}
         placeholder="example.com/photo.jpg"></input>
-      <button onClick={(e) => setUrl(e.target.value)}>add image</button>
+      <button disabled={picArr.length === 5 ? true:false} onClick={addUrl}>add image</button>
+      <img  style={{visibility: picArr.length > 0 ? 'visible':'hidden'}} src={picArr[0]} alt={'photo'} width={75} height={75} />
+      <img  style={{visibility: picArr.length > 1 ? 'visible':'hidden'}} src={picArr[1]} alt={'photo'} width={75} height={75} />
+      <img  style={{visibility: picArr.length > 2 ? 'visible':'hidden'}} src={picArr[2]} alt={'photo'} width={75} height={75} />
+      <img  style={{visibility: picArr.length > 3 ? 'visible':'hidden'}} src={picArr[3]} alt={'photo'} width={75} height={75} />
+      <img  style={{visibility: picArr.length > 4 ? 'visible':'hidden'}} src={picArr[4]} alt={'photo'} width={75} height={75} />
+      <div></div>
       <span >
-      <AddModal title={"Thanks!"} type={'verify'} picFile={file} bod={post} user={user} email={email} pid={props.pid} qid={props.qid} prodName={props.prodName}/>
+      <AddModal title={"Thanks!"} type={'verify'} pics={picArr} bod={post} user={user} email={email} pid={props.pid} qid={props.qid} prodName={props.prodName}/>
       </span>
     </div>
   );
