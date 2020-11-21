@@ -4,11 +4,19 @@ import MainImage from './mainImage';
 
 
 class ImageGalleryContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      selectedPhotoIndex: 0
+      selectedPhotoIndex: 0,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.photos !== prevProps.photos) {
+      this.setState({
+        selectedPhotoIndex: 0
+      });
+    }
   }
 
   onThumbnailClick(index) {

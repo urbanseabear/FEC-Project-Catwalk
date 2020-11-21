@@ -28,7 +28,7 @@ class QAmodule extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-      if (prevState.qaSent !== this.state.qaSent) {
+      if (prevState.qaSent !== this.state.qaSent || prevProps.prodID !== this.props.prodID) {
         axios.get(`http://3.21.164.220/qa/questions/`, {params: {product_id: this.props.prodID, count: 50}})
         .then((result) => {
           this.setState({questions: result.data});

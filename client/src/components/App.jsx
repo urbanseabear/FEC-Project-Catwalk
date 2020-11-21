@@ -9,11 +9,19 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 41,
+      productId: 5,
       sortBy: '',
       page: 1,
       count: 100,
     };
+
+    this.onSearch = this.onSearch.bind(this);
+  }
+
+  onSearch(productId) {
+    this.setState({
+      productId: productId
+    });
   }
 
   render() {
@@ -21,10 +29,13 @@ export default class App extends Component {
       <div>
         <Grid container spacing={8}>
           <Grid item xs={12}>
-            <Overview />
+            <Overview 
+              productId={ this.state.productId }
+              onSearch={this.onSearch}
+            />
           </Grid>
           <Grid style={{ margin: '0% 10%' }} item xs={12}>
-            <QAmodule prodID={3} />
+            <QAmodule prodID={ this.state.productId} />
           </Grid>
           <Grid style={{ margin: '0% 10%' }} item xs={12}>
             <ReviewRatings
