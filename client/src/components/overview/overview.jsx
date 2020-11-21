@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles.scss';
-import axios from 'axios';
 import ImageGalleryContainer from './imageGalleryContainer/imageGalleryContainer.jsx';
 import ProductDetailsContainer from './productDetails/productDetailsContainer';
 import RateCategoryNamePriceContainer from './rateCategoryNamePrice/rateCategoryNamePrice';
@@ -8,6 +7,7 @@ import StylesContainer from './stylesContainer/styles';
 import SizeQuantityAddContainer from './sizeQuantityAddContainer/sizeQuantityAdd';
 import FeaturesContainer from './featuresContainer/featuresContainer';
 import SearchBar from './seachBar/searchBar';
+import apiCalls from './overviewAPI.mjs';
 
 class Overview extends React.Component {
   constructor() {
@@ -22,9 +22,9 @@ class Overview extends React.Component {
     };
   }
 
-  componentDidMount() {
-    axios.get(`http://3.21.164.220/products/${this.props.productId}/styles`)
-      .then(({ data }) => {
+  apiRequests(productId) {
+    apiCalls.getProductStyles(productId)
+      .then(({data}) => {
         this.setState({
           productStyles: data.results,
           selectedStyle: data.results.find(obj => obj['default?'] === 1),
@@ -33,7 +33,7 @@ class Overview extends React.Component {
       })
       .catch(err => console.log(err));
 
-    axios.get(`http://3.21.164.220/products/${this.props.productId}`)
+    apiCalls.getProduct(productId)
       .then(({ data }) => {
         this.setState({
           productInfo: data
@@ -42,25 +42,13 @@ class Overview extends React.Component {
       .catch(err => console.log(err));
   }
 
+  componentDidMount() {
+    this.apiRequests(this.props.productId);
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.productId !== prevProps.productId) {
-      axios.get(`http://3.21.164.220/products/${this.props.productId}/styles`)
-        .then(({ data }) => {
-          this.setState({
-            productStyles: data.results,
-            selectedStyle: data.results.find(obj => obj['default?'] === 1),
-            //photosArray: data.results.find(obj => obj['default?'] === 1)['photos']
-          });
-        })
-        .catch(err => console.log(err));
-
-      axios.get(`http://3.21.164.220/products/${this.props.productId}`)
-        .then(({ data }) => {
-          this.setState({
-            productInfo: data
-          });
-        })
-        .catch(err => console.log(err));
+      this.apiRequests(this.props.productId);
     }
   }
 
