@@ -5,17 +5,27 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
 
+
     
 const AddModal = (props) => {
   const [open, setOpen] = useState(false);
   const [post, setPost] = useState('');
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
+  const [url, setUrl] = useState('');
+  const [picArr, setPicArr] = useState([]);
+  
 
+  const addUrl = (e) => {
+      e.preventDefault();
+      setPicArr([...picArr, url]);
+      setUrl('');
+  };
+  
     var body;
   if (props.type === 'verify') {
      
-      let eCheck = /.\.com|\.net/;
+      let eCheck = /.\.com|\.net|\.co.uk|\.co|\.fr|\.gov|\.edu|\.jp/;
       let isValid = eCheck.test(props.email);
       if (props.bod && props.user && props.email && isValid && open && props.pid) {
           axios.post(`http://3.21.164.220/qa/questions/`, {body: props.bod, name: props.user, email: props.email, product_id: props.pid})
@@ -45,8 +55,9 @@ const AddModal = (props) => {
           </div>
         );
       } else if (props.bod && props.user && isValid && props.email && open && props.qid) {
-        axios.post(`http://3.21.164.220/qa/questions/${props.qid}/answers`, {body: props.bod, name: props.user, email: props.email, photos: '[]'})
+        axios.post(`http://3.21.164.220/qa/questions/${props.qid}/answers`, {body: props.bod, name: props.user, email: props.email, photos: props.pics})
         .then(() => {
+           
             //props.submit();
             console.log('post a success meow');
         })
@@ -72,7 +83,7 @@ const AddModal = (props) => {
         </div>
       );
     } else {
-
+        
         body = (
             <div
           style={{
@@ -84,20 +95,27 @@ const AddModal = (props) => {
             left: "20%",
           }}
         >
+         <div style={{marginLeft: '2%'}}>
           <h2 id="modal-title">OOPS!</h2>
           <h3 id="modal-description">In relation to the {props.prodName}</h3>
-          <div style={{color: 'red'}}>Please fix your submission. Required input values are missing or invalid</div>
-          <div></div>
+          <div style={{color: 'red'}}>Please fix your submission. Required input values are missing or invalid:</div>
+          <div style={{marginTop: '2%', fontSize: '20px', color: 'red', visibility: props.bod ? 'hidden':'visible'}}>QUESTION FIELD LEFT BLANK</div>
+          <div style={{marginTop: '2%', fontSize: '20px', color: 'red', visibility: props.user ? 'hidden':'visible'}}>NICKNAME LEFT BLANK</div>
+          <div style={{marginTop: '2%', fontSize: '20px', color: 'red', visibility: props.email ? 'hidden':'visible'}}>E-MAIL ADDRESS IS INVALID</div>
+          </div>
           </div>
         ); 
       }
   } else {
       var answerDesc = '';
+      var showPicEntry = '';
   if (props.question !== undefined) {
       answerDesc = `${props.prodName}: ${props.question}`;
+      showPicEntry = 'visible'
   }
   else {
       answerDesc = `About the ${props.prodName}`;
+      showPicEntry = 'hidden';
   }
   body = (
     <div
@@ -120,13 +138,13 @@ const AddModal = (props) => {
       <div style={{margin: '2% 10% 2% 10%', borderBottom: 'dashed', borderColor: 'gray', borderWidth: '2px'}}></div>
       <label
         style={{marginLeft: '4%', fontSize: "20px", fontWeight: "bold" }}
-        htmlFor={"nickname"}
+        htmlFor="nickname"
       >
         Nickname*:{" "}
       </label>
       <input
         onChange={(e) => setUser(e.target.value)}
-        id={"nickname"}
+        id="nickname"
         style={{
           border: 'none',
           borderBottom: '4px',
@@ -139,12 +157,12 @@ const AddModal = (props) => {
         placeholder="Example: jackson11!"
       ></input>
       <div style={{marginLeft: '2%', marginBottom: '2%'}}>For privacy reasons, do not use your full name or email address</div>
-      <label style={{marginLeft: '4%', fontSize: "20px", fontWeight: "bold" }} htmlFor={"email"}>
+      <label style={{marginLeft: '4%', fontSize: "20px", fontWeight: "bold" }} htmlFor="email">
         E-mail*:{" "}
       </label>
       <input
         onChange={(e) => setEmail(e.target.value)}
-        id={"email"}
+        id="email"
         style={{
           border: 'hidden',
           width: '60%',
@@ -154,12 +172,32 @@ const AddModal = (props) => {
         }}
         type="email"
         maxLength="60"
-        pattern=".+.com|.+.net|.+.co.uk|.+.fr|.+.gov|.+.edu"
+        pattern=".+.com|.+.net|.+.co.uk|.+.fr|.+.gov|.+.edu|.+.jp"
         placeholder="Example: meow@gmail.com"
       ></input>
       <div style={{marginLeft: '2%'}}>For authentication reasons only, you will not be emailed</div>
+      <label htmlFor='picUrl' style={{marginLeft: '2%', marginTop: '2%', visibility: showPicEntry}}>Enter Pics:</label>
+      <input
+        onChange={(e) => setUrl(e.target.value)} 
+        type='text'
+        id='picUrl'
+        style={{
+          border: 'hidden',
+          width: '60%',
+          marginBottom: '5px',
+          fontSize: "20px",
+          outline: 'none'
+        }}
+        placeholder="example.com/photo.jpg"></input>
+      <button disabled={picArr.length === 5 ? true:false} onClick={addUrl}>add image</button>
+      <img  style={{visibility: picArr.length > 0 ? 'visible':'hidden'}} src={picArr[0]} alt={'photo'} width={75} height={75} />
+      <img  style={{visibility: picArr.length > 1 ? 'visible':'hidden'}} src={picArr[1]} alt={'photo'} width={75} height={75} />
+      <img  style={{visibility: picArr.length > 2 ? 'visible':'hidden'}} src={picArr[2]} alt={'photo'} width={75} height={75} />
+      <img  style={{visibility: picArr.length > 3 ? 'visible':'hidden'}} src={picArr[3]} alt={'photo'} width={75} height={75} />
+      <img  style={{visibility: picArr.length > 4 ? 'visible':'hidden'}} src={picArr[4]} alt={'photo'} width={75} height={75} />
+      <div></div>
       <span >
-      <AddModal title={"Thanks!"} type={'verify'} bod={post} user={user} email={email} pid={props.pid} qid={props.qid} prodName={props.prodName}/>
+      <AddModal title={"Thanks!"} type={'verify'} pics={picArr} bod={post} user={user} email={email} pid={props.pid} qid={props.qid} prodName={props.prodName}/>
       </span>
     </div>
   );
