@@ -1,10 +1,10 @@
 import React from "react";
-import "../../styles/main.scss";
+import "./qaStyle.scss";
 import SearchIcon from '@material-ui/icons/Search';
 
 const QAsearch = (props) => {
   return (
-    <div style={{ gridRowStart: "2", gridColumnStart: "span 4", display: 'flex'}}>
+    <div className="qa-search">
       <input
         onChange={(e) => props.search(e)} 
         style={{

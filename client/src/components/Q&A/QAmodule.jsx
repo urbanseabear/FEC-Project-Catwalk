@@ -1,5 +1,6 @@
 import React from 'react';
 import QAsearch from './QAsearch';
+import './qaStyle.scss';
 import '../../styles/main.scss';
 import qaData from './qa-sample-data';
 import QAlist from './QAlist';
@@ -55,25 +56,8 @@ class QAmodule extends React.Component {
 
   render() {
     return (
-      <div
-        className='qa-container'
-        style={{
-          display: 'grid',
-          gridTemplateRows: '.5fr 1fr 3fr 1 fr',
-          gridTemplateColumns: '3fr .5fr .25fr 1.25fr',
-          // took out the margin here so i can apply it to the App.js Grid
-          gap: '10px',
-          fontFamily: 'Arial, Helvetica, sans-serif'
-        }}>
-        <div
-          className='qa-header'
-          style={{
-            gridColumnEnd: 'span 4',
-            fontSize: '16px',
-            height: '30px'
-          }}>
-          QUESTIONS & ANSWERS
-        </div>
+      <div className='qa-container' >
+        <div className='qa-header'>QUESTIONS & ANSWERS</div>
         <QAsearch search={this.handleSearch}/>
         <QAlist
           submit={this.handleSubmission}

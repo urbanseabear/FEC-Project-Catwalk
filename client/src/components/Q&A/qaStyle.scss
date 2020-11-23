@@ -1,0 +1,30 @@
+#qa-list::-webkit-scrollbar {
+  display: none;
+}
+
+input:invalid {
+  border: solid;
+  color: red;
+}
+
+.qa-container {
+  display: grid;
+  grid-template-rows: .5fr 1fr 3fr 1 fr;
+  grid-template-columns: 3fr .5fr .25fr 1.25fr;
+  gap: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.qa-header {
+  grid-column-end: span 4;
+  font-size: 16px;
+  height: 30px;
+}
+
+.qa-search {
+    grid-row-start: 2;
+    grid-column-start: span 4;
+    display: flex;
+}
+
+.qa-search-bar {}
