@@ -1,6 +1,6 @@
 import { Modal } from '@material-ui/core';
 import React, {useState} from 'react';
-
+import "./qaStyle.scss";
 
 const QAphotos = (props) => {
 
@@ -12,7 +12,7 @@ const QAphotos = (props) => {
     )
     return (
         <span style={{marginRight: '1%'}}>
-        <img src={props.photo} onClick={() => showBigPic(!bigPic)} alt={'photo'} width={75} height={75} className=".photo-thumb"></img><Modal open={bigPic} onClose={() => showBigPic(!bigPic)} aria-labelledby="photo"
+        <img src={props.photo} onClick={() => showBigPic(!bigPic)} alt={'photo'} width={75} height={75} className="photo-thumb"></img><Modal open={bigPic} onClose={() => showBigPic(!bigPic)} aria-labelledby="photo"
         aria-describedby="answer photo">{body}</Modal>
         </span>
     )
