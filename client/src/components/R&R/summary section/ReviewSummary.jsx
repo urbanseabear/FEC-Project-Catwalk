@@ -1,7 +1,7 @@
 import React from 'react';
 import AverageRating from '../rating section/AverageRating';
 import RatingBar from '../rating section/RatingBar';
-import { ratingBar, recommended } from '../utils/helper';
+import { ratingBar, recommended } from '../utils/helper.js';
 import CharRatingList from './CharRatingList';
 
 const ReviewSummary = ({ data, metaData }) => {
