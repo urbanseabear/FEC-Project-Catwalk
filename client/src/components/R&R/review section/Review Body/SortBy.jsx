@@ -1,5 +1,5 @@
 import React from 'react';
-import './SortBy.scss';
+import '../../../../styles/R&R/SortBy.scss';
 
 const SortBy = ({ totalCount, sortBy }) => {
   const handleChange = (option) => {

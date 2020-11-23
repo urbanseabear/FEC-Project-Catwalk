@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import './CharRating.scss';
+import '../../../styles/R&R/CharRating.scss';
 
 const CharRating = ({ labelTitle, leftLabel, middleLabel, rightLabel }) => {
   const optionalLeftLabel = leftLabel ? <span>{leftLabel}</span> : '';

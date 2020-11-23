@@ -1,6 +1,6 @@
 import React from 'react';
 import RadioBtn from './ModalRadioBtn';
-import { Modal } from '../utils/helper.js';
+import { Modal } from '../../utils/helper.js';
 
 const ModalList = ({ metaData }) => {
   let features = Object.keys(metaData);

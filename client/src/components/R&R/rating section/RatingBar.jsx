@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Badge from '@material-ui/core/Badge';
-import './RatingBar.scss';
+import '../../../styles/R&R/RatingBar.scss';
 
 export default class RatingBar extends Component {
   constructor(props) {

@@ -8,8 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import ModalStarRating from './ModalStarRating';
 import ModalRadioList from './ModalRadioList';
 import RecommendRadioBtn from './RecommendRadioBtn';
-import ReviewTextArea from './ReviewTextArea';
-import Axios from 'axios';
+import ReviewTextArea from '../Review Body/ReviewTextArea';
+import ImageUpload from './ImageUpload';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
     outline: 'none',
     width: '1200px',
-    height: '650px',
+    height: '750px',
   },
 }));
 
@@ -65,14 +65,17 @@ export default function AnimatedModal({ metaData }) {
             <Grid container spacing={0}>
               <Grid item xs={6}>
                 <ReviewTextArea />
+                <div style={{ marginTop: '20px' }}>
+                  <ImageUpload />
+                </div>
               </Grid>
               <Grid item xs={6}>
-                <div style={{ float: 'right' }}>
-                  <h2>Overall Rating *</h2>
-                  <ModalStarRating />
+                <h2>Overall Rating *</h2>
+                <ModalStarRating />
+                <div style={{ marginTop: '30px' }}>
+                  <h2>Characteristics *</h2>
+                  <ModalRadioList metaData={metaData} />
                 </div>
-                <h2>Characteristics *</h2>
-                <ModalRadioList metaData={metaData} />
                 <div style={{ marginTop: '130px' }}>
                   <RecommendRadioBtn />
                   <Button

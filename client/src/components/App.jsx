@@ -1,52 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/main.scss';
 import Overview from './overview/overview.jsx';
 import QAmodule from './Q&A/QAmodule';
 import ReviewRatings from './R&R/ReviewRatings';
 import Grid from '@material-ui/core/Grid';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productId: 5,
-      sortBy: '',
-      page: 1,
-      count: 100,
-    };
+const App = () => {
+  const [productId, setProductId] = useState(14);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(100);
 
-    this.onSearch = this.onSearch.bind(this);
-  }
-
-  onSearch(productId) {
-    this.setState({
-      productId: productId
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <Grid container spacing={8}>
-          <Grid item xs={12}>
-            <Overview 
-              productId={ this.state.productId }
-              onSearch={this.onSearch}
-            />
-          </Grid>
-          <Grid style={{ margin: '0% 10%' }} item xs={12}>
-            <QAmodule prodID={ this.state.productId} />
-          </Grid>
-          <Grid style={{ margin: '0% 10%' }} item xs={12}>
-            <ReviewRatings
-              productId={this.state.productId}
-              sortBy={this.state.sortBy}
-              page={this.state.page}
-              count={this.state.count}
-            />
-          </Grid>
+  const onSearch = (productId) => {
+    setProductId(productId);
+  };
+  return (
+    <div>
+      <Grid container spacing={8}>
+        <Grid item xs={12}>
+          <Overview productId={productId} onSearch={onSearch} />
         </Grid>
-      </div>
-    );
-  }
-}
+        <Grid style={{ margin: '0% 10%' }} item xs={12}>
+          <QAmodule prodID={productId} />
+        </Grid>
+        <Grid style={{ margin: '0% 10%' }} item xs={12}>
+          <ReviewRatings productId={productId} page={page} count={count} />
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
+
+export default App;
