@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import AddModal from "./AddModal";
+import "../Q&A/qaStyle.scss";
 
 const Helpful = (props) => {
   const [isReported, setReported] = useState(false);
@@ -68,12 +69,7 @@ const Helpful = (props) => {
         <button
           disabled={isHelpful}
           onClick={helpful}
-          style={{
-            textDecoration: "underline",
-            border: "none",
-            cursor: "pointer",
-            background: "none",
-          }}
+          className="helpful-button"
         >
           Yes
         </button>
@@ -96,12 +92,7 @@ const Helpful = (props) => {
         <button
           disabled={isHelpful}
           onClick={helpful}
-          style={{
-            textDecoration: "underline",
-            border: "none",
-            cursor: "pointer",
-            background: "none",
-          }}
+          className="helpful-button"
         >
           Yes
         </button>
@@ -109,12 +100,7 @@ const Helpful = (props) => {
         <button
           disabled={isReported}
           onClick={report}
-          style={{
-            textDecoration: "underline",
-            border: "none",
-            cursor: "pointer",
-            background: "none",
-          }}
+          className="helpful-button"
         >
           {isReported ? "REPORTED" : props.reportOrAdd}
         </button>

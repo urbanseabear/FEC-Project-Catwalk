@@ -1,0 +1,162 @@
+#qa-list::-webkit-scrollbar {
+  display: none;
+}
+
+#qa-list {
+    grid-column-start: span 4;
+     max-height: 50vh; 
+     overflow-y: scroll;
+}
+
+input:invalid {
+  border: solid;
+  color: red;
+}
+
+.qa-container {
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 3fr 1 fr;
+  grid-template-columns: 3fr 0.5fr 0.25fr 1.25fr;
+  gap: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.qa-header {
+  grid-column-end: span 4;
+  font-size: 16px;
+  height: 30px;
+}
+
+.qa-search {
+  grid-row-start: 2;
+  grid-column-start: span 4;
+  display: flex;
+}
+
+.qa-search-bar {
+  width: 95%;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  font-weight: bold;
+  font-size: 20px;
+  border-width: 4px;
+  border-color: black;
+  border-style: solid none solid solid;
+  outline: none;
+}
+
+#searchIcon {
+  padding: 10px 5px 10px 1px;
+  font-size: 40px;
+  border-style: solid solid solid none;
+}
+
+.photo-modal {
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  max-width: 800px;
+  max-height: 600px;
+}
+
+.photo-thumb {
+  box-shadow: 5px 5px 5px gray;
+  vertical-align: middle;
+  margin: 20px 0px;
+}
+
+%answer-button {
+  margin-left: 10px;
+  margin-top: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#load-answer {
+  @extend %answer-button;
+}
+
+#collapse-answer {
+  @extend %answer-button;
+  margin-bottom: 10px;
+}
+
+.load-questions {
+        border-width: 2px;
+        border-color: black;
+        background: none;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        padding: 20px 10px 20px 10px;
+        cursor: pointer;
+}
+
+.helpful-button {
+    text-decoration: underline;
+        border: none;
+        cursor: pointer;
+        background: none;
+}
+
+.submit-modal {
+        background-color: whitesmoke;
+        height: 400px;
+        width: 600px;
+        position: fixed;
+        top: 20%;
+        left: 20%;
+}
+
+.add-modal {
+    background-color: white;
+    width: 50%;
+    position: fixed;
+    outline: none;
+    top: 10%;
+    left: 25%; 
+}
+
+.form-input {
+    border: hidden;
+    width: 60%;
+    margin-bottom: 5px;
+    font-size: 20px;
+    outline: none;
+}
+
+.form-label {
+    margin-left: 4%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-input-area {
+    margin-left: 4%;
+    font-size: 20px;
+    width: 90%;
+    height: 100px;
+}
+
+.empty-field {
+    margin-top: 2%;
+     font-size: 20px;
+      color: red;
+}
+
+.verify-button {
+    margin-top: 20px;
+        margin-left: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 20px;
+        border: none;
+        outline: none;
+        background: none;
+        padding-bottom: 20px;
+}
