@@ -1,0 +1,42 @@
+.outer-bar {
+  height: 9px;
+  padding: 0px;
+}
+
+.inner-bar {
+  border: none;
+  outline: none;
+  background-color: rgba(165, 165, 165, 0.5);
+  height: 9px;
+}
+
+.label-left {
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.label-center {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.label-right {
+  text-align: right;
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.label-title {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.char-wrapper {
+  margin-top: 20px;
+}
+
+.triangle {
+  font-size: 16px;
+  margin-right: 50px;
+}
