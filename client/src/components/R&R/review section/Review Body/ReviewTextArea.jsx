@@ -12,7 +12,7 @@ const ReviewTextArea = () => {
           <TextareaAutosize
             minLength='1'
             maxLength='60'
-            placeholder='“Example: Best purchase ever!”'
+            placeholder='Example: "Best purchase ever!”'
             style={{
               width: '500px',
               height: '30px',
@@ -30,7 +30,7 @@ const ReviewTextArea = () => {
           <TextareaAutosize
             minLength='50'
             maxLength='1000'
-            placeholder='“Why did you like the product or not?”'
+            placeholder='Why did you like the product or not?'
             style={{
               width: '500px',
               height: '200px',
@@ -48,7 +48,7 @@ const ReviewTextArea = () => {
           <TextareaAutosize
             minLength='1'
             maxLength='60'
-            placeholder='“Example: jackson11!”'
+            placeholder='Example: "jackson11!”'
             style={{
               width: '500px',
               height: '30px',
@@ -69,7 +69,7 @@ const ReviewTextArea = () => {
           <TextareaAutosize
             minLength='1'
             maxLength='60'
-            placeholder='“Example: jackson11@email.com”'
+            placeholder='Example: "jackson11@email.com”'
             style={{
               width: '500px',
               height: '30px',

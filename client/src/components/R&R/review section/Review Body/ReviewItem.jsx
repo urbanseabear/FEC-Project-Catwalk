@@ -22,7 +22,7 @@ const ReviewItem = ({ data }) => {
   const photo = data.photos.map((el) => {
     return (
       <div className='review-photo'>
-        <Photos key={el.id} photo={el.url} />
+        <Photos key={data.review_id} photo={el.url} />
       </div>
     );
   });
