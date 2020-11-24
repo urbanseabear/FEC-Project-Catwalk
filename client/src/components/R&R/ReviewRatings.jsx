@@ -12,11 +12,6 @@ const ReviewRatings = ({ productId, page, count }) => {
   useEffect(() => {
     updateData();
     updateMetaData();
-  }, []);
-
-  useEffect(() => {
-    updateData();
-    updateMetaData();
   }, [productId]);
 
   useEffect(() => {
