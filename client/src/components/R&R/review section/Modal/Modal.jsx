@@ -79,13 +79,14 @@ export default function AnimatedModal({ metaData }) {
                 <div style={{ marginTop: '130px' }}>
                   <RecommendRadioBtn />
                   <Button
+                    form='review-form'
+                    type='submit'
                     style={{
                       fontSize: '20px',
                       marginTop: '-45px',
                       float: 'right',
                     }}
-                    variant='contained'
-                    onClick={() => handleClose()}>
+                    variant='contained'>
                     Submit
                   </Button>
                 </div>
