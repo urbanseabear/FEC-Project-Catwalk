@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import AnimatedModal from '../Modal/Modal';
 
 const ReviewButtons = ({ metaData, click, data }) => {
-  let noMoreItems = data.length !== 0;
-
+  console.log(data);
   let moreReviews = () => {
     return (
       <div style={{ paddingRight: '30px' }}>
@@ -20,7 +19,7 @@ const ReviewButtons = ({ metaData, click, data }) => {
 
   return (
     <div style={{ display: 'flex', marginTop: '10px' }}>
-      {noMoreItems ? moreReviews() : ''}
+      {data ? moreReviews() : ''}
       <AnimatedModal metaData={metaData} />
     </div>
   );

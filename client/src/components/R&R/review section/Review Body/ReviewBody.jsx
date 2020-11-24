@@ -3,15 +3,15 @@ import ReviewList from './ReviewList';
 import ReviewButtons from './ReviewButtons';
 import SortBy from './SortBy';
 import '../../../../styles/R&R/ReviewBody.scss';
-import { Hidden } from '@material-ui/core';
 
 const ReviewBody = ({ data, sortBy, metaData }) => {
   let totalReviewCount = 0;
 
   const [count, setCount] = useState(2);
+  const [moreReviews, setMoreReviews] = useState(null);
 
   useEffect(() => {
-    console.log('first mounted');
+    setMoreReviews(true);
   }, []);
 
   data.map(() => {
@@ -19,6 +19,7 @@ const ReviewBody = ({ data, sortBy, metaData }) => {
   });
 
   const addTwo = () => {
+    setMoreReviews(false);
     setCount(data.length);
   };
 
@@ -34,7 +35,7 @@ const ReviewBody = ({ data, sortBy, metaData }) => {
     <div>
       <SortBy totalCount={totalReviewCount} sortBy={sortBy} />
       {count > 2 ? scroll() : <ReviewList data={data} count={count} />}
-      <ReviewButtons metaData={metaData} data={data} click={addTwo} />
+      <ReviewButtons metaData={metaData} data={moreReviews} click={addTwo} />
     </div>
   );
 };
