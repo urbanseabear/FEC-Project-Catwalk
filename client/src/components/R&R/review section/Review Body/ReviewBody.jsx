@@ -7,7 +7,6 @@ import { Hidden } from '@material-ui/core';
 
 const ReviewBody = ({ data, sortBy, metaData }) => {
   let totalReviewCount = 0;
-  let newCount = 2;
 
   const [count, setCount] = useState(2);
 
@@ -20,8 +19,7 @@ const ReviewBody = ({ data, sortBy, metaData }) => {
   });
 
   const addTwo = () => {
-    newCount += 2;
-    setCount(newCount);
+    setCount(data.length);
   };
 
   const scroll = () => {
