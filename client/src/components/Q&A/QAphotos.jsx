@@ -7,7 +7,7 @@ const QAphotos = (props) => {
     const [bigPic, showBigPic] = useState(false);
     const body = (
         <div className="photo-modal" >
-        <img  src={props.photo} onClick={() => showBigPic(!bigPic)} alt={'photo'}></img>
+        <img style={{maxWidth: "100%"}} src={props.photo} onClick={() => showBigPic(!bigPic)} alt={'photo'}></img>
         </div>
     )
     return (
