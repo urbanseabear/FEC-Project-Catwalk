@@ -3,9 +3,9 @@
 }
 
 #qa-list {
-    grid-column-start: span 4;
-     max-height: 50vh; 
-     overflow-y: scroll;
+  grid-column-start: span 4;
+  max-height: 50vh;
+  overflow-y: scroll;
 }
 
 input:invalid {
@@ -54,10 +54,11 @@ input:invalid {
 
 .photo-modal {
   position: fixed;
-  top: 10%;
-  left: 10%;
-  max-width: 800px;
-  max-height: 600px;
+  outline: none;
+  top: 25%;
+  left: 25%;
+  width: 50vw;
+  height: 90vh;
 }
 
 .photo-thumb {
@@ -86,77 +87,78 @@ input:invalid {
 }
 
 .load-questions {
-        border-width: 2px;
-        border-color: black;
-        background: none;
-        font-weight: bold;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-size: 20px;
-        padding: 20px 10px 20px 10px;
-        cursor: pointer;
+  border-width: 2px;
+  border-color: black;
+  background: none;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  padding: 20px 10px 20px 10px;
+  cursor: pointer;
 }
 
 .helpful-button {
-    text-decoration: underline;
-        border: none;
-        cursor: pointer;
-        background: none;
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
+  background: none;
 }
 
 .submit-modal {
-        background-color: whitesmoke;
-        height: 400px;
-        width: 600px;
-        position: fixed;
-        top: 20%;
-        left: 20%;
+  background-color: whitesmoke;
+  height: 400px;
+  width: 600px;
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  outline-color: red;
 }
 
 .add-modal {
-    background-color: white;
-    width: 50%;
-    position: fixed;
-    outline: none;
-    top: 10%;
-    left: 25%; 
+  background-color: white;
+  width: 50%;
+  position: fixed;
+  outline: none;
+  top: 10%;
+  left: 25%;
 }
 
 .form-input {
-    border: hidden;
-    width: 60%;
-    margin-bottom: 5px;
-    font-size: 20px;
-    outline: none;
+  border: hidden;
+  width: 60%;
+  margin-bottom: 5px;
+  font-size: 20px;
+  outline: none;
 }
 
 .form-label {
-    margin-left: 4%;
-    font-size: 20px;
-    font-weight: bold;
+  margin-left: 4%;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .form-input-area {
-    margin-left: 4%;
-    font-size: 20px;
-    width: 90%;
-    height: 100px;
+  margin-left: 4%;
+  font-size: 20px;
+  width: 90%;
+  height: 100px;
 }
 
 .empty-field {
-    margin-top: 2%;
-     font-size: 20px;
-      color: red;
+  margin-top: 2%;
+  font-size: 20px;
+  color: red;
 }
 
 .verify-button {
-    margin-top: 20px;
-        margin-left: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        font-size: 20px;
-        border: none;
-        outline: none;
-        background: none;
-        padding-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background: none;
+  padding-bottom: 20px;
 }
