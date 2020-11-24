@@ -6,7 +6,7 @@ import ReviewRatings from './R&R/ReviewRatings';
 import Grid from '@material-ui/core/Grid';
 
 const App = () => {
-  const [productId, setProductId] = useState(14);
+  const [productId, setProductId] = useState(41);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(100);
 
