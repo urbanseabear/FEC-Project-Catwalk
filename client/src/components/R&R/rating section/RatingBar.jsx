@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Badge from '@material-ui/core/Badge';
 import '../../../styles/R&R/RatingBar.scss';
 
-const RatingBar = ({ starNum, count }) => {
-  const [hover, setHover] = useState(null);
+const RatingBar = ({ starNum, count, click, filterOn }) => {
+  const [clicked, setClicked] = useState(false);
+  const [filter, setFilter] = useState(filterOn);
 
-  const handleMouseEnter = () => {
-    setHover(true);
-  };
+  useEffect(() => {
+    filter ? click('') : click(starNum);
+    setFilter(!filter);
+  }, [filterOn]);
 
-  const handleMouseLeave = () => {
-    setHover(false);
+  const filtered = () => {
+    if (clicked) {
+      count ? click('') : null;
+      setClicked(!clicked);
+    } else {
+      count ? click(starNum) : null;
+      setClicked(!clicked);
+    }
   };
 
   const percentage = (count * 100) / 10;
@@ -26,16 +34,12 @@ const RatingBar = ({ starNum, count }) => {
       <div className='rating-bar-wrapper'>
         <p className='rating-bar-star-number'>{starNum}</p>
         <p style={{ marginTop: '-1.1%', paddingRight: '15px' }}>Stars</p>
-        <div
-          className='empty-bar'
-          style={{
-            WebkitBoxShadow: `${
-              hover && count ? '3px 3px 4px 3px #ccc' : 'none'
-            }`,
-          }}
-          onMouseEnter={() => handleMouseEnter}
-          onMouseLeave={() => handleMouseLeave}>
-          <div className='filler-bar' style={{ width: `${percentage}%` }}>
+        <div className='empty-bar' onClick={() => filtered()}>
+          <div
+            className='filler-bar'
+            style={{
+              width: `${percentage}%`,
+            }}>
             {count ? hasReviews : ''}
           </div>
         </div>
