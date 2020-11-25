@@ -8,6 +8,7 @@ const ReviewRatings = ({ productId, page, count }) => {
   const [data, setData] = useState([]);
   const [metaData, setmetaData] = useState([]);
   const [sortBy, setsortBy] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     updateData();
@@ -16,7 +17,15 @@ const ReviewRatings = ({ productId, page, count }) => {
 
   useEffect(() => {
     updateData();
+    filterData();
   }, [sortBy]);
+
+  const filterData = (rating) => {
+    const filterArray = data.filter((item) => {
+      return item.rating === rating;
+    });
+    setFilteredData(filterArray);
+  };
 
   const updateData = () => {
     axios
@@ -51,10 +60,19 @@ const ReviewRatings = ({ productId, page, count }) => {
     <Grid style={{ marginTop: '10px' }} container spacing={6}>
       <Grid item xs={3}>
         <p style={{ marginTop: '-15px' }}>RATINGS & REVIEWS</p>
-        <ReviewSummary data={data} metaData={metaData} />
+        <ReviewSummary
+          data={data}
+          metaData={metaData}
+          filterOnClick={filterData}
+        />
       </Grid>
       <Grid item xs={9}>
-        <ReviewBody data={data} sortBy={sortByType} metaData={metaData} />
+        <ReviewBody
+          data={data}
+          sortBy={sortByType}
+          metaData={metaData}
+          filteredData={filteredData}
+        />
       </Grid>
     </Grid>
   );
