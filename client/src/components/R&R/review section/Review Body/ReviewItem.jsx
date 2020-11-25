@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StarRating from '../../rating section/StarRating';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CheckIcon from '@material-ui/icons/Check';
 import { maxCharLength } from '../../utils/helper.js';
+import Photos from '../../../Q&A/QAphotos';
+import Helpful from '../../../shared/Helpful';
+import Button from '@material-ui/core/Button';
 import '../../../../styles/R&R/ReviewItem.scss';
 const moment = require('moment');
-import Photos from '../../../Q&A/QAphotos';
 
 const ReviewItem = ({ data }) => {
   const {
+    review_id,
     body,
     date,
     helpfulness,
@@ -17,22 +20,48 @@ const ReviewItem = ({ data }) => {
     response,
     reviewer_name,
     summary,
+    email,
   } = data;
+
+  const [showMore, setShowMore] = useState(false);
 
   const photo = data.photos.map((el) => {
     return (
       <div className='review-photo'>
-        <Photos key={el.id} photo={el.url} />
+        <Photos key={data.review_id} photo={el.url} />
       </div>
     );
   });
+
+  let moreThan250 = () => {
+    return (
+      <div>
+        <p className='item-body'>{body.slice(0, 250)}...</p>
+        <Button variant='contained' onClick={() => setShowMore(true)}>
+          Show more
+        </Button>
+      </div>
+    );
+  };
+
+  let lessThan250 = () => {
+    return (
+      <div>
+        <p className='item-body'>{body}</p>
+      </div>
+    );
+  };
 
   const recommended = recommend !== 0;
 
   return (
     <div className='item-wrapper'>
       <span className='user-date'>
-        <CheckCircleIcon style={{ fontSize: '13px', paddingRight: '4px' }} />
+        {email ? (
+          <CheckCircleIcon style={{ fontSize: '13px', paddingRight: '4px' }} />
+        ) : (
+          ''
+        )}
         {reviewer_name} | {moment(date).format('MMMM Do YYYY')}
       </span>
 
@@ -40,7 +69,11 @@ const ReviewItem = ({ data }) => {
 
       <h1 className='review-summary'>{maxCharLength(summary, 60)}</h1>
 
-      <p className='item-body'>{body}</p>
+      {body.length > 250
+        ? showMore
+          ? lessThan250()
+          : moreThan250()
+        : lessThan250()}
 
       {photo ? photo : ''}
 
@@ -69,7 +102,7 @@ const ReviewItem = ({ data }) => {
       )}
 
       <div style={{ marginTop: '10px' }}>
-        <span>Helpful? Yes ({helpfulness}) | Report</span>
+        <Helpful a_id={review_id} helped={helpfulness} reportOrAdd='Report' />
       </div>
       <div className='item-border'></div>
     </div>

@@ -20,12 +20,13 @@ export default class RecommendRadioBtn extends Component {
     return (
       <div>
         <h3>Would you recommend this product?</h3>
-        <form>
+        <form id='review-form'>
           <div className='radio'>
             <label>
               <input
-                onClick={(e) => this.checked(e.target.value)}
+                onChange={(e) => this.checked(e.target.value)}
                 type='radio'
+                required
                 value='yes'
                 name='recommended'
                 checked={this.state.yes}
@@ -36,7 +37,8 @@ export default class RecommendRadioBtn extends Component {
           <div className='radio'>
             <label>
               <input
-                onClick={(e) => this.checked(e.target.value)}
+                onChange={(e) => this.checked(e.target.value)}
+                required
                 type='radio'
                 value='no'
                 name='recommended'
