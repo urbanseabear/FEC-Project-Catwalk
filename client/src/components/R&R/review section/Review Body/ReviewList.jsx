@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReviewItem from './ReviewItem';
 
 const ReviewList = ({ data, count }) => {
+  // slicedData will either be all of the reviews or some of them
   let slicedData = data.slice(0, count);
 
   const item = slicedData.map((item) => {

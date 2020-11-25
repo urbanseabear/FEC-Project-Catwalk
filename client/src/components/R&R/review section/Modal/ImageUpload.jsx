@@ -3,6 +3,9 @@ import Button from '@material-ui/core/Button';
 import Badge from '@material-ui/core/Badge';
 import ImageUploading from 'react-images-uploading';
 
+// this component allows user to add and remove images for submission
+// see material ui & react-images-uploading docs
+
 const ImageUpload = () => {
   const [images, setImages] = useState([]);
   const maxNumber = 5;

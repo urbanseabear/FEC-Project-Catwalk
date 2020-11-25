@@ -10,16 +10,19 @@ const ReviewRatings = ({ productId, page, count }) => {
   const [sortBy, setsortBy] = useState('');
   const [filteredData, setFilteredData] = useState([]);
 
+  // make GET req  when productID changes to update Data & MetaData
   useEffect(() => {
     updateData();
     updateMetaData();
   }, [productId]);
 
+  // make GET req when user selects sort by option to update Data, then filter that updated data
   useEffect(() => {
     updateData();
     filterData();
   }, [sortBy]);
 
+  // this filters the review by star rating, if user clicks on 5, then only reviews rated 5 will be shown
   const filterData = (rating) => {
     const filterArray = data.filter((item) => {
       return item.rating === rating;
@@ -27,6 +30,7 @@ const ReviewRatings = ({ productId, page, count }) => {
     setFilteredData(filterArray);
   };
 
+  // GET req
   const updateData = () => {
     axios
       .get('http://3.21.164.220/reviews/', {
@@ -41,6 +45,7 @@ const ReviewRatings = ({ productId, page, count }) => {
       .catch((err) => console.log(err));
   };
 
+  // GET req
   const updateMetaData = () => {
     axios
       .get('http://3.21.164.220/reviews/meta', {
@@ -52,6 +57,7 @@ const ReviewRatings = ({ productId, page, count }) => {
       .catch((err) => console.log(err));
   };
 
+  // invoked when a sort by option is selected
   const sortByType = (type) => {
     setsortBy(type);
   };

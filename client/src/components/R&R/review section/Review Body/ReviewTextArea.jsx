@@ -2,6 +2,8 @@ import React from 'react';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import '../../../../styles/R&R/ReviewTextArea.scss';
 
+// this is the text areas for the modal review submission
+
 const ReviewTextArea = () => {
   return (
     <div style={{ color: '#eeeeee' }}>

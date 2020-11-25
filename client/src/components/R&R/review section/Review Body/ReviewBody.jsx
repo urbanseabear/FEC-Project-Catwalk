@@ -10,6 +10,8 @@ const ReviewBody = ({ data, sortBy, metaData, filteredData }) => {
   const [count, setCount] = useState(2);
   const [moreReviews, setMoreReviews] = useState(true);
 
+  // if 2 or less reviews for given product, set moreReviews to false/
+  // if more than 2, allow scroll and show more button to appear
   useEffect(() => {
     data.length <= 2 ? setMoreReviews(false) : setMoreReviews(true);
   }, [data]);
@@ -18,11 +20,13 @@ const ReviewBody = ({ data, sortBy, metaData, filteredData }) => {
     totalReviewCount += 1;
   });
 
+  // clicking show more button lists rest of reviews
   const addTwo = () => {
     setMoreReviews(false);
     setCount(data.length);
   };
 
+  // makes review list scrollable if more than 2 reviews
   const scroll = () => {
     return (
       <div className='scroll-body'>

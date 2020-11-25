@@ -2,6 +2,11 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import '../../../styles/R&R/CharRating.scss';
 
+// this is the characteristic bar
+// there are 3 seperate bars in-line
+// the triangle goes left or right depending on the value from metaData
+// the formula for 'value' is in charRatingList
+
 const CharRating = ({
   labelTitle,
   leftLabel,

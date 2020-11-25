@@ -25,6 +25,7 @@ const ReviewItem = ({ data }) => {
 
   const [showMore, setShowMore] = useState(false);
 
+  // map through photos array and add <Photo /> component (see QA module) in the review
   const photo = data.photos.map((el) => {
     return (
       <div className='review-photo'>
@@ -33,6 +34,7 @@ const ReviewItem = ({ data }) => {
     );
   });
 
+  // show only 250 characters max, if body is longer than 250, 'show more' button will appear and clicking it will show the rest of the body
   let moreThan250 = () => {
     return (
       <div>
@@ -44,6 +46,7 @@ const ReviewItem = ({ data }) => {
     );
   };
 
+  // this just shows the entire review body if less than 250 characters
   let lessThan250 = () => {
     return (
       <div>
@@ -52,6 +55,7 @@ const ReviewItem = ({ data }) => {
     );
   };
 
+  // if this is false, then recommended wont show
   const recommended = recommend !== 0;
 
   return (

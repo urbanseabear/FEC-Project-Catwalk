@@ -2,25 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Badge from '@material-ui/core/Badge';
 import '../../../styles/R&R/RatingBar.scss';
 
-const RatingBar = ({ starNum, count, click, filterOn }) => {
+const RatingBar = ({ starNum, count, filterData, filterOn, checkFilter }) => {
   const [clicked, setClicked] = useState(false);
   const [filter, setFilter] = useState(filterOn);
 
+  // updates filterIsOn variable in ReviewSummary if user clicks a star and that product HAS reviews for that rating
+  // if a star is clicked that has 0 ratings, then filterIsOn remains false OR it's current state
   useEffect(() => {
-    filter ? click('') : click(starNum);
+    clicked && count ? checkFilter(true) : checkFilter(false);
+  }, [clicked]);
+
+  // checks if filterOn (boolean) changes state
+  // filterData refers to 'filterData' in ReviewRatings. If filterOn is true, then 'filterData()' is called with an empty string, otherwise filterData is passed the current star value
+  // in ReviewRatings, filterData() is passed starNum, which filters only the reviews with that star
+  useEffect(() => {
+    filter ? filterData('') : filterData(starNum);
     setFilter(!filter);
   }, [filterOn]);
 
+  // this checks if a star was clicked, if it was & that star has more than 0 ratings, than filter that star
   const filtered = () => {
     if (clicked) {
-      count ? click('') : null;
+      !count ? null : filterData('');
       setClicked(!clicked);
     } else {
-      count ? click(starNum) : null;
+      count ? filterData(starNum) : null;
       setClicked(!clicked);
     }
   };
 
+  // this fills in the progress bar green with the total % of star ratings
   const percentage = (count * 100) / 10;
 
   const hasReviews = (

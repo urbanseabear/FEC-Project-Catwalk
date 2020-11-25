@@ -2,6 +2,8 @@ import React from 'react';
 import '../../../../styles/R&R/SortBy.scss';
 
 const SortBy = ({ totalCount, sortBy }) => {
+  // sortBy is passed down from parent component, handleChange() will also be called in ReviewRatings [sortByType]
+  // this makes a GET request with the type to be sorted by
   const handleChange = (option) => {
     sortBy(option);
   };

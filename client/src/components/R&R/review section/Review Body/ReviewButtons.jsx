@@ -19,6 +19,7 @@ const ReviewButtons = ({ metaData, click, data }) => {
     );
   };
 
+  // <AnimatedModal/> is 'ADD REVIEW' button, once clicked the modal appears
   return (
     <div style={{ display: 'flex', marginTop: '10px' }}>
       {data ? moreReviews() : ''}

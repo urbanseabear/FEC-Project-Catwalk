@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 
+// labels for star rating
 const labels = {
   1: 'Poor',
   2: 'Fair',
