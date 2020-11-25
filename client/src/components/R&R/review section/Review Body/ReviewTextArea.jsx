@@ -1,16 +1,20 @@
 import React from 'react';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import '../../../../styles/R&R/ReviewTextArea.scss';
 
 const ReviewTextArea = () => {
   return (
-    <div>
-      <h2>Write Your Review</h2>
-      <span>About the 'product name'</span>
+    <div style={{ color: '#eeeeee' }}>
+      <div>
+        <h2>Write Your Review</h2>
+        <span>About the 'product name'</span>
+      </div>
       <form id='review-form'>
         <div style={{ marginTop: '20px' }}>
           <div>
             <div>Review Title:</div>
             <TextareaAutosize
+              className='text-area'
               minLength='1'
               maxLength='60'
               required
@@ -30,6 +34,7 @@ const ReviewTextArea = () => {
           <div>
             <div>Review Body</div>
             <TextareaAutosize
+              className='text-area'
               minLength='50'
               maxLength='1000'
               required
@@ -49,6 +54,7 @@ const ReviewTextArea = () => {
           <div style={{ marginTop: '20px' }}>
             <div>Nickname:</div>
             <TextareaAutosize
+              className='text-area'
               minLength='1'
               required
               maxLength='60'
@@ -64,13 +70,14 @@ const ReviewTextArea = () => {
                 marginTop: '10px',
               }}
             />
-            <div style={{ fontSize: '10px', fontStyle: 'italic' }}>
-              For privacy reasons, do not use your full name or email address
+            <div style={{ fontSize: '10px' }}>
+              (For privacy reasons, do not use your full name or email address)
             </div>
           </div>
           <div style={{ marginTop: '20px' }}>
             <div>Email:</div>
             <TextareaAutosize
+              className='text-area'
               minLength='1'
               inputMode='email'
               required
@@ -87,8 +94,8 @@ const ReviewTextArea = () => {
                 marginTop: '10px',
               }}
             />
-            <div style={{ fontSize: '10px', fontStyle: 'italic' }}>
-              For authentication reasons, you will not be emailed
+            <div style={{ fontSize: '10px' }}>
+              (For authentication reasons, you will not be emailed)
             </div>
           </div>
         </div>

@@ -4,15 +4,15 @@ import ReviewButtons from './ReviewButtons';
 import SortBy from './SortBy';
 import '../../../../styles/R&R/ReviewBody.scss';
 
-const ReviewBody = ({ data, sortBy, metaData }) => {
+const ReviewBody = ({ data, sortBy, metaData, filteredData }) => {
   let totalReviewCount = 0;
 
   const [count, setCount] = useState(2);
-  const [moreReviews, setMoreReviews] = useState(null);
+  const [moreReviews, setMoreReviews] = useState(true);
 
   useEffect(() => {
-    setMoreReviews(true);
-  }, []);
+    data.length <= 2 ? setMoreReviews(false) : setMoreReviews(true);
+  }, [data]);
 
   data.map(() => {
     totalReviewCount += 1;
@@ -34,7 +34,14 @@ const ReviewBody = ({ data, sortBy, metaData }) => {
   return (
     <div>
       <SortBy totalCount={totalReviewCount} sortBy={sortBy} />
-      {count > 2 ? scroll() : <ReviewList data={data} count={count} />}
+      {count > 2 ? (
+        scroll()
+      ) : (
+        <ReviewList
+          data={filteredData.length > 0 ? filteredData : data}
+          count={count}
+        />
+      )}
       <ReviewButtons metaData={metaData} data={moreReviews} click={addTwo} />
     </div>
   );

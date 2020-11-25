@@ -27,6 +27,7 @@ const CharRating = ({
                   fontSize: '18px',
                   marginLeft: `${value}%`,
                   lineHeight: '10px',
+                  opacity: '50%',
                 }}>
                 &#x25BC;
               </span>

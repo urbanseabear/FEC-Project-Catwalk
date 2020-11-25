@@ -3,12 +3,14 @@ import Button from '@material-ui/core/Button';
 import AnimatedModal from '../Modal/Modal';
 
 const ReviewButtons = ({ metaData, click, data }) => {
-  console.log(data);
   let moreReviews = () => {
     return (
       <div style={{ paddingRight: '30px' }}>
         <Button
-          style={{ fontSize: '25px' }}
+          color='primary'
+          style={{
+            fontSize: '20px',
+          }}
           variant='contained'
           onClick={() => click()}>
           MORE REVIEWS

@@ -28,7 +28,7 @@ const ReviewItem = ({ data }) => {
   const photo = data.photos.map((el) => {
     return (
       <div className='review-photo'>
-        <Photos key={data.review_id} photo={el.url} />
+        <Photos key={1} photo={el.url} />
       </div>
     );
   });
@@ -93,10 +93,10 @@ const ReviewItem = ({ data }) => {
       ) : (
         <div className='item-response'>
           <div style={{ margin: '10px' }}>
-            <span>Response from seller:</span>
+            <span style={{ fontSize: '17px' }}>Response from seller:</span>
           </div>
           <div style={{ margin: '10px' }}>
-            <span>{response}</span>
+            <span style={{ fontSize: '15px' }}>{response}</span>
           </div>
         </div>
       )}

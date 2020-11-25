@@ -18,8 +18,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #eeeeee',
+    backgroundColor: 'rgb(45 52 66)',
+    color: '#fff',
+    border: '2px solid rgb(45 52 66)',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     outline: 'none',
@@ -43,7 +44,10 @@ export default function AnimatedModal({ metaData }) {
   return (
     <div>
       <Button
-        style={{ fontSize: '25px' }}
+        color='primary'
+        style={{
+          fontSize: '20px',
+        }}
         variant='contained'
         onClick={() => handleOpen()}>
         ADD A REVIEW +
@@ -70,10 +74,10 @@ export default function AnimatedModal({ metaData }) {
                 </div>
               </Grid>
               <Grid item xs={6}>
-                <h2>Overall Rating *</h2>
+                <h2 style={{ color: '#eeeeee' }}>Overall Rating *</h2>
                 <ModalStarRating />
                 <div style={{ marginTop: '30px' }}>
-                  <h2>Characteristics *</h2>
+                  <h2 style={{ color: '#eeeeee' }}>Characteristics *</h2>
                   <ModalRadioList metaData={metaData} />
                 </div>
                 <div style={{ marginTop: '130px' }}>
@@ -81,6 +85,7 @@ export default function AnimatedModal({ metaData }) {
                   <Button
                     form='review-form'
                     type='submit'
+                    color='primary'
                     style={{
                       fontSize: '20px',
                       marginTop: '-45px',

@@ -19,7 +19,7 @@ export default class RecommendRadioBtn extends Component {
   render() {
     return (
       <div>
-        <h3>Would you recommend this product?</h3>
+        <h3 style={{ color: '#eeeeee' }}>Would you recommend this product?</h3>
         <form id='review-form'>
           <div className='radio'>
             <label>

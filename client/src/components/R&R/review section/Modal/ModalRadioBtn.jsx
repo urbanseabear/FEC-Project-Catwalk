@@ -10,7 +10,9 @@ export default function CustomizedRadios({
 }) {
   return (
     <div>
-      <h3 style={{ textDecorationLine: 'underline' }}>{type}:</h3>
+      <h3 style={{ textDecorationLine: 'underline', color: '#eeeeee' }}>
+        {type}:
+      </h3>
       <form id='review-form' style={{ display: 'flex', fontSize: '15px' }}>
         <div className='radio'>
           <label>
