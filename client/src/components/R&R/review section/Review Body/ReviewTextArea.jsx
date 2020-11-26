@@ -9,9 +9,11 @@ const ReviewTextArea = () => {
     <div style={{ color: '#eeeeee' }}>
       <div>
         <h2>Write Your Review</h2>
-        <span>About the 'product name'</span>
+        <span style={{ color: 'grey' }}>
+          About the <span style={{ color: '#ffb400' }}>product name</span>
+        </span>
       </div>
-      <form id='review-form'>
+      <form id='review-form' style={{ color: 'grey' }}>
         <div style={{ marginTop: '20px' }}>
           <div>
             <div>Review Title:</div>
@@ -72,7 +74,7 @@ const ReviewTextArea = () => {
                 marginTop: '10px',
               }}
             />
-            <div style={{ fontSize: '10px' }}>
+            <div style={{ fontSize: '10px', color: 'grey' }}>
               (For privacy reasons, do not use your full name or email address)
             </div>
           </div>
@@ -96,7 +98,7 @@ const ReviewTextArea = () => {
                 marginTop: '10px',
               }}
             />
-            <div style={{ fontSize: '10px' }}>
+            <div style={{ fontSize: '10px', color: 'grey' }}>
               (For authentication reasons, you will not be emailed)
             </div>
           </div>

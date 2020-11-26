@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: 'rgb(45 52 66)',
+    background: '#16222a',
     color: '#fff',
     border: '2px solid rgb(45 52 66)',
     boxShadow: theme.shadows[5],
@@ -74,10 +74,18 @@ export default function AnimatedModal({ metaData }) {
                 </div>
               </Grid>
               <Grid item xs={6}>
-                <h2 style={{ color: '#eeeeee' }}>Overall Rating *</h2>
+                <h2 style={{ color: '#eeeeee' }}>
+                  Overall Rating{' '}
+                  <span style={{ fontSize: '25px', color: '#f50057' }}>*</span>
+                </h2>
                 <ModalStarRating />
                 <div style={{ marginTop: '30px' }}>
-                  <h2 style={{ color: '#eeeeee' }}>Characteristics *</h2>
+                  <h2 style={{ color: '#eeeeee' }}>
+                    Characteristics{' '}
+                    <span style={{ fontSize: '25px', color: '#f50057' }}>
+                      *
+                    </span>
+                  </h2>
                   <ModalRadioList metaData={metaData} />
                 </div>
                 <div style={{ marginTop: '130px' }}>

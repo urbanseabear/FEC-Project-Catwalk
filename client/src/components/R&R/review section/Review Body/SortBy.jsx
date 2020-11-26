@@ -1,15 +1,15 @@
 import React from 'react';
 import '../../../../styles/R&R/SortBy.scss';
 
-const SortBy = ({ totalCount, sortBy }) => {
+const SortBy = ({ totalReviewCount, sortByType }) => {
   // sortBy is passed down from parent component, handleChange() will also be called in ReviewRatings [sortByType]
   // this makes a GET request with the type to be sorted by
   const handleChange = (option) => {
-    sortBy(option);
+    sortByType(option);
   };
   return (
     <div className='dropdown-wrapper'>
-      <h2>{totalCount} reviews, sorted by</h2>
+      <h2>{totalReviewCount} reviews, sorted by</h2>
       <select
         className='sort-by-dropdown'
         onChange={(e) => handleChange(e.target.value)}>

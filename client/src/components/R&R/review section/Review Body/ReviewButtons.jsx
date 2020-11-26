@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import AnimatedModal from '../Modal/Modal';
 
-const ReviewButtons = ({ metaData, click, data }) => {
+const ReviewButtons = ({ metaData, addTwo, data }) => {
   let moreReviews = () => {
     return (
       <div style={{ paddingRight: '30px' }}>
@@ -12,7 +12,7 @@ const ReviewButtons = ({ metaData, click, data }) => {
             fontSize: '20px',
           }}
           variant='contained'
-          onClick={() => click()}>
+          onClick={() => addTwo()}>
           MORE REVIEWS
         </Button>
       </div>

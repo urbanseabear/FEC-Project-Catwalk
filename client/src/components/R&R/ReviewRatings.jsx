@@ -69,13 +69,13 @@ const ReviewRatings = ({ productId, page, count }) => {
         <ReviewSummary
           data={data}
           metaData={metaData}
-          filterOnClick={filterData}
+          filterData={filterData}
         />
       </Grid>
       <Grid item xs={9}>
         <ReviewBody
           data={data}
-          sortBy={sortByType}
+          sortByType={sortByType}
           metaData={metaData}
           filteredData={filteredData}
         />

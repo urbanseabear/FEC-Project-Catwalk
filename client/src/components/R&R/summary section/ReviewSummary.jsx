@@ -5,7 +5,7 @@ import { ratingBar, recommended } from '../utils/helper.js';
 import CharRatingList from './CharRatingList';
 import Button from '@material-ui/core/Button';
 
-const ReviewSummary = ({ data, metaData, filterOnClick }) => {
+const ReviewSummary = ({ data, metaData, filterData }) => {
   let ratingCount = 0;
   let recommendCount = 0;
   let filterIsOn = false;
@@ -55,37 +55,37 @@ const ReviewSummary = ({ data, metaData, filterOnClick }) => {
       <RatingBar
         starNum={5}
         count={count[5]}
-        filterData={filterOnClick}
+        filterData={filterData}
         filterOn={filterOn}
-        checkFilter={checkForFilter}
+        checkForFilter={checkForFilter}
       />
       <RatingBar
         starNum={4}
         count={count[4]}
-        filterData={filterOnClick}
+        filterData={filterData}
         filterOn={filterOn}
-        checkFilter={checkForFilter}
+        checkForFilter={checkForFilter}
       />
       <RatingBar
         starNum={3}
         count={count[3]}
-        filterData={filterOnClick}
+        filterData={filterData}
         filterOn={filterOn}
-        checkFilter={checkForFilter}
+        checkForFilter={checkForFilter}
       />
       <RatingBar
         starNum={2}
         count={count[2]}
-        filterData={filterOnClick}
+        filterData={filterData}
         filterOn={filterOn}
-        checkFilter={checkForFilter}
+        checkForFilter={checkForFilter}
       />
       <RatingBar
         starNum={1}
         count={count[1]}
-        filterData={filterOnClick}
+        filterData={filterData}
         filterOn={filterOn}
-        checkFilter={checkForFilter}
+        checkForFilter={checkForFilter}
       />
       <p>{recommend}% of reviews recommend this product</p>
       <Button

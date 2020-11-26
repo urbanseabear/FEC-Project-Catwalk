@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Badge from '@material-ui/core/Badge';
 import '../../../styles/R&R/RatingBar.scss';
 
-const RatingBar = ({ starNum, count, filterData, filterOn, checkFilter }) => {
+const RatingBar = ({
+  starNum,
+  count,
+  filterData,
+  filterOn,
+  checkForFilter,
+}) => {
   const [clicked, setClicked] = useState(false);
   const [filter, setFilter] = useState(filterOn);
 
   // updates filterIsOn variable in ReviewSummary if user clicks a star and that product HAS reviews for that rating
   // if a star is clicked that has 0 ratings, then filterIsOn remains false OR it's current state
   useEffect(() => {
-    clicked && count ? checkFilter(true) : checkFilter(false);
+    clicked && count ? checkForFilter(true) : checkForFilter(false);
   }, [clicked]);
 
   // checks if filterOn (boolean) changes state

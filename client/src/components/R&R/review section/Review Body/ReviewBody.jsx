@@ -4,7 +4,7 @@ import ReviewButtons from './ReviewButtons';
 import SortBy from './SortBy';
 import '../../../../styles/R&R/ReviewBody.scss';
 
-const ReviewBody = ({ data, sortBy, metaData, filteredData }) => {
+const ReviewBody = ({ data, sortByType, metaData, filteredData }) => {
   let totalReviewCount = 0;
 
   const [count, setCount] = useState(2);
@@ -37,7 +37,7 @@ const ReviewBody = ({ data, sortBy, metaData, filteredData }) => {
 
   return (
     <div>
-      <SortBy totalCount={totalReviewCount} sortBy={sortBy} />
+      <SortBy totalReviewCount={totalReviewCount} sortByType={sortByType} />
       {count > 2 ? (
         scroll()
       ) : (
@@ -46,7 +46,7 @@ const ReviewBody = ({ data, sortBy, metaData, filteredData }) => {
           count={count}
         />
       )}
-      <ReviewButtons metaData={metaData} data={moreReviews} click={addTwo} />
+      <ReviewButtons metaData={metaData} data={moreReviews} addTwo={addTwo} />
     </div>
   );
 };
