@@ -1,22 +1,25 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import AnimatedModal from '../Modal/Modal';
 
-const ReviewButtons = ({ metaData, click, data }) => {
-  console.log(data);
+const ReviewButtons = ({ metaData, addTwo, data }) => {
   let moreReviews = () => {
     return (
       <div style={{ paddingRight: '30px' }}>
         <Button
-          style={{ fontSize: '25px' }}
+          color='primary'
+          style={{
+            fontSize: '20px',
+          }}
           variant='contained'
-          onClick={() => click()}>
+          onClick={() => addTwo()}>
           MORE REVIEWS
         </Button>
       </div>
     );
   };
 
+  // <AnimatedModal/> is 'ADD REVIEW' button, once clicked the modal appears
   return (
     <div style={{ display: 'flex', marginTop: '10px' }}>
       {data ? moreReviews() : ''}

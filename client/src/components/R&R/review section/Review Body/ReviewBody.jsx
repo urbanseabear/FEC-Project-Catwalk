@@ -4,25 +4,29 @@ import ReviewButtons from './ReviewButtons';
 import SortBy from './SortBy';
 import '../../../../styles/R&R/ReviewBody.scss';
 
-const ReviewBody = ({ data, sortBy, metaData }) => {
+const ReviewBody = ({ data, sortByType, metaData, filteredData }) => {
   let totalReviewCount = 0;
 
   const [count, setCount] = useState(2);
-  const [moreReviews, setMoreReviews] = useState(null);
+  const [moreReviews, setMoreReviews] = useState(true);
 
+  // if 2 or less reviews for given product, set moreReviews to false/
+  // if more than 2, allow scroll and show more button to appear
   useEffect(() => {
-    setMoreReviews(true);
-  }, []);
+    data.length <= 2 ? setMoreReviews(false) : setMoreReviews(true);
+  }, [data]);
 
   data.map(() => {
     totalReviewCount += 1;
   });
 
+  // clicking show more button lists rest of reviews
   const addTwo = () => {
     setMoreReviews(false);
     setCount(data.length);
   };
 
+  // makes review list scrollable if more than 2 reviews
   const scroll = () => {
     return (
       <div className='scroll-body'>
@@ -33,9 +37,16 @@ const ReviewBody = ({ data, sortBy, metaData }) => {
 
   return (
     <div>
-      <SortBy totalCount={totalReviewCount} sortBy={sortBy} />
-      {count > 2 ? scroll() : <ReviewList data={data} count={count} />}
-      <ReviewButtons metaData={metaData} data={moreReviews} click={addTwo} />
+      <SortBy totalReviewCount={totalReviewCount} sortByType={sortByType} />
+      {count > 2 ? (
+        scroll()
+      ) : (
+        <ReviewList
+          data={filteredData.length > 0 ? filteredData : data}
+          count={count}
+        />
+      )}
+      <ReviewButtons metaData={metaData} data={moreReviews} addTwo={addTwo} />
     </div>
   );
 };

@@ -10,8 +10,10 @@ export default function CustomizedRadios({
 }) {
   return (
     <div>
-      <h3 style={{ textDecorationLine: 'underline' }}>{type}:</h3>
-      <form id='review-form' style={{ display: 'flex', fontSize: '15px' }}>
+      <h3 style={{ color: '#ffb400' }}>{type}:</h3>
+      <form
+        id='review-form'
+        style={{ display: 'flex', fontSize: '15px', color: 'grey' }}>
         <div className='radio'>
           <label>
             <input type='radio' value='option1' name='char' required />

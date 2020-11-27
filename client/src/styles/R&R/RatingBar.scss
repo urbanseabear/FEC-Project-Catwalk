@@ -7,6 +7,7 @@
   background: #eeeeee;
   border-style: none;
   margin-top: -2px;
+  cursor: pointer;
 }
 
 .filler-bar {
@@ -25,4 +26,9 @@
   display: flex;
   margin-top: 10px;
   margin: 0 0 15;
+  transition: all 0.2s ease-in-out;
+}
+
+.rating-bar-wrapper:hover {
+  transform: scale(1.1);
 }
