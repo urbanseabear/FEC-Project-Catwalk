@@ -4,13 +4,14 @@ import Overview from './overview/overview.jsx';
 import QAmodule from './Q&A/QAmodule';
 import ReviewRatings from './R&R/ReviewRatings';
 import Grid from '@material-ui/core/Grid';
-import {Route, generatePath, useHistory, Switch} from 'react-router-dom';
+import {Route, generatePath, useHistory, Switch, useLocation} from 'react-router-dom';
 
 const App = () => {
   const [productId, setProductId] = useState(41);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(100);
   const hist = useHistory();
+  let location = useLocation();
 
   const onSearch = (productId) => {
     setProductId(productId);
@@ -21,6 +22,12 @@ const App = () => {
     const path = generatePath("/product/:id", {id: productId});
     hist.push(path);
   }
+
+  useEffect(() => {
+    let pid = location.pathname.substring(location.pathname.length - 1);
+    setProductId(pid);
+  });
+
   return (
     <Switch>
     <Route exact path="/">
