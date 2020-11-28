@@ -6,6 +6,7 @@ import qaData from './qa-sample-data';
 import QAlist from './QAlist';
 import AddModal from '../shared/AddModal';
 import axios from 'axios';
+import track, { useTracking } from 'react-tracking';
 
 class QAmodule extends React.Component {
   constructor(props) {
