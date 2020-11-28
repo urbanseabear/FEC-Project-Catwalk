@@ -22,6 +22,11 @@ const AddModal = (props) => {
     setUrl("");
   };
 
+  const removeUrl = (e) => {
+    e.preventDefault();
+    setPicArr(picArr.slice(0, picArr.length - 1));
+  }
+
   var body;
   if (props.type === "verify") {
     let eCheck = /.\.com|\.net|\.co.uk|\.co|\.fr|\.gov|\.edu|\.jp/;
@@ -148,7 +153,7 @@ const AddModal = (props) => {
           type="text"
           placeholder="Example: jackson11!"
         ></input>
-        <div style={{ marginLeft: "2%", marginBottom: "2%" }}>
+        <div className="disclaimers">
           For privacy reasons, do not use your full name or email address
         </div>
         <label className="form-label" htmlFor="email">
@@ -163,7 +168,7 @@ const AddModal = (props) => {
           pattern=".+.com|.+.net|.+.co.uk|.+.fr|.+.gov|.+.edu|.+.jp"
           placeholder="Example: meow@gmail.com"
         ></input>
-        <div style={{ marginLeft: "2%", marginBottom: "2%" }}>
+        <div className="disclaimers">
           For authentication reasons only, you will not be emailed
         </div>
         <label
@@ -181,12 +186,23 @@ const AddModal = (props) => {
           className="form-input"
           placeholder="example.com/photo.jpg"
         ></input>
+        <div></div>
         <button
+          className="picButton"
+          style={{marginLeft: "4%"}}
           hidden={!(props.name === "Add Answer")}
           disabled={picArr.length === 5 ? true : false}
           onClick={addUrl}
         >
-          add image
+          ADD IMAGE
+        </button>
+        <button
+          className="picButton"
+          hidden={!(props.name === "Add Answer")}
+          disabled={picArr.length === 0 ? true : false}
+          onClick={removeUrl}
+        >
+          REMOVE IMAGE
         </button>
         <div></div>
         <img
