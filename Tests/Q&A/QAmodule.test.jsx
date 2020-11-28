@@ -1,12 +1,13 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import QAmodule from '../../../client/src/components/Q&A/QAmodule';
+import { shallow } from 'enzyme';
+import QAmodule from '../../client/src/components/Q&A/QAmodule';
 
-test('StarRating value to be 1', () => {
-  const count = 1;
+test('QAmodule mounts with proper data', () => {
+  const productId = 5;
 
-  const Rating = mount(<StarRating star={count} />);
+  const qaModule = shallow(<QAmodule prodID={productId} />);
 
-  expect(count).toEqual(1);
-  Rating.unmount();
+  expect(qaModule.state().questions.product_id).toEqual("5");
+  expect(qaModule.find('div.qa-header').text()).toEqual('QUESTIONS & ANSWERS');
+  
 });

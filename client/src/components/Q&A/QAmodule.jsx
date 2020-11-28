@@ -64,7 +64,7 @@ class QAmodule extends React.Component {
     return (
       <div className="qa-container">
         <div className="qa-header">QUESTIONS & ANSWERS</div>
-        <QAsearch search={this.handleSearch} />
+        <QAsearch search={this.handleSearch} searchString={this.state.search}/>
         <QAlist
           submit={this.handleSubmission}
           answers={this.state.answers}
