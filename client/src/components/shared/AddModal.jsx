@@ -4,6 +4,8 @@ import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import "../Q&A/qaStyle.scss";
+import { useTracking } from 'react-tracking';
+import moment from 'moment';
 
 const AddModal = (props) => {
   const [open, setOpen] = useState(false);
@@ -12,6 +14,7 @@ const AddModal = (props) => {
   const [email, setEmail] = useState("");
   const [url, setUrl] = useState("");
   const [picArr, setPicArr] = useState([]);
+  const { trackEvent } = useTracking({ module: 'ADD_MODAL' });
 
   const addUrl = (e) => {
     e.preventDefault();
@@ -241,20 +244,28 @@ const AddModal = (props) => {
 
   var cName;
   var buttonText = "";
+  var trackType = "";
   if (props.bType === "1") {
     cName = "helpful-button";
     buttonText = "Add Answer";
+    trackType = "ADD_ANSWER";
   } else if (props.type === "verify") {
     cName = "verify-button";
     buttonText = "SUBMIT";
+    trackType = "SUBMIT";
   } else {
     cName = "load-questions";
     buttonText = `ADD A ${props.name.toUpperCase()} +`;
+    trackType = "ADD_QUESTION";
   }
-
+  
+  const modalClick = () => {
+    setOpen(!open);
+    trackEvent({time: moment().format(), type: trackType});
+  }
   return (
     <span>
-      <button className={cName} onClick={() => setOpen(!open)}>
+      <button className={cName} onClick={() => modalClick()}>
         {buttonText}
       </button>
       <Modal
