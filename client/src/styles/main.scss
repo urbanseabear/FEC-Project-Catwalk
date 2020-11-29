@@ -1,22 +1,117 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto:wght@300;400&display=swap');
 
 body {
+  width: 100%;
   display: flex;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
   color: #222;
 }
 
-.app-dark {
+.darkIcon {
+  margin-top: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+html {
   background-color: #222;
-  color: #fff;
-  transition: 1s ease-in-out;
+}
+
+.app-dark {
+  width: 100%;
+  background-color: #222;
+  color: #ccc;
+  transition: 0.5s ease-in-out;
+  .imageGalleryContainers {
+    background-color: #222 !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .item-response {
+    color: #ccc;
+    border-color: #686868;
+    background-color: #686868;
+    transition: 0.5s ease-in-out;
+  }
+  .helpful-button {
+    color: #ccc !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .empty-bar {
+    position: relative;
+    height: 15px;
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid#686868;
+    background: #686868;
+    border-style: none;
+    margin-top: -2px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.5s ease-in-out;
+  }
+
+  .sort-by-dropdown {
+    color: #ccc !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .photo-thumb {
+    box-shadow: 2px 2px 2px rgb(24, 24, 24);
+    vertical-align: middle;
+    margin: 20px 0px;
+    border-radius: 1px;
+    transition: 0.5s ease-in-out;
+  }
 }
 
 .app-light {
+  width: 100%;
   background-color: #fff;
   color: #222;
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
+  .imageGalleryContainers {
+    background-color: white !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .sort-by-dropdown {
+    color: #222 !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .empty-bar {
+    position: relative;
+    height: 15px;
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid#EEEEEE;
+    background: #eeeeee;
+    border-style: none;
+    margin-top: -2px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.5s ease-in-out;
+  }
+
+  .helpful-button {
+    transition: 0.5s ease-in-out;
+  }
+
+  .item-response {
+    transition: 0.5s ease-in-out;
+  }
+
+  .photo-thumb {
+    box-shadow: 5px 5px 5px gray;
+    vertical-align: middle;
+    margin: 20px 0px;
+    border-radius: 1px;
+    transition: 0.5s ease-in-out;
+  }
 }
 
 input:invalid {
