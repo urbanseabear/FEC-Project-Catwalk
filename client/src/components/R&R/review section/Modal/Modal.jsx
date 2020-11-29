@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AnimatedModal({ metaData }) {
+export default function AnimatedModal({ metaData, productName }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [star, setStar] = useState(false);
@@ -79,7 +79,7 @@ export default function AnimatedModal({ metaData }) {
             <form id='review-form'>
               <Grid container spacing={0}>
                 <Grid item xs={6}>
-                  <ReviewTextArea />
+                  <ReviewTextArea productName={productName} />
                   <div style={{ marginTop: '20px' }}>
                     <ImageUpload />
                   </div>
@@ -119,7 +119,7 @@ export default function AnimatedModal({ metaData }) {
                   </div>
                   <div style={{ marginTop: '130px' }}>
                     <RecommendRadioBtn />
-                    {star && charList ? (
+                    {star ? (
                       <Button
                         form='review-form'
                         type='submit'
