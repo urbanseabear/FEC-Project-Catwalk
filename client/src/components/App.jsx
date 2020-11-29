@@ -10,17 +10,25 @@ export default class App extends Component {
     super(props);
     this.state = {
       productId: 5,
+      productName: '',
       sortBy: '',
       page: 1,
       count: 100,
     };
 
     this.onSearch = this.onSearch.bind(this);
+    this.onProductNameChange = this.onProductNameChange.bind(this);
   }
 
   onSearch(productId) {
     this.setState({
       productId: productId
+    });
+  }
+
+  onProductNameChange(productName) {
+    this.setState({
+      productName: productName
     });
   }
 
@@ -32,6 +40,7 @@ export default class App extends Component {
             <Overview 
               productId={ this.state.productId }
               onSearch={this.onSearch}
+              onProductNameChange={this.onProductNameChange}
             />
           </Grid>
           <Grid style={{ margin: '0% 10%' }} item xs={12}>

@@ -7,7 +7,13 @@ const AddSize = ({ selectedSize, allSizes, onSizeSelect }) => {
         id='dropButton'
         style={{width: '195px'}}
       >
-        { selectedSize ? `SIZE: ${selectedSize}` : 'SELECT SIZE' } 
+        {
+          Object.keys(allSizes).length === 0 
+            ? 'OUT OF STOCK'
+            : selectedSize 
+              ? `SIZE: ${selectedSize}` 
+              : 'SELECT SIZE' 
+        } 
         <img 
           src='./images/chevron-down.png' 
           style={{height: '12px'}}/>
