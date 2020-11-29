@@ -8,8 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import ModalStarRating from './ModalStarRating';
 import ModalRadioList from './ModalRadioList';
 import RecommendRadioBtn from './RecommendRadioBtn';
-import ReviewTextArea from './ReviewTextArea';
-import Axios from 'axios';
+import ReviewTextArea from '../Review Body/ReviewTextArea';
+import ImageUpload from './ImageUpload';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -18,13 +18,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #eeeeee',
+    background: '#16222a',
+    color: '#fff',
+    border: '2px solid rgb(45 52 66)',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     outline: 'none',
     width: '1200px',
-    height: '650px',
+    height: '750px',
   },
 }));
 
@@ -43,7 +44,10 @@ export default function AnimatedModal({ metaData }) {
   return (
     <div>
       <Button
-        style={{ fontSize: '25px' }}
+        color='primary'
+        style={{
+          fontSize: '20px',
+        }}
         variant='contained'
         onClick={() => handleOpen()}>
         ADD A REVIEW +
@@ -65,24 +69,37 @@ export default function AnimatedModal({ metaData }) {
             <Grid container spacing={0}>
               <Grid item xs={6}>
                 <ReviewTextArea />
+                <div style={{ marginTop: '20px' }}>
+                  <ImageUpload />
+                </div>
               </Grid>
               <Grid item xs={6}>
-                <div style={{ float: 'right' }}>
-                  <h2>Overall Rating *</h2>
-                  <ModalStarRating />
+                <h2 style={{ color: '#eeeeee' }}>
+                  Overall Rating{' '}
+                  <span style={{ fontSize: '25px', color: '#f50057' }}>*</span>
+                </h2>
+                <ModalStarRating />
+                <div style={{ marginTop: '30px' }}>
+                  <h2 style={{ color: '#eeeeee' }}>
+                    Characteristics{' '}
+                    <span style={{ fontSize: '25px', color: '#f50057' }}>
+                      *
+                    </span>
+                  </h2>
+                  <ModalRadioList metaData={metaData} />
                 </div>
-                <h2>Characteristics *</h2>
-                <ModalRadioList metaData={metaData} />
                 <div style={{ marginTop: '130px' }}>
                   <RecommendRadioBtn />
                   <Button
+                    form='review-form'
+                    type='submit'
+                    color='primary'
                     style={{
                       fontSize: '20px',
                       marginTop: '-45px',
                       float: 'right',
                     }}
-                    variant='contained'
-                    onClick={() => handleClose()}>
+                    variant='contained'>
                     Submit
                   </Button>
                 </div>

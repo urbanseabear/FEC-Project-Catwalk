@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import QAanswer from "./QAanswer";
 import QAentry from "./QAentry";
+import "./qaStyle.scss";
 
 const QAloadmore = (props) => {
   const [allAnswers, setAllAnswers] = useState(false);
@@ -11,15 +12,7 @@ const QAloadmore = (props) => {
       <div>
         <button
           onClick={() => setAllAnswers(!allAnswers)}
-          style={{
-            marginLeft: "10px",
-            marginTop: "20px",
-            border: "none",
-            background: "none",
-            cursor: "pointer",
-            fontWeight: "bold",
-            fontSize: "16px",
-          }}
+          id="load-answer"
         >
           LOAD MORE ANSWERS
         </button>
@@ -33,17 +26,8 @@ const QAloadmore = (props) => {
         })}
         <div>
           <button
+            id="collapse-answer"
             onClick={() => setAllAnswers(!allAnswers)}
-            style={{
-              marginLeft: "10px",
-              marginTop: "20px",
-              marginBottom: "10px",
-              border: "none",
-              background: "none",
-              cursor: "pointer",
-              fontWeight: "bold",
-              fontSize: "16px",
-            }}
           >
             COLLAPSE ANSWERS
           </button>
@@ -59,18 +43,9 @@ const QAloadmore = (props) => {
         }}
       >
         <button
+          className="load-questions"
           onClick={() => setAllQuestions(!allQuestions)}
-          style={{
-            borderWidth: "2px",
-            borderColor: "black",
-            background: "none",
-            fontWeight: "bold",
-            marginTop: "20px",
-            marginBottom: "10px",
-            fontSize: "20px",
-            padding: "20px 10px 20px 10px",
-            cursor: "pointer",
-          }}
+          
         >
           MORE ANSWERED QUESTIONS
         </button>
@@ -86,18 +61,8 @@ const QAloadmore = (props) => {
         })}
         <div>
           <button
+          className="load-questions"
             onClick={() => setAllQuestions(!allQuestions)}
-            style={{
-              borderWidth: "2px",
-              borderColor: "black",
-              background: "none",
-              fontWeight: "bold",
-              marginTop: "20px",
-              marginBottom: "10px",
-              fontSize: "20px",
-              padding: "20px 10px 20px 10px",
-              cursor: "pointer",
-            }}
           >
             LESS ANSWERED QUESTIONS
           </button>

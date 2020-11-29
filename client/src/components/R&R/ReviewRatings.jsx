@@ -1,84 +1,87 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReviewSummary from './summary section/ReviewSummary';
-import ReviewBody from './review section/ReviewBody';
+import ReviewBody from './review section/Review Body/ReviewBody';
 import Grid from '@material-ui/core/Grid';
 const axios = require('axios');
 
-export default class ReviewRatings extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sort: '',
-      page: props.page,
-      count: props.count,
-      data: [],
-      metaData: [],
-    };
+const ReviewRatings = ({ productId, page, count }) => {
+  const [data, setData] = useState([]);
+  const [metaData, setmetaData] = useState([]);
+  const [sortBy, setsortBy] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
 
-    this.sortBy = this.sortBy.bind(this);
-  }
+  // make GET req  when productID changes to update Data & MetaData
+  useEffect(() => {
+    updateData();
+    updateMetaData();
+  }, [productId]);
 
-  componentDidMount() {
-    this.updateData();
-    this.updateMetaData();
-  }
+  // make GET req when user selects sort by option to update Data, then filter that updated data
+  useEffect(() => {
+    updateData();
+    filterData();
+  }, [sortBy]);
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.productId !== this.props.productId) {
-      this.updateData();
-      this.updateMetaData();
-    }
-  }
+  // this filters the review by star rating, if user clicks on 5, then only reviews rated 5 will be shown
+  const filterData = (rating) => {
+    const filterArray = data.filter((item) => {
+      return item.rating === rating;
+    });
+    setFilteredData(filterArray);
+  };
 
-  updateData() {
+  // GET req
+  const updateData = () => {
     axios
       .get('http://3.21.164.220/reviews/', {
         params: {
-          page: this.state.page,
-          count: this.state.count,
-          sort: this.state.sort,
-          product_id: this.props.productId,
+          page: page,
+          count: count,
+          sort: sortBy,
+          product_id: productId,
         },
       })
-      .then((res) => this.setState({ data: res.data.results }))
+      .then((res) => setData(res.data.results))
       .catch((err) => console.log(err));
-  }
+  };
 
-  updateMetaData() {
+  // GET req
+  const updateMetaData = () => {
     axios
       .get('http://3.21.164.220/reviews/meta', {
         params: {
-          product_id: this.props.productId,
+          product_id: productId,
         },
       })
-      .then((res) => this.setState({ metaData: res.data.characteristics }))
+      .then((res) => setmetaData(res.data.characteristics))
       .catch((err) => console.log(err));
-  }
+  };
 
-  sortBy(type) {
-    this.setState({ sort: type }, () => {
-      this.updateData();
-    });
-  }
+  // invoked when a sort by option is selected
+  const sortByType = (type) => {
+    setsortBy(type);
+  };
 
-  render() {
-    return (
-      <Grid style={{ marginTop: '10px' }} container spacing={6}>
-        <Grid item xs={3}>
-          <p style={{ marginTop: '-15px' }}>RATINGS & REVIEWS</p>
-          <ReviewSummary
-            data={this.state.data}
-            metaData={this.state.metaData}
-          />
-        </Grid>
-        <Grid item xs={9}>
-          <ReviewBody
-            data={this.state.data}
-            sortBy={this.sortBy}
-            metaData={this.state.metaData}
-          />
-        </Grid>
+  return (
+    <Grid style={{ marginTop: '10px' }} container spacing={6}>
+      <Grid item xs={3}>
+        <p style={{ marginTop: '-15px' }}>RATINGS & REVIEWS</p>
+        <ReviewSummary
+          data={data}
+          metaData={metaData}
+          filterData={filterData}
+        />
       </Grid>
-    );
-  }
-}
+      <Grid item xs={9}>
+        <ReviewBody
+          data={data}
+          sortByType={sortByType}
+          metaData={metaData}
+          filteredData={filteredData}
+        />
+      </Grid>
+    </Grid>
+  );
+};
+
+export default ReviewRatings;
