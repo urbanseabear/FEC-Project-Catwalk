@@ -84,7 +84,9 @@ const ReviewItem = ({ data }) => {
       <div className='recommend'>
         {recommended ? (
           <div>
-            <CheckIcon style={{ fontSize: '15px', paddingRight: '5px' }} />
+            <CheckIcon
+              style={{ fontSize: '15px', paddingRight: '5px', color: 'green' }}
+            />
             <span>I recommend this product</span>
           </div>
         ) : (
