@@ -1,5 +1,6 @@
 import React from 'react';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import TextField from '@material-ui/core/TextField';
 import '../../../../styles/R&R/ReviewTextArea.scss';
 
 // this is the text areas for the modal review submission
@@ -13,25 +14,22 @@ const ReviewTextArea = () => {
           About the <span style={{ color: '#ffb400' }}>product name</span>
         </span>
       </div>
-      <form id='review-form' style={{ color: 'grey' }}>
+      <div id='review-form' style={{ color: 'grey' }}>
         <div style={{ marginTop: '20px' }}>
           <div>
             <div>Review Title:</div>
-            <TextareaAutosize
-              className='text-area'
+            <TextField
+              id='standard-basic'
+              type='string'
               minLength='1'
               maxLength='60'
               required
               placeholder='Example: "Best purchase ever!”'
               style={{
                 width: '500px',
-                height: '30px',
-                outline: 'none',
-                fontFamily: 'inherit',
-                fontSize: '15px',
-                border: 'solid #eeeeee',
-                borderWidth: 'thin',
-                marginTop: '10px',
+                marginTop: '30px',
+                backgroundColor: 'white',
+                borderRadius: '3px',
               }}
             />
           </div>
@@ -52,26 +50,24 @@ const ReviewTextArea = () => {
                 border: 'solid #eeeeee',
                 borderWidth: 'thin',
                 marginTop: '10px',
+                borderRadius: '3px',
               }}
             />
           </div>
           <div style={{ marginTop: '20px' }}>
             <div>Nickname:</div>
-            <TextareaAutosize
-              className='text-area'
+            <TextField
+              id='standard-basic'
               minLength='1'
+              type='string'
               required
               maxLength='60'
               placeholder='Example: "jackson11!”'
               style={{
                 width: '500px',
-                height: '30px',
-                outline: 'none',
-                fontFamily: 'inherit',
-                fontSize: '15px',
-                border: 'solid #eeeeee',
-                borderWidth: 'thin',
                 marginTop: '10px',
+                backgroundColor: 'white',
+                borderRadius: '3px',
               }}
             />
             <div style={{ fontSize: '10px', color: 'grey' }}>
@@ -80,22 +76,18 @@ const ReviewTextArea = () => {
           </div>
           <div style={{ marginTop: '20px' }}>
             <div>Email:</div>
-            <TextareaAutosize
-              className='text-area'
+            <TextField
+              id='standard-basic'
               minLength='1'
-              inputMode='email'
+              type='email'
               required
               maxLength='60'
               placeholder='Example: "jackson11@email.com”'
               style={{
                 width: '500px',
-                height: '30px',
-                outline: 'none',
-                fontFamily: 'inherit',
-                fontSize: '15px',
-                border: 'solid #eeeeee',
-                borderWidth: 'thin',
                 marginTop: '10px',
+                backgroundColor: 'white',
+                borderRadius: '3px',
               }}
             />
             <div style={{ fontSize: '10px', color: 'grey' }}>
@@ -103,7 +95,7 @@ const ReviewTextArea = () => {
             </div>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };
