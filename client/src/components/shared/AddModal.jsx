@@ -278,6 +278,7 @@ const AddModal = (props) => {
   const modalClick = () => {
     setOpen(!open);
     trackEvent({time: moment().format(), type: trackType});
+    console.log(window.dataLayer);
   }
   return (
     <span>
