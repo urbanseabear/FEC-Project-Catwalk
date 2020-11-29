@@ -73,7 +73,7 @@ const App = () => {
         <div>
           <Grid container spacing={8}>
             <Grid item xs={12}>
-              <Overview productId={productId} onSearch={onSearch} />
+              <Overview productId={productId} onSearch={onSearch} onProductNameChange={onProductNameChange}/>
             </Grid>
             <Grid style={{ margin: '0% 10%' }} item xs={12}>
               <QAmodule prodID={productId} />
