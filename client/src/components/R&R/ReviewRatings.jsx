@@ -65,7 +65,9 @@ const ReviewRatings = ({ productId, page, count, productName }) => {
   return (
     <Grid style={{ marginTop: '10px' }} container spacing={6}>
       <Grid item xs={3}>
-        <p style={{ marginTop: '-15px' }}>RATINGS & REVIEWS</p>
+        <p className='rating-header' style={{ marginTop: '-15px' }}>
+          RATINGS & REVIEWS
+        </p>
         <ReviewSummary
           data={data}
           metaData={metaData}

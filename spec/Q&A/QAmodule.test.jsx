@@ -7,7 +7,6 @@ test('QAmodule mounts with proper data', () => {
 
   const qaModule = shallow(<QAmodule prodID={productId} />);
 
-  expect(qaModule.state().questions.product_id).toEqual("5");
+  expect(qaModule.state().questions.product_id).toEqual('5');
   expect(qaModule.find('div.qa-header').text()).toEqual('QUESTIONS & ANSWERS');
-  
 });
