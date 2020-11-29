@@ -32,7 +32,7 @@ const ImageUpload = () => {
               variant='contained'
               onClick={onImageRemoveAll}
               color='secondary'>
-              Remove all images
+              Remove All
             </Button>
             <div
               style={{

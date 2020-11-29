@@ -5,13 +5,13 @@ import '../../../../styles/R&R/ReviewTextArea.scss';
 
 // this is the text areas for the modal review submission
 
-const ReviewTextArea = () => {
+const ReviewTextArea = ({ productName }) => {
   return (
     <div style={{ color: '#eeeeee' }}>
       <div>
         <h2>Write Your Review</h2>
         <span style={{ color: 'grey' }}>
-          About the <span style={{ color: '#ffb400' }}>product name</span>
+          About the <span style={{ color: '#ffb400' }}>{productName}</span>
         </span>
       </div>
       <div id='review-form' style={{ color: 'grey' }}>
@@ -27,7 +27,7 @@ const ReviewTextArea = () => {
               placeholder='Example: "Best purchase ever!”'
               style={{
                 width: '500px',
-                marginTop: '30px',
+                marginTop: '5px',
                 backgroundColor: 'white',
                 borderRadius: '3px',
               }}
