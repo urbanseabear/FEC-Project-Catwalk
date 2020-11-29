@@ -62,6 +62,7 @@ class QAmodule extends React.Component {
 
   render() {
     return (
+    <div>
       <div className="qa-container">
         <div className="qa-header">QUESTIONS & ANSWERS</div>
         <QAsearch search={this.handleSearch} searchString={this.state.search}/>
@@ -79,6 +80,7 @@ class QAmodule extends React.Component {
           title={"Ask A Question"}
           prodName={this.state.product}
         />
+      </div>
       </div>
     );
   }

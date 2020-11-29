@@ -4,6 +4,7 @@ import QAentry from "./QAentry";
 import "./qaStyle.scss";
 import { useTracking } from 'react-tracking';
 import moment from 'moment';
+import Button from '@material-ui/core/Button';
 
 const QAloadmore = (props) => {
   const [allAnswers, setAllAnswers] = useState(false);
@@ -48,15 +49,16 @@ const QAloadmore = (props) => {
           gridColumnEnd: "span 4",
         }}
       >
-        <button
-          className="load-questions"
-          onClick={() => {
-            setAllQuestions(!allQuestions);
-            trackEvent({time: moment().format(), type: 'LOAD_QUESTIONS'});
-          }}
-        >
-          MORE ANSWERED QUESTIONS
-        </button>
+        <Button
+        color='primary'
+        style={{fontSize: '20px', marginTop: '20px', marginBottom: '10px'}}
+        variant='contained'
+        onClick={() => {
+          setAllQuestions(!allQuestions);
+          trackEvent({time: moment().format(), type: 'LOAD_QUESTIONS'});
+        }}>
+         MORE ANSWERED QUESTIONS
+      </Button>
       </div>
     );
   } else if (allQuestions === true) {
@@ -68,12 +70,16 @@ const QAloadmore = (props) => {
           );
         })}
         <div>
-          <button
-          className="load-questions"
-            onClick={() => setAllQuestions(!allQuestions)}
-          >
-            LESS ANSWERED QUESTIONS
-          </button>
+        <Button
+        color='primary'
+        style={{fontSize: '20px', marginTop: '20px', marginBottom: '10px'}}
+        variant='contained'
+        onClick={() => {
+          setAllQuestions(!allQuestions);
+          trackEvent({time: moment().format(), type: 'LOAD_QUESTIONS'});
+        }}>
+         LESS ANSWERED QUESTIONS
+      </Button>
         </div>
       </div>
     );

@@ -22,6 +22,26 @@ html {
 .app-dark {
   width: 100%;
   background-color: #222;
+  color: #fff;
+  transition: 1s ease-in-out;
+  #load-answer {
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  #collapse-answer {
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  .qa-search-bar {
+    border-color: #fff !important;
+    background-color: #222;
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  .helpful-button {
+    color: #fff;
+    transition: 1s ease-in-out;
+
   color: #ccc;
   transition: 0.5s ease-in-out;
   .imageGalleryContainers {
@@ -34,12 +54,8 @@ html {
     border-color: #686868;
     background-color: #686868;
     transition: 0.5s ease-in-out;
-  }
-  .helpful-button {
-    color: #ccc !important;
-    transition: 0.5s ease-in-out;
-  }
-
+    }
+    
   .empty-bar {
     position: relative;
     height: 15px;
@@ -65,6 +81,7 @@ html {
     margin: 20px 0px;
     border-radius: 1px;
     transition: 0.5s ease-in-out;
+
   }
 }
 
@@ -72,6 +89,19 @@ html {
   width: 100%;
   background-color: #fff;
   color: #222;
+  transition: 1s ease-in-out;
+  .qa-search-bar {
+    transition: 1s ease-in-out;
+  }
+  #load-answer {
+    transition: 1s ease-in-out;
+  }
+  #collapse-answer {
+    transition: 1s ease-in-out;
+  }
+  .helpful-button {
+    transition: 1s ease-in-out;
+
   transition: 0.5s ease-in-out;
   .imageGalleryContainers {
     background-color: white !important;
@@ -96,11 +126,6 @@ html {
     border-radius: 3px;
     transition: 0.5s ease-in-out;
   }
-
-  .helpful-button {
-    transition: 0.5s ease-in-out;
-  }
-
   .item-response {
     transition: 0.5s ease-in-out;
   }
@@ -111,6 +136,7 @@ html {
     margin: 20px 0px;
     border-radius: 1px;
     transition: 0.5s ease-in-out;
+
   }
 }
 
