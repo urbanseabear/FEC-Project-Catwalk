@@ -8,7 +8,7 @@ const QAanswer = (props) => {
     
     return (
         <span>
-            <div style={{marginLeft: '10px', marginTop: '10px', marginBottom: '5px', fontSize: '18px'}}><b>A:</b> {props.answer.body}</div>
+            <div style={{marginLeft: '10px', marginTop: '10px', marginBottom: '5px', fontSize: '18px', overflowWrap: 'anywhere'}}><b>A:</b> {props.answer.body}</div>
             <div>
             {props.answer.photos.map((photo, i) => {
                 return <QAphotos photo={photo} key={i}/>

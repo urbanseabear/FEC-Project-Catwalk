@@ -4,7 +4,7 @@ import Overview from './overview/overview.jsx';
 import QAmodule from './Q&A/QAmodule';
 import ReviewRatings from './R&R/ReviewRatings';
 import Grid from '@material-ui/core/Grid';
-import { Route, generatePath, useHistory, Switch } from 'react-router-dom';
+import {Route, generatePath, useHistory, Switch, useLocation} from 'react-router-dom';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 
@@ -15,6 +15,7 @@ const App = () => {
   const [count, setCount] = useState(100);
   const [toggled, setToggled] = useState(false);
   const hist = useHistory();
+  let location = useLocation();
 
   const icon = toggled ? <Brightness7Icon /> : <Brightness3Icon />;
 
@@ -26,7 +27,12 @@ const App = () => {
   const updatePath = (productId) => {
     const path = generatePath('/product/:id', { id: productId });
     hist.push(path);
-  };
+  }
+
+  useEffect(() => {
+    let pid = location.pathname.substring(location.pathname.length - 1);
+    setProductId(pid);
+  });
 
   const onProductNameChange = (productName) => {
     setProductName(productName);
@@ -67,7 +73,7 @@ const App = () => {
         <div>
           <Grid container spacing={8}>
             <Grid item xs={12}>
-              <Overview productId={productId} onSearch={onSearch} />
+              <Overview productId={productId} onSearch={onSearch} onProductNameChange={onProductNameChange}/>
             </Grid>
             <Grid style={{ margin: '0% 10%' }} item xs={12}>
               <QAmodule prodID={productId} />

@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import QAanswer from "./QAanswer";
 import QAentry from "./QAentry";
 import "./qaStyle.scss";
+import { useTracking } from 'react-tracking';
+import moment from 'moment';
 
 const QAloadmore = (props) => {
   const [allAnswers, setAllAnswers] = useState(false);
   const [allQuestions, setAllQuestions] = useState(false);
+  const { trackEvent } = useTracking({ module: 'QA_LOADMORE' });
 
   if (props.answers !== undefined && allAnswers === false) {
     return (
       <div>
         <button
-          onClick={() => setAllAnswers(!allAnswers)}
+          onClick={() => {
+            setAllAnswers(!allAnswers);
+            trackEvent({time: moment().format(), type: 'LOAD_ANSWERS'});
+          }}
           id="load-answer"
         >
           LOAD MORE ANSWERS
@@ -44,8 +50,10 @@ const QAloadmore = (props) => {
       >
         <button
           className="load-questions"
-          onClick={() => setAllQuestions(!allQuestions)}
-          
+          onClick={() => {
+            setAllQuestions(!allQuestions);
+            trackEvent({time: moment().format(), type: 'LOAD_QUESTIONS'});
+          }}
         >
           MORE ANSWERED QUESTIONS
         </button>

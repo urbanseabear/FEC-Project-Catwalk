@@ -11,7 +11,7 @@ const QAentry = (props) => {
     }
     return (
         <div style={{marginTop: '10px'}}>
-          <span style={{fontWeight: 'bold', fontSize: '22px', display: "flex", justifyContent: "space-between"}}>Q: {props.question.question_body}     <Helpful submit={props.submit} helped={props.question.question_helpfulness} question={props.question} product={props.product} reportOrAdd={'Add Answer'}/></span>
+          <span style={{fontWeight: 'bold', fontSize: '22px', display: "flex", justifyContent: "space-between", overflowWrap: 'anywhere'}}>Q: {props.question.question_body}<Helpful submit={props.submit} helped={props.question.question_helpfulness} question={props.question} product={props.product} reportOrAdd={'Add Answer'}/></span>
           <div>
               {aArray.slice(0, 3).map((aKey, i) => {
                 if (i === 2) {

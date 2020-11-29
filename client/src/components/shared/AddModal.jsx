@@ -4,6 +4,8 @@ import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import "../Q&A/qaStyle.scss";
+import { useTracking } from 'react-tracking';
+import moment from 'moment';
 
 const AddModal = (props) => {
   const [open, setOpen] = useState(false);
@@ -12,12 +14,18 @@ const AddModal = (props) => {
   const [email, setEmail] = useState("");
   const [url, setUrl] = useState("");
   const [picArr, setPicArr] = useState([]);
+  const { trackEvent } = useTracking({ module: 'ADD_MODAL' });
 
   const addUrl = (e) => {
     e.preventDefault();
     setPicArr([...picArr, url]);
     setUrl("");
   };
+
+  const removeUrl = (e) => {
+    e.preventDefault();
+    setPicArr(picArr.slice(0, picArr.length - 1));
+  }
 
   var body;
   if (props.type === "verify") {
@@ -145,7 +153,7 @@ const AddModal = (props) => {
           type="text"
           placeholder="Example: jackson11!"
         ></input>
-        <div style={{ marginLeft: "2%", marginBottom: "2%" }}>
+        <div className="disclaimers">
           For privacy reasons, do not use your full name or email address
         </div>
         <label className="form-label" htmlFor="email">
@@ -160,7 +168,7 @@ const AddModal = (props) => {
           pattern=".+.com|.+.net|.+.co.uk|.+.fr|.+.gov|.+.edu|.+.jp"
           placeholder="Example: meow@gmail.com"
         ></input>
-        <div style={{ marginLeft: "2%", marginBottom: "2%" }}>
+        <div className="disclaimers">
           For authentication reasons only, you will not be emailed
         </div>
         <label
@@ -178,12 +186,23 @@ const AddModal = (props) => {
           className="form-input"
           placeholder="example.com/photo.jpg"
         ></input>
+        <div></div>
         <button
+          className="picButton"
+          style={{marginLeft: "4%"}}
           hidden={!(props.name === "Add Answer")}
           disabled={picArr.length === 5 ? true : false}
           onClick={addUrl}
         >
-          add image
+          ADD IMAGE
+        </button>
+        <button
+          className="picButton"
+          hidden={!(props.name === "Add Answer")}
+          disabled={picArr.length === 0 ? true : false}
+          onClick={removeUrl}
+        >
+          REMOVE IMAGE
         </button>
         <div></div>
         <img
@@ -241,20 +260,29 @@ const AddModal = (props) => {
 
   var cName;
   var buttonText = "";
+  var trackType = "";
   if (props.bType === "1") {
     cName = "helpful-button";
     buttonText = "Add Answer";
+    trackType = "ADD_ANSWER";
   } else if (props.type === "verify") {
     cName = "verify-button";
     buttonText = "SUBMIT";
+    trackType = "SUBMIT";
   } else {
     cName = "load-questions";
     buttonText = `ADD A ${props.name.toUpperCase()} +`;
+    trackType = "ADD_QUESTION";
   }
-
+  
+  const modalClick = () => {
+    setOpen(!open);
+    trackEvent({time: moment().format(), type: trackType});
+    console.log(window.dataLayer);
+  }
   return (
     <span>
-      <button className={cName} onClick={() => setOpen(!open)}>
+      <button className={cName} onClick={() => modalClick()}>
         {buttonText}
       </button>
       <Modal

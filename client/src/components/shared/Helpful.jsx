@@ -2,11 +2,14 @@ import axios from "axios";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import AddModal from "./AddModal";
 import "../Q&A/qaStyle.scss";
+import { useTracking } from 'react-tracking';
+import moment from 'moment';
 
 const Helpful = (props) => {
   const [isReported, setReported] = useState(false);
   const [isHelpful, setHelpful] = useState(false);
   const isMounted = useRef(true);
+  const { Track, trackEvent } = useTracking({ module: 'HELPFUL' });
 
   useEffect(() => {
     return () => {
@@ -15,6 +18,7 @@ const Helpful = (props) => {
   }, []);
 
   const report = useCallback(() => {
+    trackEvent({time: moment().format(), type: 'REPORT'});
     if (isReported) {
       return;
     }
@@ -33,10 +37,13 @@ const Helpful = (props) => {
   }, [isReported]);
 
   const helpful = useCallback(() => {
+    
+    
     if (isHelpful) return;
     setHelpful(true);
     if (props.reportOrAdd === "Report") {
       //mark answer helpful
+      trackEvent({time: moment().format(), type: 'A_HELPFUL'});
       axios
         .put(`http://3.21.164.220/qa/answers/${props.a_id}/helpful`, {
           params: { answer_id: props.a_id },
@@ -49,6 +56,7 @@ const Helpful = (props) => {
         });
     } else {
       //mark question helpful
+      trackEvent({time: moment().format(), type: 'Q_HELPFUL'});
       axios
         .put(`http://3.21.164.220/qa/questions/${props.question.question_id}/helpful`, {
           params: { question_id: props.question.question_id },
@@ -60,10 +68,12 @@ const Helpful = (props) => {
           console.log(err);
         });
     }
+    console.log(window.dataLayer);
   }, [isHelpful]);
 
   if (props.reportOrAdd !== "Report") {
     return (
+      <Track>
       <span style={{ fontWeight: "normal", fontSize: "16px" }}>
         Helpful?
         <button
@@ -84,9 +94,11 @@ const Helpful = (props) => {
           question={props.question.question_body}
         />
       </span>
+      </Track>
     );
   } else {
     return (
+      <Track>
       <span>
         Helpful?
         <button
@@ -105,6 +117,7 @@ const Helpful = (props) => {
           {isReported ? "REPORTED" : props.reportOrAdd}
         </button>
       </span>
+      </Track>
     );
   }
 };
