@@ -1,13 +1,13 @@
 import React from 'react';
 import './styles.scss';
-import axios from 'axios';
-import ImageGalleryContainer from './imageGalleryContainer/imageGalleryContainer.jsx';
 import ProductDetailsContainer from './productDetails/productDetailsContainer';
 import RateCategoryNamePriceContainer from './rateCategoryNamePrice/rateCategoryNamePrice';
 import StylesContainer from './stylesContainer/styles';
 import SizeQuantityAddContainer from './sizeQuantityAddContainer/sizeQuantityAdd';
 import FeaturesContainer from './featuresContainer/featuresContainer';
 import SearchBar from './seachBar/searchBar';
+import apiCalls from './overviewAPI.mjs';
+import ImageGalleryContainers from './imageGalleryContainer/imageGalleryContainers';
 
 class Overview extends React.Component {
   constructor() {
@@ -18,49 +18,59 @@ class Overview extends React.Component {
       selectedStyle: null,
       productInfo: {},
       productStyles: [],
-      // photosArray: null,
+      // windowWidth: null,
+      // windowHeight: null,
+      window: null
     };
+    this.windowRef = React.createRef();
   }
 
-  componentDidMount() {
-    axios.get(`http://3.21.164.220/products/${this.props.productId}/styles`)
-      .then(({ data }) => {
+  apiRequests(productId) {
+    apiCalls.getProductStyles(productId)
+      .then(({data}) => {
+
+        const defaultStyleIndex = data.results.findIndex(style => style['default?'] === 1);
+
+        if (defaultStyleIndex !== 0) {
+          const defaultStyle = data.results[defaultStyleIndex];
+          data.results.splice(defaultStyleIndex, 1);
+          data.results.unshift(defaultStyle);
+        }
+
         this.setState({
-          productStyles: data.results,
-          selectedStyle: data.results.find(obj => obj['default?'] === 1),
-          //photosArray: data.results.find(obj => obj['default?'] === 1)['photos']
+          selectedStyle: data.results[0],
+          productStyles: data.results
         });
       })
       .catch(err => console.log(err));
 
-    axios.get(`http://3.21.164.220/products/${this.props.productId}`)
+    apiCalls.getProduct(productId)
       .then(({ data }) => {
         this.setState({
           productInfo: data
         });
+        this.props.onProductNameChange(data.name);
       })
       .catch(err => console.log(err));
   }
 
+  componentDidMount() {
+    this.apiRequests(this.props.productId);
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.productId !== prevProps.productId) {
-      axios.get(`http://3.21.164.220/products/${this.props.productId}/styles`)
-        .then(({ data }) => {
-          this.setState({
-            productStyles: data.results,
-            selectedStyle: data.results.find(obj => obj['default?'] === 1),
-            //photosArray: data.results.find(obj => obj['default?'] === 1)['photos']
-          });
-        })
-        .catch(err => console.log(err));
+      this.apiRequests(this.props.productId);
 
-      axios.get(`http://3.21.164.220/products/${this.props.productId}`)
-        .then(({ data }) => {
-          this.setState({
-            productInfo: data
-          });
-        })
-        .catch(err => console.log(err));
+      this.setState({
+        selectedSize: null,
+        selectedQuantity: null,
+      });
+    }
+    if ((JSON.stringify(this.state.window) !== JSON.stringify(this.windowRef.current.getBoundingClientRect()))) {
+      this.setState({
+        window: this.windowRef.current.getBoundingClientRect()
+      });
     }
   }
 
@@ -73,6 +83,7 @@ class Overview extends React.Component {
   }
 
   onSizeSelect(sizeId) {
+    document.getElementById('dropButton').style = 'color: black; font-size: 14px; width: 195px;';
     this.setState({
       selectedSize: this.state.selectedStyle['skus'][sizeId]['size']
     });
@@ -85,11 +96,12 @@ class Overview extends React.Component {
   }
 
   render() {
-    console.log(this.props.productId);
     return (
       <div className='masterContainer' style={{display: 'flex', justifyContent: 'center'}}>
-        <div className='overviewContainer'>
-          <div className='headerContainer'>
+        <div className='overviewContainer' ref={ this.windowRef }>
+          <div 
+            className='headerContainer'
+          >
             <h1>Company Logo</h1>
             <SearchBar 
               onSearch={this.props.onSearch} 
@@ -98,13 +110,20 @@ class Overview extends React.Component {
           <div className='siteAnnouncementContainer' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               SITE ANNOUNCEMENT CONTAINER
           </div>
-          <ImageGalleryContainer photos={this.state.selectedStyle ? this.state.selectedStyle['photos'] : null}/>
-          {/* <ImageGalleryContainer photos={this.state.photosArray} /> */}
+          {/* <div style={{gridRow: '3/6', gridColumn: '1/3', zIndex: '1000', backgroundColor: 'black'}}> */}
+          {/* <img src={this.state.thumbnails.thumbnails[this.state.midpoint].value['url']} style={{width: '100%', height: '100%'}}/> */}
+          {/* </div> */}
+          <ImageGalleryContainers 
+            photos={this.state.selectedStyle ? this.state.selectedStyle['photos'] : null} 
+            // windowWidth={this.state.windowWidth}
+            // windowHeight={this.state.windowHeight}
+            window={this.state.window}
+          />
           <ProductDetailsContainer 
             slogan={this.state.productInfo.slogan}
             description={this.state.productInfo.description} 
           />
-          <RateCategoryNamePriceContainer 
+          <RateCategoryNamePriceContainer
             price={
               !this.state.selectedStyle 
                 ? null
@@ -115,7 +134,11 @@ class Overview extends React.Component {
             category={this.state.productInfo.category} 
             name={this.state.productInfo.name}
           />
-          <StylesContainer allStyles={this.state.productStyles} selectedStyle={this.state.selectedStyle} changeSelectedStyle={this.changeSelectedStyle.bind(this)} />
+          <StylesContainer 
+            allStyles={this.state.productStyles} 
+            selectedStyle={this.state.selectedStyle} 
+            changeSelectedStyle={this.changeSelectedStyle.bind(this)} 
+          />
           <SizeQuantityAddContainer 
             selectedSize={this.state.selectedSize} 
             selectedQuantity={this.state.selectedQuantity}

@@ -1,32 +1,25 @@
 import React from 'react';
 
-const ViewsContainer = ({ thumbnailPhotos, selectedPhotoIndex, onThumbnailClick }) => {
-  // let hopeful = thumbnailPhotos.length - selectedPhotoIndex;
-  // console.log('HOPEFUL: ', hopeful);
+const ViewsContainer = ({ thumbnailPhotos, midpoint, onClickPrev, onClickNext, onThumbnailClick }) => {
+
   return (
     <div className='viewsContainer'>
       <div className='arrow' style={{alignItems: 'flex-end'}}>
-        <img src='./images/chevron-up.png' style={{maxHeight: '20px'}}/>
+        <img id='arrows' src='./images/chevron-up.png' style={{backgroundColor: 'white', borderRadius: '50%', padding: '2px', maxWidth: '20px', maxHeight: '20px', cursor: 'pointer'}} onClick={onClickPrev} />
       </div>
       <div className='viewsContainerPhotos' >
         {thumbnailPhotos.map((photo, index) => {
-          if (index <= 5) {
-            if (index === selectedPhotoIndex) {
-              return <img key={index} src={ photo } style={{ width: '80px', maxHeight: '53px', margin: '5px 0px 5px 0px', boxShadow: '0px 0px 8px blue'}} onClick={onThumbnailClick.bind(this, index)}/>;
-            } else {
-              return <img key={index} src={ photo } style={{ width: '80px', maxHeight: '53px', margin: '5px 0px 5px 0px', boxShadow: '0px 0px 5px black'}} onClick={onThumbnailClick.bind(this, index)}/>;
-            }
-          }
+          return index === midpoint
+            ? <img key={index} src={ photo } style={{ width: '95px', maxHeight: '65px', margin: '5px 0px 5px 0px', boxShadow: '0px 0px 8px blue', cursor: 'pointer'}} onClick={onThumbnailClick.bind(this, index)} />
+            : <img key={index} src={ photo } style={{ width: '80px', maxHeight: '53px', margin: '5px 0px 5px 0px', boxShadow: '0px 0px 5px black', cursor: 'pointer'}} onClick={onThumbnailClick.bind(this, index)} />;
         })}
-        {/* { thumbnailPhotos.map((photo, index) => {
-          if ()
-        })} */}
       </div>
       <div className='arrow'>
-        <img src='./images/chevron-down.png' style={{maxHeight: '20px'}}/>
+        <img id='arrows' src='./images/chevron-down.png' style={{backgroundColor: 'white', borderRadius: '50%', padding: '2px', maxWidth: '20px', maxHeight: '20px', cursor: 'pointer'}} onClick={onClickNext} />
       </div>
     </div>
   );
 };
+
 
 export default ViewsContainer;

@@ -7,6 +7,24 @@ body {
   color: #222;
 }
 
+<<<<<<< HEAD
+=======
+.app-dark {
+  background-color: #222;
+  color: #fff;
+  transition: 1s ease-in-out;
+}
+
+.app-light {
+  background-color: #fff;
+  color: #222;
+  transition: 1s ease-in-out;
+}
+
+#qa-list::-webkit-scrollbar {
+  display: none;
+}
+>>>>>>> staging
 
 input:invalid {
   border: solid;

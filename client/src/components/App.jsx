@@ -5,13 +5,19 @@ import QAmodule from './Q&A/QAmodule';
 import ReviewRatings from './R&R/ReviewRatings';
 import Grid from '@material-ui/core/Grid';
 import {Route, generatePath, useHistory, Switch, useLocation} from 'react-router-dom';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
+import Brightness3Icon from '@material-ui/icons/Brightness3';
 
 const App = () => {
   const [productId, setProductId] = useState(41);
+  const [productName, setProductName] = useState('');
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(100);
+  const [toggled, setToggled] = useState(false);
   const hist = useHistory();
   let location = useLocation();
+
+  const icon = toggled ? <Brightness7Icon /> : <Brightness3Icon />;
 
   const onSearch = (productId) => {
     setProductId(productId);
@@ -19,7 +25,7 @@ const App = () => {
   };
 
   const updatePath = (productId) => {
-    const path = generatePath("/product/:id", {id: productId});
+    const path = generatePath('/product/:id', { id: productId });
     hist.push(path);
   }
 
@@ -28,38 +34,61 @@ const App = () => {
     setProductId(pid);
   });
 
+  const onProductNameChange = (productName) => {
+    setProductName(productName);
+  };
+
   return (
     <Switch>
-    <Route exact path="/">
-    <div>
-      <Grid container spacing={8}>
-        <Grid item xs={12}>
-          <Overview productId={productId} onSearch={onSearch} />
-        </Grid>
-        <Grid style={{ margin: '0% 10%' }} item xs={12}>
-          <QAmodule prodID={productId} />
-        </Grid>
-        <Grid style={{ margin: '0% 10%' }} item xs={12}>
-          <ReviewRatings productId={productId} page={page} count={count} />
-        </Grid>
-      </Grid>
-    </div>
-    </Route>
-    <Route exact path="/product/:id">
-    <div>
-      <Grid container spacing={8}>
-        <Grid item xs={12}>
-          <Overview productId={productId} onSearch={onSearch} />
-        </Grid>
-        <Grid style={{ margin: '0% 10%' }} item xs={12}>
-          <QAmodule prodID={productId} />
-        </Grid>
-        <Grid style={{ margin: '0% 10%' }} item xs={12}>
-          <ReviewRatings productId={productId} page={page} count={count} />
-        </Grid>
-      </Grid>
-    </div>
-    </Route>
+      <Route exact path='/'>
+        <div className={toggled ? 'app-dark' : 'app-light'}>
+          <Grid container spacing={8}>
+            <Grid item xs={12}>
+              <div
+                onClick={() => setToggled(!toggled)}
+                style={{ float: 'left' }}>
+                {icon}
+              </div>
+              <Overview
+                productId={productId}
+                onSearch={onSearch}
+                onProductNameChange={onProductNameChange}
+              />
+            </Grid>
+            <Grid style={{ margin: '0% 10%' }} item xs={12}>
+              <QAmodule prodID={productId} />
+            </Grid>
+            <Grid style={{ margin: '0% 10%' }} item xs={12}>
+              <ReviewRatings
+                productId={productId}
+                page={page}
+                count={count}
+                productName={productName}
+              />
+            </Grid>
+          </Grid>
+        </div>
+      </Route>
+      <Route exact path='/product/:id'>
+        <div>
+          <Grid container spacing={8}>
+            <Grid item xs={12}>
+              <Overview productId={productId} onSearch={onSearch} />
+            </Grid>
+            <Grid style={{ margin: '0% 10%' }} item xs={12}>
+              <QAmodule prodID={productId} />
+            </Grid>
+            <Grid style={{ margin: '0% 10%' }} item xs={12}>
+              <ReviewRatings
+                productId={productId}
+                page={page}
+                count={count}
+                productName={productName}
+              />
+            </Grid>
+          </Grid>
+        </div>
+      </Route>
     </Switch>
   );
 };

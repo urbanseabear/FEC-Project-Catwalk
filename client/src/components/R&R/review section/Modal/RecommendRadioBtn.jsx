@@ -10,7 +10,7 @@ const RecommendRadioBtn = () => {
   return (
     <div>
       <h3 style={{ color: '#eeeeee' }}>Would you recommend this product?</h3>
-      <form id='review-form' style={{ color: 'grey' }}>
+      <div id='review-form' style={{ color: 'grey' }}>
         <div className='radio'>
           <label>
             <input
@@ -37,7 +37,7 @@ const RecommendRadioBtn = () => {
             No
           </label>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

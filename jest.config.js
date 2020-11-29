@@ -1,5 +1,5 @@
 let path = require('path');
-let TEST_DIR = path.join(__dirname, '/Tests/setup.js');
+let TEST_DIR = path.join(__dirname, '/spec/setup.js');
 let MOCK_DIR = path.join(__dirname, '/__mocks__/fileMock.js');
 
 module.exports = {
