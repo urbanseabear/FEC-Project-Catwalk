@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto:wght@300;400&display=swap');
+
 #qa-list::-webkit-scrollbar {
   width: 20px;
 }
@@ -33,7 +35,6 @@ input:invalid {
   grid-template-rows: 0.5fr 1fr 3fr 1 fr;
   grid-template-columns: 3fr 0.5fr 0.25fr 1.25fr;
   gap: 10px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .qa-header {
@@ -90,6 +91,7 @@ input:invalid {
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 }
 
 #load-answer {
@@ -106,6 +108,7 @@ input:invalid {
   border-color: black;
   background: none;
   font-weight: bold;
+  font-family: 'Roboto', sans-serif;
   margin-top: 20px;
   margin-bottom: 10px;
   font-size: 20px;
@@ -135,7 +138,6 @@ input:invalid {
 }
 .add-modal {
   background-color: white;
-  font-family: Arial, Helvetica, sans-serif;
   width: 50%;
   position: fixed;
   outline: none;
@@ -152,7 +154,6 @@ input:invalid {
 }
 
 .disclaimers {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   margin-left: 2%;
   margin-bottom: 2%;
@@ -162,7 +163,6 @@ input:invalid {
   margin-left: 4%;
   font-size: 20px;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-input-area {
@@ -170,7 +170,6 @@ input:invalid {
   font-size: 20px;
   width: 90%;
   height: 100px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .empty-field {

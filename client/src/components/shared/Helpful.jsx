@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import AddModal from "./AddModal";
 import "../Q&A/qaStyle.scss";
+import '../../styles/main.scss';
 import { useTracking } from 'react-tracking';
 import moment from 'moment';
 

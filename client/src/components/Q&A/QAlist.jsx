@@ -9,7 +9,7 @@ const QAlist = (props) => {
         <div id='qa-list'>
             {props.questions.slice(0, 5).map((oneQuestion, i) => {
                 if (i === 4) {
-                    return <QAloadmore key="111111111111111111111" questions={props.questions}/>
+                    return <QAloadmore submit={props.submit} product={props.product} key="111111111111111111111" questions={props.questions}/>
                 }
                 return <QAentry submit={props.submit} product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
             })}
@@ -25,7 +25,7 @@ const QAlist = (props) => {
             <div id='qa-list'>
             {searchedQs.slice(0, 5).map((oneQuestion, i) => {
                 if (i === 4) {
-                    return <QAloadmore key="111111111111111111111" questions={props.questions}/>
+                    return <QAloadmore submit={props.submit} product={props.product} key="111111111111111111111" questions={props.questions}/>
                 }
                 return <QAentry submit={props.submit} product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
             })}

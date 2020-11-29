@@ -19,10 +19,6 @@ body {
   transition: 1s ease-in-out;
 }
 
-#qa-list::-webkit-scrollbar {
-  display: none;
-}
-
 input:invalid {
   border: solid;
   color: red;
