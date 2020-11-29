@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto:wght@300;400&display=swap');
 
 body {
+  width: 100vw;
   display: flex;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
@@ -8,12 +9,17 @@ body {
 }
 
 .app-dark {
+  width: 100vw;
   background-color: #222;
   color: #fff;
   transition: 1s ease-in-out;
+  .item-response {
+    color: #222;
+  }
 }
 
 .app-light {
+  width: 100vw;
   background-color: #fff;
   color: #222;
   transition: 1s ease-in-out;
