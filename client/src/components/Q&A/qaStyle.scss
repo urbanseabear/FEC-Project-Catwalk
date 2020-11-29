@@ -32,6 +32,7 @@ input:invalid {
 
 .qa-container {
   display: grid;
+  max-width: 100%;
   grid-template-rows: 0.5fr 1fr 3fr 1 fr;
   grid-template-columns: 3fr 0.5fr 0.25fr 1.25fr;
   gap: 10px;
@@ -98,22 +99,17 @@ input:invalid {
   @extend %answer-button;
 }
 
+#load-answer:hover {
+  text-decoration: underline;
+}
+
 #collapse-answer {
   @extend %answer-button;
   margin-bottom: 10px;
 }
 
-.load-questions {
-  border-width: 2px;
-  border-color: black;
-  background: none;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-size: 20px;
-  padding: 20px 10px 20px 10px;
-  cursor: pointer;
+#collapse-answer:hover {
+  text-decoration: underline;
 }
 
 .helpful-button {
@@ -124,7 +120,7 @@ input:invalid {
 }
 
 .submit-modal {
-  background-color: whitesmoke;
+  background-color: #16222a;
   height: 400px;
   width: 600px;
   position: fixed;
@@ -134,10 +130,11 @@ input:invalid {
 }
 
 .picButton {
+  color: whitesmoke;
   background: none;
 }
 .add-modal {
-  background-color: white;
+  background-color: #16222a;
   width: 50%;
   position: fixed;
   outline: none;
@@ -154,12 +151,14 @@ input:invalid {
 }
 
 .disclaimers {
+  color: whitesmoke;
   font-size: 11px;
   margin-left: 2%;
   margin-bottom: 2%;
 }
 
 .form-label {
+  color: whitesmoke;
   margin-left: 4%;
   font-size: 20px;
   font-weight: bold;

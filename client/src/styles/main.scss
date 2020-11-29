@@ -11,12 +11,42 @@ body {
   background-color: #222;
   color: #fff;
   transition: 1s ease-in-out;
+  #load-answer {
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  #collapse-answer {
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  .qa-search-bar {
+    border-color: #fff !important;
+    background-color: #222;
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  .helpful-button {
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
 }
 
 .app-light {
   background-color: #fff;
   color: #222;
   transition: 1s ease-in-out;
+  .qa-search-bar {
+    transition: 1s ease-in-out;
+  }
+  #load-answer {
+    transition: 1s ease-in-out;
+  }
+  #collapse-answer {
+    transition: 1s ease-in-out;
+  }
+  .helpful-button {
+    transition: 1s ease-in-out;
+  }
 }
 
 input:invalid {

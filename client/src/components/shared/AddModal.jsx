@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "@material-ui/core/Modal";
+import Button from '@material-ui/core/Button';
 import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -26,6 +27,12 @@ const AddModal = (props) => {
   const removeUrl = (e) => {
     e.preventDefault();
     setPicArr(picArr.slice(0, picArr.length - 1));
+  }
+
+  const modalClick = () => {
+    setOpen(!open);
+    trackEvent({time: moment().format(), type: trackType});
+    console.log(window.dataLayer);
   }
 
   var body;
@@ -125,10 +132,10 @@ const AddModal = (props) => {
     }
     body = (
       <div className="add-modal">
-        <h2 style={{ marginLeft: "2%" }} id="modal-title">
+        <h2 style={{ marginLeft: "2%", color: 'whitesmoke'}} id="modal-title">
           {props.title}
         </h2>
-        <h3 style={{ marginLeft: "2%" }} id="modal-description">
+        <h3 style={{ marginLeft: "2%", color: 'whitesmoke'}} id="modal-description">
           {answerDesc}
         </h3>
         <textarea
@@ -145,8 +152,10 @@ const AddModal = (props) => {
           }}
         ></div>
         <label className="form-label" htmlFor="nickname">
-          Nickname*:{" "}
+          Nickname
         </label>
+        <span style={{ fontSize: '25px', color: '#f50057', marginRight: '5px'}}>* 
+        </span>
         <input
           onChange={(e) => setUser(e.target.value)}
           id="nickname"
@@ -158,8 +167,10 @@ const AddModal = (props) => {
           For privacy reasons, do not use your full name or email address
         </div>
         <label className="form-label" htmlFor="email">
-          E-mail*:{" "}
+          E-mail
         </label>
+        <span style={{ fontSize: '25px', color: '#f50057', marginRight: '5px'}}>* 
+        </span>
         <input
           onChange={(e) => setEmail(e.target.value)}
           id="email"
@@ -259,6 +270,7 @@ const AddModal = (props) => {
     );
   }
 
+  var bStyle;
   var cName;
   var buttonText = "";
   var trackType = "";
@@ -267,23 +279,21 @@ const AddModal = (props) => {
     buttonText = "Add Answer";
     trackType = "ADD_ANSWER";
   } else if (props.type === "verify") {
-    cName = "verify-button";
+    bStyle = {fontSize: '16px', float: 'right'};
     buttonText = "SUBMIT";
     trackType = "SUBMIT";
   } else {
-    cName = "load-questions";
+    bStyle = {fontSize: '20px'};
     buttonText = `ADD A ${props.name.toUpperCase()} +`;
     trackType = "ADD_QUESTION";
   }
   
-  const modalClick = () => {
-    setOpen(!open);
-    trackEvent({time: moment().format(), type: trackType});
-    console.log(window.dataLayer);
-  }
-  return (
+  if (buttonText === "Add Answer") {
+    return (
     <span>
-      <button className={cName} onClick={() => modalClick()}>
+      <button
+        className={cName}
+        onClick={() => modalClick()}>
         {buttonText}
       </button>
       <Modal
@@ -301,5 +311,31 @@ const AddModal = (props) => {
       </Modal>
     </span>
   );
+  } else {
+  return (
+    <span>
+      <Button
+        color='primary'
+        style={bStyle}
+        variant='contained'
+        onClick={() => modalClick()}>
+        {buttonText}
+      </Button>
+      <Modal
+        open={open}
+        onClose={() => setOpen(!open)}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>{body}</Fade>
+      </Modal>
+    </span>
+  );
+      }
 };
 export default AddModal;
