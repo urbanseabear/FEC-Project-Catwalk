@@ -64,7 +64,7 @@ const QAloadmore = (props) => {
       <div>
         {props.questions.slice(4).map((oneQuestion) => {
           return (
-            <QAentry question={oneQuestion} key={oneQuestion.question_id} />
+            <QAentry submit={props.submit} product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
           );
         })}
         <div>

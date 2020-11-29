@@ -36,7 +36,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    let pid = location.pathname.substring(location.pathname.length - 1);
+    let pathArr = location.pathname.split('/');
+    let pid = pathArr[pathArr.length - 1];
     setProductId(pid);
   });
 
@@ -76,7 +77,7 @@ const App = () => {
         </div>
       </Route>
       <Route exact path='/product/:id'>
-        <div>
+        <div className={toggled ? 'app-dark' : 'app-light'}>
           <Grid container spacing={8}>
             <Grid item xs={12}>
               <Overview

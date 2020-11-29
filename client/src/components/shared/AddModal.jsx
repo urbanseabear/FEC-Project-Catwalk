@@ -4,6 +4,7 @@ import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import "../Q&A/qaStyle.scss";
+import '../../styles/main.scss';
 import { useTracking } from 'react-tracking';
 import moment from 'moment';
 
