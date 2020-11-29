@@ -9,42 +9,40 @@ export default function CustomizedRadios({
   five,
 }) {
   return (
-    <div>
+    <div className='review-form'>
       <h3 style={{ color: '#ffb400' }}>{type}:</h3>
-      <form
-        id='review-form'
-        style={{ display: 'flex', fontSize: '15px', color: 'grey' }}>
-        <div className='radio'>
+      <div style={{ display: 'flex', fontSize: '15px', color: 'grey' }}>
+        <div>
           <label>
             <input type='radio' value='option1' name='char' required />
             {one}
           </label>
         </div>
-        <div className='radio'>
+        <div>
           <label>
-            <input type='radio' value='option2' name='char' required />
+            <input type='radio' value='option2' name='char' />
             {two}
           </label>
         </div>
-        <div className='radio'>
+        <div>
           <label>
-            <input type='radio' value='option3' name='char' required />
+            <input type='radio' value='option3' name='char' />
             {three}
           </label>
         </div>
-        <div className='radio'>
+        <div>
           <label>
-            <input type='radio' value='option4' name='char' required />
+            <input type='radio' value='option4' name='char' />
             {four}
           </label>
         </div>
-        <div className='radio'>
+        <div>
           <label>
-            <input type='radio' value='option5' name='char' required />
+            <input type='radio' value='option5' name='char' />
             {five}
           </label>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

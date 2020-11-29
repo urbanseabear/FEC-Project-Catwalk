@@ -8,6 +8,7 @@
   border-style: none;
   margin-top: -2px;
   cursor: pointer;
+  border-radius: 3px;
 }
 
 .filler-bar {
@@ -15,6 +16,7 @@
   height: 100%;
   border-radius: inherit;
   transition: width 0.2s ease-in;
+  border-radius: 3px;
 }
 
 .rating-bar-star-number {
