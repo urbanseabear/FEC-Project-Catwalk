@@ -84,7 +84,7 @@ const QAloadmore = (props) => {
       </div>
     );
   } else {
-    return <div></div>;
+    return <div className='noMore'>.</div>;
   }
 };
 
