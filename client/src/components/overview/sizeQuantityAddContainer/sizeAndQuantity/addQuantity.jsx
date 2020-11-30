@@ -8,7 +8,7 @@ const AddQuantity = ({ selectedQuantity, totalQuantity, onQuantitySelect }) => {
         style={{width: '100px'}}>
         { !selectedQuantity ? '-' : selectedQuantity}
         <img 
-          src='./images/chevron-down.png' 
+          src='/images/chevron-down.png' 
           style={{height: '12px'}} />
       </button>
       <div className='dropDownContent' style={{width: '100px'}}>

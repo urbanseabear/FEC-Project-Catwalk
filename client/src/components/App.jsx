@@ -20,10 +20,18 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(100);
   const [toggled, setToggled] = useState(false);
+  const [reviewData, setReviewData] = useState([]);
   const hist = useHistory();
   let location = useLocation();
-
   const icon = toggled ? <Brightness7Icon /> : <Brightness3Icon />;
+
+  useEffect(() => {
+    starRatingData(reviewData);
+  }, [reviewData]);
+
+  const starRatingData = (arr) => {
+    setReviewData(arr);
+  };
 
   const onSearch = (productId) => {
     setProductId(productId);
@@ -58,17 +66,19 @@ const App = () => {
                 productId={productId}
                 onSearch={onSearch}
                 onProductNameChange={onProductNameChange}
+                reviewData={reviewData}
               />
             </Grid>
             <Grid style={{ margin: '0% 10%' }} item xs={12}>
               <QAmodule prodID={productId} />
             </Grid>
-            <Grid style={{ margin: '0% 10%' }} item xs={12}>
+            <Grid id='reviewRatings' style={{ margin: '0% 10%' }} item xs={12}>
               <ReviewRatings
                 productId={productId}
                 page={page}
                 count={count}
                 productName={productName}
+                starRatingData={starRatingData}
               />
             </Grid>
           </Grid>
@@ -85,17 +95,19 @@ const App = () => {
                 productId={productId}
                 onSearch={onSearch}
                 onProductNameChange={onProductNameChange}
+                reviewData={reviewData}
               />
             </Grid>
             <Grid style={{ margin: '0% 10%' }} item xs={12}>
               <QAmodule prodID={productId} />
             </Grid>
-            <Grid style={{ margin: '0% 10%' }} item xs={12}>
+            <Grid id='reviewRatings' style={{ margin: '0% 10%' }} item xs={12}>
               <ReviewRatings
                 productId={productId}
                 page={page}
                 count={count}
                 productName={productName}
+                starRatingData={starRatingData}
               />
             </Grid>
           </Grid>

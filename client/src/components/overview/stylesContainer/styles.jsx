@@ -49,7 +49,7 @@ const StylesContainer = ({ selectedStyle, allStyles, changeSelectedStyle }) => {
                   </div>
                   { selectedStyle['style_id'] === style_id 
                     ? <img
-                      src='./images/checkmark.png' 
+                      src='/images/checkmark.png' 
                       style={{
                         width: '25px', 
                         height: '25px', 
@@ -89,7 +89,7 @@ const StylesContainer = ({ selectedStyle, allStyles, changeSelectedStyle }) => {
                   </div>
                   { selectedStyle['style_id'] === style_id 
                     ? <img 
-                      src='./images/checkmark.png' 
+                      src='/images/checkmark.png' 
                       style={{
                         width: '25px', 
                         height: '25px', 

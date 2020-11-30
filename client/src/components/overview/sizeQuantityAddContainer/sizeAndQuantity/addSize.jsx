@@ -15,7 +15,7 @@ const AddSize = ({ selectedSize, allSizes, onSizeSelect }) => {
               : 'SELECT SIZE' 
         } 
         <img 
-          src='./images/chevron-down.png' 
+          src='/images/chevron-down.png' 
           style={{height: '12px'}}/>
       </button>
       <div className='dropDownContent'>
