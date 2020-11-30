@@ -72,7 +72,7 @@ const App = () => {
             <Grid style={{ margin: '0% 10%' }} item xs={12}>
               <QAmodule prodID={productId} />
             </Grid>
-            <Grid style={{ margin: '0% 10%' }} item xs={12}>
+            <Grid id='reviewRatings' style={{ margin: '0% 10%' }} item xs={12}>
               <ReviewRatings
                 productId={productId}
                 page={page}
@@ -95,12 +95,13 @@ const App = () => {
                 productId={productId}
                 onSearch={onSearch}
                 onProductNameChange={onProductNameChange}
+                reviewData={reviewData}
               />
             </Grid>
             <Grid style={{ margin: '0% 10%' }} item xs={12}>
               <QAmodule prodID={productId} />
             </Grid>
-            <Grid style={{ margin: '0% 10%' }} item xs={12}>
+            <Grid id='reviewRatings' style={{ margin: '0% 10%' }} item xs={12}>
               <ReviewRatings
                 productId={productId}
                 page={page}

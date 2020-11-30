@@ -150,6 +150,7 @@ class Overview extends React.Component {
             }
             category={this.state.productInfo.category}
             name={this.state.productInfo.name}
+            reviewData={this.props.reviewData}
           />
           <StylesContainer
             allStyles={this.state.productStyles}
