@@ -1,18 +1,17 @@
 import React from 'react';
 import QAentry from './QAentry';
 import QAloadmore from './QAloadmore';
-import '../../styles/main.scss';
+import './qaStyle.scss';
 
 const QAlist = (props) => {
     if (props.search === null) {
     return (
-        <div id='qa-list' style={{gridColumnStart: 'span 4', maxHeight: '50vh', overflowY: 'scroll'}}>
+        <div id='qa-list'>
             {props.questions.slice(0, 5).map((oneQuestion, i) => {
                 if (i === 4) {
-                    console.log('meow');
-                    return <QAloadmore key={i} questions={props.questions}/>
+                    return <QAloadmore submit={props.submit} product={props.product} key="111111111111111111111" questions={props.questions}/>
                 }
-                return <QAentry  product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
+                return <QAentry submit={props.submit} product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
             })}
         </div>
     )
@@ -23,13 +22,12 @@ const QAlist = (props) => {
             }
         });
         return (
-            <div id='qa-list' style={{gridColumnStart: 'span 4', maxHeight: '50vh', overflowY: 'scroll'}}>
+            <div id='qa-list'>
             {searchedQs.slice(0, 5).map((oneQuestion, i) => {
                 if (i === 4) {
-                    console.log('meow');
-                    return <QAloadmore key={i} questions={props.questions}/>
+                    return <QAloadmore submit={props.submit} product={props.product} key="111111111111111111111" questions={props.questions}/>
                 }
-                return <QAentry  product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
+                return <QAentry submit={props.submit} product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
             })}
         </div>
         )

@@ -1,12 +1,16 @@
 .overviewContainer {
   // If you want it to grow,
   // Try max-width: auto;
-  max-width: 1500px;
-  height: 100vh;
+  max-width: 1600px;
+  height: 1000px;
   display: grid;
   grid-template-columns: 60% 40%;
-  grid-template-rows: 12% 5% 30% 15% 20% 18%;
+  grid-template-rows: 12% 5% 23% 22% 20% 18%;
   grid-gap: 5px;
+
+  *:focus {
+    outline: none;
+  }
 
   .headerContainer {
     grid-row: 1;
@@ -27,7 +31,7 @@
       background-repeat: no-repeat;
       background-position: right 5px center;
       background-size: 20px 20px;
-      transition: width .35s ease-in-out;
+      transition: width 0.35s ease-in-out;
       box-shadow: 0px 0px 5px black;
     }
 
@@ -41,50 +45,79 @@
     grid-column: 1/3;
     border-bottom: 2px solid darkgray;
   }
-  .imageGalleryContainer {
-    //max-height: 600px;
+  // .imageGalleryContainers:hover {
+  //   width: 1500px;
+  //   height: 100%;
+  // }
+  .imageGalleryContainers {
+    background-color: white;
     grid-row: 3/6;
     grid-column: 1;
+    //position: relative;
+    width: 100%;
+    // height: 100%;
     display: grid;
-    grid-template-columns: 1fr 40px 4fr 40px;
+    grid-template-columns: 1fr 4fr;
     margin: 50px 0px;
+    overflow: hidden;
+    // width: 100%;
+    // transition: width 2s, height 10s, ease-out 10s;
+    // transition: width 2s;
+    // transition: ease-out .5s;
 
     .viewsContainer {
+      max-height: 100%;
       grid-column: 1;
-      overflow: hidden;
-      display: grid;
-
+      // overflow: hidden;
+      // display: grid;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      // flex-wrap: wrap;
       .arrow {
+        max-height: 100%;
         display: flex;
         justify-content: center;
       }
-
       .viewsContainerPhotos {
+        max-height: 100%;
         overflow: hidden;
         display: flex;
         align-items: center;
-        justify-content: center;
+        // justify-content: center;
         flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
       }
     }
     .leftArrowContainer {
-      grid-column: 2;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-    .mainImageContainer {
-      grid-column: 3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       max-height: 100%;
-    }
-    .rightArrowContainer {
-      grid-column: 4;
+      //grid-column: 2;
       display: flex;
+      // justify-content: space-between;
       align-items: center;
     }
+    // .mainImageContainer {
+    //   max-height: 100%;
+    //   // grid-column: 1/4;
+    //   grid-column: 3;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    // }
+    .rightArrowContainer {
+      //grid-column: 2;
+      display: flex;
+      align-items: center;
+      padding-right: 165px;
+      //justify-content: flex-start;
+    }
+  }
+  #arrows {
+    opacity: 0.3;
+  }
+  #arrows:hover {
+    opacity: 0.8;
   }
   .productDetailsContainer {
     grid-row: 6;
@@ -94,6 +127,7 @@
   .ratingCategoryProductNamePriceContainer {
     grid-row: 3;
     grid-column: 2;
+    position: relative;
   }
   .styleContainer {
     grid-row: 4;
@@ -111,7 +145,7 @@
       margin-top: -3px;
       display: none;
       position: absolute;
-      width: 194px;
+      width: 195px;
       box-shadow: 0px 3px 5px black;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
@@ -131,15 +165,21 @@
     .dropDown:hover .dropDownContent {
       display: block;
     }
+    #dropButton:focus + .dropDownContent {
+      display: block;
+    }
 
     #dropButton {
       border: none;
       border-radius: 5px;
       margin: 20px 20px 0px 0px;
       padding: 15px;
-      font-size: 16px;
+      font-size: 14px;
       background-color: white;
       box-shadow: 0px 0px 4px black;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
     }
   }
   .featuresContainer {

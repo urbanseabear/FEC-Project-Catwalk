@@ -1,0 +1,49 @@
+.item-wrapper {
+  padding-top: 14px;
+}
+
+.item-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.item-response {
+  border: solid;
+  border-color: #eeeeee;
+  height: 80px;
+  margin: 30 0;
+  background: #eeeeee;
+  border-radius: 3px;
+}
+
+.item-border {
+  padding-top: 30px;
+  border-bottom: solid;
+  border-style: thin;
+  border-bottom-color: #eeeeee;
+}
+
+// photos
+.review-photo {
+  display: inline-flex;
+  margin-top: 10px;
+  padding-right: 10px;
+  border-radius: 3px;
+}
+
+// user & date
+.user-date {
+  float: right;
+  margin-top: 24px;
+}
+
+// summary
+.review-summary {
+  font-size: 23px;
+}
+
+// recommend
+.recommend {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}

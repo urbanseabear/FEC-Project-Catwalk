@@ -1,11 +1,15 @@
 import React from 'react';
 import StarRating from './StarRating';
 
-const AverageRating = ({ average, recommended }) => {
+const AverageRating = ({ average }) => {
   return (
     <div>
-      <StarRating rating={average} starNum={average} />
-      <p>{recommended}% of reviews recommend this product</p>
+      <StarRating
+        rating={average}
+        starNum={average}
+        readOnly={true}
+        precision={0.25}
+      />
     </div>
   );
 };

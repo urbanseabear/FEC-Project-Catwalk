@@ -1,0 +1,8 @@
+.scroll-body {
+  max-height: 90vh;
+  overflow-y: scroll;
+}
+
+.scroll-body::-webkit-scrollbar {
+  display: none;
+}

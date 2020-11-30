@@ -1,20 +1,29 @@
 import { Modal } from '@material-ui/core';
 import React, {useState} from 'react';
-
+import "./qaStyle.scss";
+import { useTracking } from 'react-tracking';
+import moment from 'moment';
 
 const QAphotos = (props) => {
 
+    const { Track, trackEvent } = useTracking({ module: 'QA_PHOTOS' });
+    const picClick = () => {
+      showBigPic(!bigPic);
+      trackEvent({time: moment().format(), type: 'PHOTO_CLICK'});
+    }
     const [bigPic, showBigPic] = useState(false);
     const body = (
-        <div style={{position: 'fixed', top: '30%', left: '30%'}}>
-        <img  src={props.photo} onClick={() => showBigPic(!bigPic)} alt={'photo'}></img>
+        <div className="photo-modal" >
+        <img style={{maxWidth: "100%"}} src={props.photo} onClick={() => picClick()} alt={'photo'}></img>
         </div>
     )
     return (
-        <span>
-        <img src={props.photo} onClick={() => showBigPic(!bigPic)} alt={'photo'} width={75} height={75} style={{boxShadow: '5px 5px 5px gray', verticalAlign: 'middle', margin: '20px 0px'}}></img><Modal open={bigPic} onClose={() => showBigPic(!bigPic)} aria-labelledby="photo"
+        <Track>
+        <span style={{marginRight: '1%'}}>
+        <img src={props.photo} onClick={() => picClick()} alt={'photo'} width={75} height={75} className="photo-thumb"></img><Modal open={bigPic} onClose={() => showBigPic(!bigPic)} aria-labelledby="photo"
         aria-describedby="answer photo">{body}</Modal>
         </span>
+        </Track>
     )
 }
 

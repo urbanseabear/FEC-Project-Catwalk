@@ -1,20 +1,27 @@
 import React from 'react';
 
-const AddSize = ({ sizeAndQuantity }) => {
+const AddSize = ({ selectedSize, allSizes, onSizeSelect }) => {
   return (
     <div className='dropDown'>
       <button 
-        id='dropButton' 
+        id='dropButton'
+        style={{width: '195px'}}
       >
-          SELECT SIZE 
+        {
+          Object.keys(allSizes).length === 0 
+            ? 'OUT OF STOCK'
+            : selectedSize 
+              ? `SIZE: ${selectedSize}` 
+              : 'SELECT SIZE' 
+        } 
         <img 
           src='./images/chevron-down.png' 
-          style={{height: '12px', margin: '0px 0px 0px 50px'}}/>
+          style={{height: '12px'}}/>
       </button>
       <div className='dropDownContent'>
-        {Object.values(sizeAndQuantity).map(sizeQuantity => {
+        {Object.keys(allSizes).map(sizeId => {
           return (
-            <a>SIZE: { sizeQuantity['size'] }</a>
+            <a key={ sizeId } onClick={ onSizeSelect.bind(this, sizeId) }>SIZE: { allSizes[sizeId] }</a>
           );
         })}
       </div>

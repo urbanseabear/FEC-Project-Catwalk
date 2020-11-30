@@ -1,6 +1,7 @@
 .outer-bar {
   height: 9px;
   padding: 0px;
+  border-radius: 3px;
 }
 
 .inner-bar {
@@ -8,6 +9,7 @@
   outline: none;
   background-color: rgba(165, 165, 165, 0.5);
   height: 9px;
+  border-radius: 3px;
 }
 
 .label-left {
@@ -30,8 +32,14 @@
 .label-title {
   font-size: 20px;
   padding-bottom: 10px;
+  font-weight: bold;
 }
 
 .char-wrapper {
   margin-top: 20px;
+}
+
+.triangle {
+  font-size: 16px;
+  margin-right: 50px;
 }

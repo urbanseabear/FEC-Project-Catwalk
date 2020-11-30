@@ -7,6 +7,143 @@ body {
   color: #222;
 }
 
-#qa-list::-webkit-scrollbar {
-  display: none;
+.darkIcon {
+  margin-top: 5px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.darkIcon:hover {
+  transform: scaleY(1.2);
+  transition: 1s ease-in-out;
+}
+
+html {
+  background-color: #222;
+  margin: 10px;
+}
+
+.app-dark {
+  max-width: 100%;
+  background-color: #222;
+  color: #fff;
+  transition: 1s ease-in-out;
+  #load-answer {
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  #collapse-answer {
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  .qa-search-bar {
+    border-color: #fff !important;
+    background-color: #222;
+    color: #fff;
+    transition: 1s ease-in-out;
+  }
+  .helpful-button {
+    color: #fff;
+    transition: 1s ease-in-out;
+    color: #ccc;
+    transition: 0.5s ease-in-out;
+  }
+  .imageGalleryContainers {
+    background-color: #222 !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .item-response {
+    color: #ccc;
+    border-color: #686868;
+    background-color: #686868;
+    transition: 0.5s ease-in-out;
+  }
+
+  .empty-bar {
+    position: relative;
+    height: 15px;
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid#686868;
+    background: #686868;
+    border-style: none;
+    margin-top: -2px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.5s ease-in-out;
+  }
+
+  .sort-by-dropdown {
+    color: #ccc !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .photo-thumb {
+    box-shadow: 2px 2px 2px rgb(24, 24, 24);
+    vertical-align: middle;
+    margin: 20px 0px;
+    border-radius: 1px;
+    transition: 0.5s ease-in-out;
+  }
+}
+
+.app-light {
+  max-width: 100%;
+  background-color: #fff;
+  color: #222;
+  transition: 1s ease-in-out;
+  .qa-search-bar {
+    transition: 1s ease-in-out;
+  }
+  #load-answer {
+    transition: 1s ease-in-out;
+  }
+  #collapse-answer {
+    transition: 1s ease-in-out;
+  }
+  .helpful-button {
+    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+  .imageGalleryContainers {
+    background-color: white !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .sort-by-dropdown {
+    color: #222 !important;
+    transition: 0.5s ease-in-out;
+  }
+
+  .empty-bar {
+    position: relative;
+    height: 15px;
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid#EEEEEE;
+    background: #eeeeee;
+    border-style: none;
+    margin-top: -2px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.5s ease-in-out;
+  }
+  .item-response {
+    transition: 0.5s ease-in-out;
+  }
+
+  .photo-thumb {
+    box-shadow: 5px 5px 5px gray;
+    vertical-align: middle;
+    margin: 20px 0px;
+    border-radius: 1px;
+    transition: 0.5s ease-in-out;
+  }
+}
+
+input:invalid {
+  border: solid;
+  color: red;
 }

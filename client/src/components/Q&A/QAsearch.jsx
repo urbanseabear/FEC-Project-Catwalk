@@ -1,24 +1,22 @@
 import React from "react";
-import "../../styles/main.scss";
+import "./qaStyle.scss";
+import SearchIcon from '@material-ui/icons/Search';
+import { useTracking } from 'react-tracking';
+import moment from 'moment';
+
 
 const QAsearch = (props) => {
+  const { trackEvent } = useTracking({ module: 'QA_SEARCH' });
   return (
-    <div style={{ gridRowStart: "2", gridColumnStart: "span 4" }}>
+    <div className="qa-search">
       <input
+        value={props.searchString}
+        onClick={() => {trackEvent({time: moment().format(), type: 'Q_SEARCH'})}}
         onChange={(e) => props.search(e)} 
-        style={{
-          width: "95%",
-          paddingLeft: "10px",
-          paddingBottom: "15px",
-          paddingTop: "15px",
-          fontWeight: "bold",
-          fontSize: "20px",
-          borderWidth: '3px'
-        }}
         className="qa-search-bar"
         type="text"
-        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS...&#9906;"
-      ></input>
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+      ></input><SearchIcon id="searchIcon"/>
     </div>
   );
 };

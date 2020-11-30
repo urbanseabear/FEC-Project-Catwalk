@@ -1,18 +1,9 @@
-.empty-bar {
-  position: relative;
-  height: 15px;
-  width: 100%;
-  border-radius: 1px;
-  border: 1px solid#EEEEEE;
-  background: #eeeeee;
-  border-style: none;
-}
-
 .filler-bar {
   background: green;
   height: 100%;
   border-radius: inherit;
   transition: width 0.2s ease-in;
+  border-radius: 3px;
 }
 
 .rating-bar-star-number {
@@ -22,6 +13,11 @@
 
 .rating-bar-wrapper {
   display: flex;
-  margin-top: 8px;
+  margin-top: 10px;
   margin: 0 0 15;
+  transition: all 0.2s ease-in-out;
+}
+
+.rating-bar-wrapper:hover {
+  transform: scale(1.1);
 }
