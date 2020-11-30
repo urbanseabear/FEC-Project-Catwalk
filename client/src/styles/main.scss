@@ -2,7 +2,6 @@
 
 body {
   display: flex;
-  overflow-x: hidden;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
   color: #222;
@@ -22,6 +21,7 @@ body {
 
 html {
   background-color: #222;
+  margin: 10px;
 }
 
 .app-dark {
