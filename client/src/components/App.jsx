@@ -26,7 +26,7 @@ const App = () => {
   const icon = toggled ? <Brightness7Icon /> : <Brightness3Icon />;
 
   const starRatingData = (arr) => {
-    return setReviewData(arr);
+    setReviewData(arr);
   };
 
   const onSearch = (productId) => {
@@ -62,7 +62,7 @@ const App = () => {
                 productId={productId}
                 onSearch={onSearch}
                 onProductNameChange={onProductNameChange}
-                count={count}
+                reviewData={reviewData}
               />
             </Grid>
             <Grid style={{ margin: '0% 10%' }} item xs={12}>

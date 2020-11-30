@@ -107,7 +107,6 @@ class Overview extends React.Component {
   }
 
   render() {
-    console.log(this.state.selectedStyle);
     return (
       <div
         className='masterContainer'
