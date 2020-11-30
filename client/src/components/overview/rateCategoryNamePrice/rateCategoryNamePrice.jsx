@@ -12,7 +12,9 @@ const RateCategoryNamePriceContainer = ({ price, category, name }) => {
           flexDirection: 'column',
           padding: '0px 0px 50px 0px',
         }}>
-        <StarRating starNum={3} readOnly={true} />
+        <div style={{display: 'flex', alignItems: 'flex-end !important'}}>
+          <StarRating starNum={3} readOnly={true} />
+        </div>
         <a style={{ font: 'inherit' }}>{category.toUpperCase()}</a>
         <a style={{ fontSize: '2em' }}>{name}</a>
         {Array.isArray(price) === true ? (

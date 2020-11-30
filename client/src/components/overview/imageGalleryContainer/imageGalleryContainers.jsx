@@ -1,6 +1,5 @@
 import React from 'react';
 import ViewsContainer from './viewsContainer';
-import MainImage from './mainImage';
 import PhotosLinkedList from './photos';
 
 class ImageGalleryContainers extends React.Component {
@@ -85,7 +84,7 @@ class ImageGalleryContainers extends React.Component {
             cursor: '-webkit-zoom-in',
           }}
           onClick={(e) => {
-            if (e.target.id !== 'arrows') {
+            if (e.target.id !== 'arrows' && e.target.id !== 'thumbnail') {
               if (!this.state.expandedView) {
                 this.onExpandedViewClick.bind(this, e)();
                 setTimeout(
@@ -130,7 +129,7 @@ class ImageGalleryContainers extends React.Component {
             <div className='leftArrowContainer'>
               <img
                 id='arrows'
-                src='./images/chevron-left.png'
+                src='/images/chevron-left.png'
                 style={{
                   maxWidth: '100%',
                   backgroundColor: 'white',
@@ -143,14 +142,10 @@ class ImageGalleryContainers extends React.Component {
                 onClick={this.onClickPrev.bind(this)}
               />
             </div>
-            {/* <MainImage 
-              photo={this.state.thumbnails.thumbnails[this.state.midpoint].value['thumbnail_url']} 
-              //changeClassName={this.changeClassName.bind(this)} 
-            /> */}
             <div className='rightArrowContainer'>
               <img
                 id='arrows'
-                src='./images/chevron-right.png'
+                src='/images/chevron-right.png'
                 style={{
                   backgroundColor: 'white',
                   borderRadius: '50%',

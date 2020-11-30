@@ -58,6 +58,7 @@ const App = () => {
                 productId={productId}
                 onSearch={onSearch}
                 onProductNameChange={onProductNameChange}
+                count={count}
               />
             </Grid>
             <Grid style={{ margin: '0% 10%' }} item xs={12}>

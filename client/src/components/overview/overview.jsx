@@ -14,12 +14,11 @@ class Overview extends React.Component {
     super(props);
     this.state = {
       selectedSize: null,
+      skuID: null,
       selectedQuantity: null,
       selectedStyle: null,
       productInfo: {},
       productStyles: [],
-      // windowWidth: null,
-      // windowHeight: null,
       window: null,
     };
     this.windowRef = React.createRef();
@@ -68,6 +67,7 @@ class Overview extends React.Component {
       this.setState({
         selectedSize: null,
         selectedQuantity: null,
+        skuID: null,
       });
     }
     if (
@@ -87,6 +87,7 @@ class Overview extends React.Component {
       ),
       selectedSize: null,
       selectedQuantity: null,
+      skuID: null,
     });
   }
 
@@ -95,6 +96,7 @@ class Overview extends React.Component {
       'color: black; font-size: 14px; width: 195px;';
     this.setState({
       selectedSize: this.state.selectedStyle['skus'][sizeId]['size'],
+      skuID: sizeId
     });
   }
 
@@ -105,15 +107,14 @@ class Overview extends React.Component {
   }
 
   render() {
+    console.log(this.state.selectedStyle);
     return (
       <div
         className='masterContainer'
         style={{ display: 'flex', justifyContent: 'center' }}>
         <div className='overviewContainer' ref={this.windowRef}>
           <div className='headerContainer'>
-            <div style={{ marginTop: '20%' }}>
-              <img src={'/images/project-logo.png'} />
-            </div>
+            <div style={{ width: '100%', height: '100%', backgroundImage: 'url(/images/project-logo.png)', backgroundPosition: 'left', backgroundRepeat: 'no-repeat' }} />
             <SearchBar onSearch={this.props.onSearch} />
           </div>
           <div
@@ -125,17 +126,12 @@ class Overview extends React.Component {
             }}>
             SITE ANNOUNCEMENT CONTAINER
           </div>
-          {/* <div style={{gridRow: '3/6', gridColumn: '1/3', zIndex: '1000', backgroundColor: 'black'}}> */}
-          {/* <img src={this.state.thumbnails.thumbnails[this.state.midpoint].value['url']} style={{width: '100%', height: '100%'}}/> */}
-          {/* </div> */}
           <ImageGalleryContainers
             photos={
               this.state.selectedStyle
                 ? this.state.selectedStyle['photos']
                 : null
             }
-            // windowWidth={this.state.windowWidth}
-            // windowHeight={this.state.windowHeight}
             window={this.state.window}
           />
           <ProductDetailsContainer
@@ -147,8 +143,8 @@ class Overview extends React.Component {
               !this.state.selectedStyle
                 ? null
                 : this.state.selectedStyle['sale_price'] === '0'
-                ? this.state.selectedStyle['original_price']
-                : [
+                  ? this.state.selectedStyle['original_price']
+                  : [
                     this.state.selectedStyle['sale_price'],
                     this.state.selectedStyle['original_price'],
                   ]
@@ -169,6 +165,7 @@ class Overview extends React.Component {
             }
             onSizeSelect={this.onSizeSelect.bind(this)}
             onQuantitySelect={this.onQuantitySelect.bind(this)}
+            skuID={this.state.skuID}
           />
           <FeaturesContainer features={this.state.productInfo.features} />
         </div>
