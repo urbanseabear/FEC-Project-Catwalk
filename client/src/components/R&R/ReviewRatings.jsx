@@ -4,11 +4,21 @@ import ReviewBody from './review section/Review Body/ReviewBody';
 import Grid from '@material-ui/core/Grid';
 const axios = require('axios');
 
-const ReviewRatings = ({ productId, page, count, productName }) => {
+const ReviewRatings = ({
+  productId,
+  page,
+  count,
+  productName,
+  starRatingData,
+}) => {
   const [data, setData] = useState([]);
   const [metaData, setmetaData] = useState([]);
   const [sortBy, setsortBy] = useState('');
   const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    starRatingData(data);
+  }, [data]);
 
   // make GET req  when productID changes to update Data & MetaData
   useEffect(() => {
