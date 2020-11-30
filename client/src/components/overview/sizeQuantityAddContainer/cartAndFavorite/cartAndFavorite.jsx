@@ -1,5 +1,5 @@
 import React from 'react';
-import apiCalls from '../../overviewApi.mjs';
+import apiCalls from '../../overviewAPI.mjs';
 const onClick = (skuID) => {
   const selectedElement = document.getElementById('dropButton');
 
