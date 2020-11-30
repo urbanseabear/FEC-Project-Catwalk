@@ -15,6 +15,12 @@ const apiCalls = {
   getProductStyles: (productId) => {
     return axios.get(`http://3.21.164.220/products/${productId}/styles`)
       .catch(err => console.log(err));
+  },
+  addToCart: (skuID) => {
+    skuID = parseInt(skuID);
+    axios.post('http://3.21.164.220/cart', {sku_id: skuID})
+      .then(data => console.log('it worked!'))
+      .catch(err => console.log(err));
   }
 };
 

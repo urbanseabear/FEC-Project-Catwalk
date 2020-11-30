@@ -2,7 +2,7 @@ import React from 'react';
 import CartAndFavorite from './cartAndFavorite/cartAndFavorite.jsx';
 import AddSizeAndQuantity from './sizeAndQuantity/addSizeAndQuantity.jsx';
 
-const SizeQuantityAddContainer = ({ selectedSize, selectedQuantity, allSizesAndQuantities, onSizeSelect, onQuantitySelect }) => {
+const SizeQuantityAddContainer = ({ selectedSize, selectedQuantity, allSizesAndQuantities, onSizeSelect, onQuantitySelect, skuID }) => {
   if (Object.keys(allSizesAndQuantities).length > 0) {
     return (
       <div className='sizeQuantityAddContainer'>
@@ -19,7 +19,7 @@ const SizeQuantityAddContainer = ({ selectedSize, selectedQuantity, allSizesAndQ
           onSizeSelect={onSizeSelect}
           onQuantitySelect={onQuantitySelect}
         />
-        <CartAndFavorite />
+        <CartAndFavorite skuID={skuID} />
       </div>
     );
   } else {

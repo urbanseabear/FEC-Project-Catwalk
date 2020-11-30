@@ -1,16 +1,18 @@
 import React from 'react';
-
-const onClick = () => {
+import apiCalls from '../../overviewApi.mjs';
+const onClick = (skuID) => {
   const selectedElement = document.getElementById('dropButton');
 
   if (selectedElement.childNodes[0].nodeValue === 'SELECT SIZE') {
     selectedElement.childNodes[0].nodeValue = '* PLEASE SELECT SIZE';
     selectedElement.style = 'color: red; font-style: italic; font-size: 12px; width: 195px;';
     selectedElement.focus();
+  } else {
+    apiCalls.addToCart(skuID);
   }
 };
 
-const CartAndFavorite = () => {
+const CartAndFavorite = ({skuID}) => {
 
   return (
     <div 
@@ -18,7 +20,7 @@ const CartAndFavorite = () => {
         display: 'flex', 
         flexDirection: 'row'
       }}
-      onClick={onClick}
+      onClick={() => onClick(skuID)}
     >
       <button 
         id='dropButton' 
@@ -29,13 +31,13 @@ const CartAndFavorite = () => {
       >
         ADD TO CART 
         <img 
-          src='./images/plus.png' 
+          src='/images/plus.png' 
           style={{ 
             height: '16px' 
           }}
         />
       </button>
-      <button id='dropButton'><img src='./images/star.png' style={{height: '16px'}}/></button>
+      <button id='dropButton'><img src='/images/star.png' style={{height: '16px'}}/></button>
     </div>
   );
 };
