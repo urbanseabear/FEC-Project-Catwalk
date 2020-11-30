@@ -20,10 +20,14 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(100);
   const [toggled, setToggled] = useState(false);
+  const [reviewData, setReviewData] = useState([]);
   const hist = useHistory();
   let location = useLocation();
-
   const icon = toggled ? <Brightness7Icon /> : <Brightness3Icon />;
+
+  const starRatingData = (arr) => {
+    return setReviewData(arr);
+  };
 
   const onSearch = (productId) => {
     setProductId(productId);
@@ -69,6 +73,7 @@ const App = () => {
                 page={page}
                 count={count}
                 productName={productName}
+                starRatingData={starRatingData}
               />
             </Grid>
           </Grid>
@@ -96,6 +101,7 @@ const App = () => {
                 page={page}
                 count={count}
                 productName={productName}
+                starRatingData={starRatingData}
               />
             </Grid>
           </Grid>

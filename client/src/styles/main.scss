@@ -4,7 +4,6 @@ body {
   display: flex;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
-  color: #222;
 }
 
 .darkIcon {
@@ -55,7 +54,7 @@ html {
   }
 
   .item-response {
-    color: #ccc;
+    color: #fff;
     border-color: #686868;
     background-color: #686868;
     transition: 0.5s ease-in-out;
@@ -76,7 +75,7 @@ html {
   }
 
   .sort-by-dropdown {
-    color: #ccc !important;
+    color: #fff !important;
     transition: 0.5s ease-in-out;
   }
 
