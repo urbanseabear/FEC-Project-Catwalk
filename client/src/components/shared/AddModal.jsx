@@ -62,10 +62,10 @@ const AddModal = (props) => {
         });
       body = (
         <div className="submit-modal">
-          <h2 id="modal-title">{props.title}</h2>
-          <h3 id="modal-description">In relation to the {props.prodName}</h3>
+          <h2 style={{color: 'whitesmoke'}} id="modal-title">{props.title}</h2>
+          <h3 style={{color: 'whitesmoke'}} id="modal-description">In relation to the {props.prodName}</h3>
 
-          <div>Thank you for your submission!</div>
+          <div style={{color: 'whitesmoke'}}>Thank you for your submission!</div>
           <div></div>
         </div>
       );
@@ -93,10 +93,10 @@ const AddModal = (props) => {
         });
       body = (
         <div className="submit-modal">
-          <h2 id="modal-title">{props.title}</h2>
-          <h3 id="modal-description">In relation to the {props.prodName}</h3>
+          <h2 style={{color: 'whitesmoke'}} id="modal-title">{props.title}</h2>
+          <h3 style={{color: 'whitesmoke'}} id="modal-description">In relation to the {props.prodName}</h3>
 
-          <div>Thank you for your submission!</div>
+          <div style={{color: 'whitesmoke'}}>Thank you for your submission!</div>
           <div></div>
         </div>
       );
@@ -104,8 +104,8 @@ const AddModal = (props) => {
       body = (
         <div className="submit-modal">
           <div style={{ marginLeft: "2%" }}>
-            <h2 id="modal-title">OOPS!</h2>
-            <h3 id="modal-description">In relation to the {props.prodName}</h3>
+            <h2 style={{color: 'whitesmoke'}} id="modal-title">OOPS!</h2>
+            <h3 style={{color: 'whitesmoke'}} id="modal-description">In relation to the {props.prodName}</h3>
             <div style={{ color: "red" }}>
               Please fix your submission. Required input values are missing or
               invalid:

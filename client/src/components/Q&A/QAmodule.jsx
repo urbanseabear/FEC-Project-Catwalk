@@ -6,7 +6,6 @@ import qaData from "./qa-sample-data";
 import QAlist from "./QAlist";
 import AddModal from "../shared/AddModal";
 import axios from "axios";
-import track, { useTracking } from "react-tracking";
 
 class QAmodule extends React.Component {
   constructor(props) {
@@ -68,7 +67,6 @@ class QAmodule extends React.Component {
         <QAsearch search={this.handleSearch} searchString={this.state.search}/>
         <QAlist
           submit={this.handleSubmission}
-          answers={this.state.answers}
           product={this.state.product}
           questions={this.state.questions.results}
           search={this.state.search.length > 2 ? this.state.search : null}
