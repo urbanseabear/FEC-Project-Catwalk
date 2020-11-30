@@ -14,11 +14,6 @@ body {
   top: 0;
 }
 
-.darkIcon:hover {
-  transform: scaleY(1.2);
-  transition: 1s ease-in-out;
-}
-
 html {
   background-color: #222;
   margin: 10px;
@@ -27,28 +22,33 @@ html {
 .app-dark {
   max-width: 100%;
   background-color: #222;
+  transition: 0.5s ease-in-out;
   color: #fff;
-  transition: 1s ease-in-out;
+
   #load-answer {
     color: #fff;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
   }
+
   #collapse-answer {
     color: #fff;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
   }
+
   .qa-search-bar {
     border-color: #fff !important;
     background-color: #222;
     color: #fff;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
   }
+
   .helpful-button {
     color: #fff;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
     color: #ccc;
     transition: 0.5s ease-in-out;
   }
+
   .imageGalleryContainers {
     background-color: #222 !important;
     transition: 0.5s ease-in-out;
@@ -92,21 +92,26 @@ html {
 .app-light {
   max-width: 100%;
   background-color: #fff;
+  transition: 0.5s ease-in-out;
   color: #222;
-  transition: 1s ease-in-out;
+
   .qa-search-bar {
-    transition: 1s ease-in-out;
-  }
-  #load-answer {
-    transition: 1s ease-in-out;
-  }
-  #collapse-answer {
-    transition: 1s ease-in-out;
-  }
-  .helpful-button {
-    transition: 1s ease-in-out;
     transition: 0.5s ease-in-out;
   }
+
+  #load-answer {
+    transition: 0.5s ease-in-out;
+  }
+
+  #collapse-answer {
+    transition: 0.5s ease-in-out;
+  }
+
+  .helpful-button {
+    transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+
   .imageGalleryContainers {
     background-color: white !important;
     transition: 0.5s ease-in-out;
