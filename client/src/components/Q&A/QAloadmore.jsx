@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import QAanswer from "./QAanswer";
 import QAentry from "./QAentry";
 import "./qaStyle.scss";
+import { useTracking } from 'react-tracking';
+import moment from 'moment';
+import Button from '@material-ui/core/Button';
 
 const QAloadmore = (props) => {
   const [allAnswers, setAllAnswers] = useState(false);
   const [allQuestions, setAllQuestions] = useState(false);
+  const { trackEvent } = useTracking({ module: 'QA_LOADMORE' });
 
   if (props.answers !== undefined && allAnswers === false) {
     return (
       <div>
         <button
-          onClick={() => setAllAnswers(!allAnswers)}
+          onClick={() => {
+            setAllAnswers(!allAnswers);
+            trackEvent({time: moment().format(), type: 'LOAD_ANSWERS'});
+          }}
           id="load-answer"
         >
           LOAD MORE ANSWERS
@@ -42,13 +49,16 @@ const QAloadmore = (props) => {
           gridColumnEnd: "span 4",
         }}
       >
-        <button
-          className="load-questions"
-          onClick={() => setAllQuestions(!allQuestions)}
-          
-        >
-          MORE ANSWERED QUESTIONS
-        </button>
+        <Button
+        color='primary'
+        style={{fontSize: '20px', marginTop: '20px', marginBottom: '10px'}}
+        variant='contained'
+        onClick={() => {
+          setAllQuestions(!allQuestions);
+          trackEvent({time: moment().format(), type: 'LOAD_QUESTIONS'});
+        }}>
+         MORE ANSWERED QUESTIONS
+      </Button>
       </div>
     );
   } else if (allQuestions === true) {
@@ -56,21 +66,25 @@ const QAloadmore = (props) => {
       <div>
         {props.questions.slice(4).map((oneQuestion) => {
           return (
-            <QAentry question={oneQuestion} key={oneQuestion.question_id} />
+            <QAentry submit={props.submit} product={props.product} question={oneQuestion} key={oneQuestion.question_id} />
           );
         })}
         <div>
-          <button
-          className="load-questions"
-            onClick={() => setAllQuestions(!allQuestions)}
-          >
-            LESS ANSWERED QUESTIONS
-          </button>
+        <Button
+        color='primary'
+        style={{fontSize: '20px', marginTop: '20px', marginBottom: '10px'}}
+        variant='contained'
+        onClick={() => {
+          setAllQuestions(!allQuestions);
+          trackEvent({time: moment().format(), type: 'LOAD_QUESTIONS'});
+        }}>
+         LESS ANSWERED QUESTIONS
+      </Button>
         </div>
       </div>
     );
   } else {
-    return <div></div>;
+    return <div className='noMore'>.</div>;
   }
 };
 

@@ -4,7 +4,7 @@ import ReviewBody from './review section/Review Body/ReviewBody';
 import Grid from '@material-ui/core/Grid';
 const axios = require('axios');
 
-const ReviewRatings = ({ productId, page, count }) => {
+const ReviewRatings = ({ productId, page, count, productName }) => {
   const [data, setData] = useState([]);
   const [metaData, setmetaData] = useState([]);
   const [sortBy, setsortBy] = useState('');
@@ -65,7 +65,9 @@ const ReviewRatings = ({ productId, page, count }) => {
   return (
     <Grid style={{ marginTop: '10px' }} container spacing={6}>
       <Grid item xs={3}>
-        <p style={{ marginTop: '-15px' }}>RATINGS & REVIEWS</p>
+        <p className='rating-header' style={{ marginTop: '-15px' }}>
+          RATINGS & REVIEWS
+        </p>
         <ReviewSummary
           data={data}
           metaData={metaData}
@@ -78,6 +80,7 @@ const ReviewRatings = ({ productId, page, count }) => {
           sortByType={sortByType}
           metaData={metaData}
           filteredData={filteredData}
+          productName={productName}
         />
       </Grid>
     </Grid>

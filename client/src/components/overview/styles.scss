@@ -1,7 +1,7 @@
 .overviewContainer {
   // If you want it to grow,
   // Try max-width: auto;
-  //max-width: 1500px;
+  max-width: 1600px;
   height: 1000px;
   display: grid;
   grid-template-columns: 60% 40%;
@@ -31,7 +31,7 @@
       background-repeat: no-repeat;
       background-position: right 5px center;
       background-size: 20px 20px;
-      transition: width .35s ease-in-out;
+      transition: width 0.35s ease-in-out;
       box-shadow: 0px 0px 5px black;
     }
 
@@ -72,7 +72,7 @@
       // display: grid;
       display: flex;
       flex-direction: column;
-      justify-content:space-evenly;
+      justify-content: space-evenly;
       // flex-wrap: wrap;
       .arrow {
         max-height: 100%;
@@ -114,10 +114,10 @@
     }
   }
   #arrows {
-    opacity: .3;
+    opacity: 0.3;
   }
   #arrows:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
   .productDetailsContainer {
     grid-row: 6;
@@ -132,7 +132,6 @@
   .styleContainer {
     grid-row: 4;
     grid-column: 2;
-
   }
   .sizeQuantityAddContainer {
     grid-row: 5;

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import Modal from "@material-ui/core/Modal";
+import Button from '@material-ui/core/Button';
 import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import "../Q&A/qaStyle.scss";
+import '../../styles/main.scss';
+import { useTracking } from 'react-tracking';
+import moment from 'moment';
 
 const AddModal = (props) => {
   const [open, setOpen] = useState(false);
@@ -12,12 +16,24 @@ const AddModal = (props) => {
   const [email, setEmail] = useState("");
   const [url, setUrl] = useState("");
   const [picArr, setPicArr] = useState([]);
+  const { trackEvent } = useTracking({ module: 'ADD_MODAL' });
 
   const addUrl = (e) => {
     e.preventDefault();
     setPicArr([...picArr, url]);
     setUrl("");
   };
+
+  const removeUrl = (e) => {
+    e.preventDefault();
+    setPicArr(picArr.slice(0, picArr.length - 1));
+  }
+
+  const modalClick = () => {
+    setOpen(!open);
+    trackEvent({time: moment().format(), type: trackType});
+    console.log(window.dataLayer);
+  }
 
   var body;
   if (props.type === "verify") {
@@ -46,10 +62,10 @@ const AddModal = (props) => {
         });
       body = (
         <div className="submit-modal">
-          <h2 id="modal-title">{props.title}</h2>
-          <h3 id="modal-description">In relation to the {props.prodName}</h3>
+          <h2 style={{color: 'whitesmoke'}} id="modal-title">{props.title}</h2>
+          <h3 style={{color: 'whitesmoke'}} id="modal-description">In relation to the {props.prodName}</h3>
 
-          <div>Thank you for your submission!</div>
+          <div style={{color: 'whitesmoke'}}>Thank you for your submission!</div>
           <div></div>
         </div>
       );
@@ -77,10 +93,10 @@ const AddModal = (props) => {
         });
       body = (
         <div className="submit-modal">
-          <h2 id="modal-title">{props.title}</h2>
-          <h3 id="modal-description">In relation to the {props.prodName}</h3>
+          <h2 style={{color: 'whitesmoke'}} id="modal-title">{props.title}</h2>
+          <h3 style={{color: 'whitesmoke'}} id="modal-description">In relation to the {props.prodName}</h3>
 
-          <div>Thank you for your submission!</div>
+          <div style={{color: 'whitesmoke'}}>Thank you for your submission!</div>
           <div></div>
         </div>
       );
@@ -88,8 +104,8 @@ const AddModal = (props) => {
       body = (
         <div className="submit-modal">
           <div style={{ marginLeft: "2%" }}>
-            <h2 id="modal-title">OOPS!</h2>
-            <h3 id="modal-description">In relation to the {props.prodName}</h3>
+            <h2 style={{color: 'whitesmoke'}} id="modal-title">OOPS!</h2>
+            <h3 style={{color: 'whitesmoke'}} id="modal-description">In relation to the {props.prodName}</h3>
             <div style={{ color: "red" }}>
               Please fix your submission. Required input values are missing or
               invalid:
@@ -116,10 +132,10 @@ const AddModal = (props) => {
     }
     body = (
       <div className="add-modal">
-        <h2 style={{ marginLeft: "2%" }} id="modal-title">
+        <h2 style={{ marginLeft: "2%", color: 'whitesmoke'}} id="modal-title">
           {props.title}
         </h2>
-        <h3 style={{ marginLeft: "2%" }} id="modal-description">
+        <h3 style={{ marginLeft: "2%", color: 'whitesmoke'}} id="modal-description">
           {answerDesc}
         </h3>
         <textarea
@@ -136,8 +152,10 @@ const AddModal = (props) => {
           }}
         ></div>
         <label className="form-label" htmlFor="nickname">
-          Nickname*:{" "}
+          Nickname
         </label>
+        <span style={{ fontSize: '25px', color: '#f50057', marginRight: '5px'}}>* 
+        </span>
         <input
           onChange={(e) => setUser(e.target.value)}
           id="nickname"
@@ -145,12 +163,14 @@ const AddModal = (props) => {
           type="text"
           placeholder="Example: jackson11!"
         ></input>
-        <div style={{ marginLeft: "2%", marginBottom: "2%" }}>
+        <div className="disclaimers">
           For privacy reasons, do not use your full name or email address
         </div>
         <label className="form-label" htmlFor="email">
-          E-mail*:{" "}
+          E-mail
         </label>
+        <span style={{ fontSize: '25px', color: '#f50057', marginRight: '5px'}}>* 
+        </span>
         <input
           onChange={(e) => setEmail(e.target.value)}
           id="email"
@@ -160,7 +180,7 @@ const AddModal = (props) => {
           pattern=".+.com|.+.net|.+.co.uk|.+.fr|.+.gov|.+.edu|.+.jp"
           placeholder="Example: meow@gmail.com"
         ></input>
-        <div style={{ marginLeft: "2%", marginBottom: "2%" }}>
+        <div className="disclaimers">
           For authentication reasons only, you will not be emailed
         </div>
         <label
@@ -178,12 +198,23 @@ const AddModal = (props) => {
           className="form-input"
           placeholder="example.com/photo.jpg"
         ></input>
+        <div></div>
         <button
+          className="picButton"
+          style={{marginLeft: "4%"}}
           hidden={!(props.name === "Add Answer")}
           disabled={picArr.length === 5 ? true : false}
           onClick={addUrl}
         >
-          add image
+          ADD IMAGE
+        </button>
+        <button
+          className="picButton"
+          hidden={!(props.name === "Add Answer")}
+          disabled={picArr.length === 0 ? true : false}
+          onClick={removeUrl}
+        >
+          REMOVE IMAGE
         </button>
         <div></div>
         <img
@@ -239,22 +270,30 @@ const AddModal = (props) => {
     );
   }
 
+  var bStyle;
   var cName;
   var buttonText = "";
+  var trackType = "";
   if (props.bType === "1") {
     cName = "helpful-button";
     buttonText = "Add Answer";
+    trackType = "ADD_ANSWER";
   } else if (props.type === "verify") {
-    cName = "verify-button";
+    bStyle = {fontSize: '16px', float: 'right'};
     buttonText = "SUBMIT";
+    trackType = "SUBMIT";
   } else {
-    cName = "load-questions";
+    bStyle = {fontSize: '20px'};
     buttonText = `ADD A ${props.name.toUpperCase()} +`;
+    trackType = "ADD_QUESTION";
   }
-
-  return (
+  
+  if (buttonText === "Add Answer") {
+    return (
     <span>
-      <button className={cName} onClick={() => setOpen(!open)}>
+      <button
+        className={cName}
+        onClick={() => modalClick()}>
         {buttonText}
       </button>
       <Modal
@@ -272,5 +311,31 @@ const AddModal = (props) => {
       </Modal>
     </span>
   );
+  } else {
+  return (
+    <span>
+      <Button
+        color='primary'
+        style={bStyle}
+        variant='contained'
+        onClick={() => modalClick()}>
+        {buttonText}
+      </Button>
+      <Modal
+        open={open}
+        onClose={() => setOpen(!open)}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>{body}</Fade>
+      </Modal>
+    </span>
+  );
+      }
 };
 export default AddModal;
