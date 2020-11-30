@@ -10,8 +10,8 @@ import apiCalls from './overviewAPI.mjs';
 import ImageGalleryContainers from './imageGalleryContainer/imageGalleryContainers';
 
 class Overview extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selectedSize: null,
       selectedQuantity: null,
