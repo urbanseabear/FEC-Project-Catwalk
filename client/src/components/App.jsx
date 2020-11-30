@@ -25,8 +25,12 @@ const App = () => {
   let location = useLocation();
   const icon = toggled ? <Brightness7Icon /> : <Brightness3Icon />;
 
+  useEffect(() => {
+    starRatingData(reviewData);
+  }, [reviewData]);
+
   const starRatingData = (arr) => {
-    return setReviewData(arr);
+    setReviewData(arr);
   };
 
   const onSearch = (productId) => {
