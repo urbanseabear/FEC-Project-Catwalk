@@ -21,7 +21,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Front end build out for the product listings section of an online fashion retailer.
 
 
 
@@ -64,6 +64,10 @@ Use this space to show useful examples of how a project can be used. Additional 
 <!-- TEAM -->
 ## Team
 
+* Calvin Rudy - Questions and Answers Module
+  * https://github.com/urbanseabear
+  * https://www.linkedin.com/in/calvin-rudy/
+  
 * Dylan Allgood - Rating and Reviews Module
   * https://github.com/dylanallgood
   * www.linkedin.com/in/dylanallgood
@@ -72,6 +76,4 @@ Use this space to show useful examples of how a project can be used. Additional 
   * https://github.com/Justin-WebDev
   * YOUR LINKEDIN
   
-* Calvin Rudy - Questions and Answers Module
-  * https://github.com/urbanseabear
-  * YOUR LINKEDIN
+
